@@ -7,7 +7,13 @@ def verify():
     manifest=read(ROOT/'compatibility.json')
     if manifest['release_version']!=(ROOT/'VERSION').read_text().strip():raise ValueError('Release version differs')
     if sha(ROOT/'provenance/components.json')!=manifest['component_inventory_sha256']:raise ValueError('Component inventory differs')
+    inventories=read(ROOT/'provenance/components.json')
     for name,stage in manifest['stages'].items():
+        source=ROOT/'stages'/name/'src'
+        actual={p.relative_to(source).as_posix():sha(p) for p in source.rglob('*')
+                if p.is_file() and '__pycache__' not in p.parts and p.suffix!='.pyc'
+                and not any(part.endswith('.egg-info') for part in p.parts)}
+        if actual!=inventories[name]['files']:raise ValueError('Component source missing/changed: '+name)
         package=tomllib.loads((ROOT/stage['package_metadata']).read_text(encoding='utf-8'))
         if package['project']['version']!=stage['software_version']:raise ValueError('Component version differs: '+name)
         for model in stage['models']:

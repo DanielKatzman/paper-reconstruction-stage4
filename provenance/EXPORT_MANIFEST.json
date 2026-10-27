@@ -2,7 +2,7 @@
   "files": {
     ".gitattributes": "3b55385da8716000fe2519ed2d1bfedf48373885f16bc17274f362ecbf59edee",
     ".github/workflows/stage4.yml": "0e28b808313452e0f88407ef850178389e5c2ef896a0b1963e2f0db8f8ec5dc2",
-    ".gitignore": "ccf9a797a69f90a2993ae9056f7a96948c0fe4111082b958c9732eabfb7957c9",
+    ".gitignore": "fee74a44e59dd3a8e6cecd531170fb5523f06abf62ef7017257e910baf10123c",
     "CHANGELOG.md": "8b0ae8c70b80fc16fc872a644972809b329deff3d6555fdbc741de3ba510a8bc",
     "LICENSE": "0d2ceda426ec58177370ca95b2a63ae8b6ecbc5eac9852c469ac191ab150944f",
     "README.md": "a63c2e4079e21e29de892fa718896dd15bee360db26b6bebb56c8d9b12b3c391",
@@ -105,6 +105,10 @@
     "stages/stage1/src/universal_segmenter/annotation/session.py": "1d4fd9e433be1b0f397e4cc34938e1629962d045288a4c792a581004cc454141",
     "stages/stage1/src/universal_segmenter/annotation/split_policy.py": "c09bb2a8b54df963676b719716cf459f8b4692435609eec1fae3f72923858a54",
     "stages/stage1/src/universal_segmenter/contracts.py": "863f14a77330c48e12e83259f6c4c4afa4fb32c8c1e325d9b42bff2e3d63cabf",
+    "stages/stage1/src/universal_segmenter/data/__init__.py": "45d57e36c8d078867ec40227b015e626a97c3bd47ae3034a4f50ab723d7f80e8",
+    "stages/stage1/src/universal_segmenter/data/manifest.py": "67b186a2f68ab81389baec90f67788b19c7bc2a36f20f4d6e59e67773bdddacf",
+    "stages/stage1/src/universal_segmenter/data/physical_identity.py": "fec149f31c98fbf3a9b2285c78c9d0067050458e3799065356655ae6720d0156",
+    "stages/stage1/src/universal_segmenter/data/splits.py": "53aa6b9fec6935e9ba57b66e8d2fca6262dff399ef91ea8a3b3e0907b2ccb813",
     "stages/stage1/src/universal_segmenter/evaluation/__init__.py": "1a7094c55b26e6c50c2ef6b3e3bb0ddf747673aa3c1e8843fddeb877e2172c83",
     "stages/stage1/src/universal_segmenter/evaluation/release_gate.py": "f64230204b473ec8960b8d39ba1e8cba352268d0e8de4b9f59418e65de924ef2",
     "stages/stage1/src/universal_segmenter/generation/__init__.py": "c4bec93111ce69431ca05f2c844ec8a2ac0866cfc8c68aca4389be6f856a0ffb",
@@ -754,10 +758,10 @@
     "tools/setup.ps1": "dfc61cb9d8e4e15e2ac744587623f5dbf1bee07c454f763119abd79914a7c8ac",
     "tools/stage3_worker.py": "8ff1fe136b9186317c4d2329465f07eccdc6014e338a6d89864a05f52ec66924",
     "tools/test_stage4.py": "6602fd8c89c7de72ebe89a13903779e48189fd795559357b5510164b49ed8b03",
-    "tools/verify_compatibility.py": "9a13c507d7cca3aebf34ae9152897e55982c44bfc1675df4cc46b640b81462ba",
+    "tools/verify_compatibility.py": "b18af55d94bd7592d9a6a8348fb4cf8cb239bccfc9832cb0ab2506460ae6e7fc",
     "tools/verify_export.py": "986aeb0715c6beb98652b496250505dac86eb29ea06ede07f266b307a04bed08"
   },
   "git_lfs_model_bytes": 85616283,
   "release": "2.0.0",
-  "source_bytes": 13205608
+  "source_bytes": 13233878
 }

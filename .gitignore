@@ -31,3 +31,6 @@ Thumbs.db
 !stages/stage2/models/stage2_boundary_v1.0.0.onnx
 !stages/stage3/models/paired_strip_cnn_small.pt
 !stages/stage3/models/pair_mlp_small.pt
+# This is Python source, not a training dataset.
+!stages/stage1/src/universal_segmenter/data/
+!stages/stage1/src/universal_segmenter/data/*.py
