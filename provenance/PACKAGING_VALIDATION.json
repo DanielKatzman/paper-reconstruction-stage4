@@ -80,7 +80,8 @@
   "predictions_unchanged_during_evaluation": true,
   "schema_version": "paper-pipeline.packaging-validation.v2",
   "scope": "Separate relocation/integration validation, not a new fresh 14-case upstream run or a new reliability cohort.",
-  "source_files_verified": 224,
+  "source_files_verified": 212,
+  "source_inventory_portability_note": "Exclude regenerated .egg-info build metadata from runtime source checks; the original 224-file worktree inventory is preserved separately. Solver/candidate package source bytes remain unchanged.",
   "stage1_smoke": {
     "accepted": true,
     "capture_kind": "one generator piece; runtime smoke only",

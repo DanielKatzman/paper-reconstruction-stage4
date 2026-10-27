@@ -26,7 +26,7 @@ flowchart LR
 | Stage 4 | Evidence bundle, solver config and any applicable bound profiles | Result manifest, placements, selected contacts, preview, assessment/recovery request | Search global layouts and verify support, physical feasibility and page geometry |
 | Orchestrator | Input job, module versions/configuration and acquisition assumptions | Job status, final artifacts and stage telemetry | Coordinate execution and expose one user-facing interface |
 
-The contract SDK is at `contracts/sdk`; the v2 wire-contract authority and schemas are preserved with it. Component software versions, model hashes, source fingerprints and configuration identities are separate from the umbrella release label. Marking another stage “2.0 compatible” should mean that its actual producer output passes these contracts and downstream regression checks, not merely that its version string was changed.
+The contract SDK is at `contracts/sdk`; the wire-contract authority and schemas are preserved with it. `compatibility.json` pins all four stage metadata versions, their source inventory and model identities; Git LFS pins the four weight files to the release tag. Component software versions, model hashes, source fingerprints and configuration identities are separate from the umbrella release label. Marking another stage “2.0 compatible” should mean that its actual producer output passes these contracts and downstream regression checks, not merely that its version string was changed.
 
 ## Integration rules for compatible stage releases
 

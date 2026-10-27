@@ -1,0 +1,76 @@
+{
+  "assumptions": {
+    "baseline_mask_mode": "exact_generator_development",
+    "baseline_rotation_family": "quarter_turn",
+    "page": "one_complete_rectangle",
+    "perspective": false,
+    "relative_piece_scale": 1.0
+  },
+  "component_inventory_sha256": "03db65626284e79eba4a83fa5f9975ee156932598b89d29c0ec4129fcc285ee5",
+  "contracts": {
+    "sdk_path": "contracts/sdk",
+    "sdk_software_version": "0.1.0",
+    "stage3_to_stage4_contract_directory": "contracts/sdk/src/paper_reconstruction_contracts/schemas"
+  },
+  "release_version": "2.0.0",
+  "schema_version": "paper-reconstruction.release-compatibility.v1",
+  "stages": {
+    "stage1": {
+      "compatible_pipeline_release": "2.0.0",
+      "models": [
+        {
+          "path": "stages/stage1/models/segformer_b1_detail_768_v3.onnx",
+          "sha256": "cbd43f3f305d44c811d70f1ab604c7dbef9d5ddb2eecd9fd0dbe3f52e3345417",
+          "size": 56820510
+        }
+      ],
+      "package_metadata": "stages/stage1/pyproject.toml",
+      "python_major_minor": "3.14",
+      "software_version": "1.0.0",
+      "source_inventory": "provenance/components.json#stage1"
+    },
+    "stage2": {
+      "compatible_pipeline_release": "2.0.0",
+      "models": [
+        {
+          "path": "stages/stage2/models/stage2_boundary_v1.0.0.onnx",
+          "sha256": "3e80716280375146e2ef66942688e2a262e503df1011918caff262f0bae388a4",
+          "size": 25662051
+        }
+      ],
+      "package_metadata": "stages/stage2/pyproject.toml",
+      "python_major_minor": "3.14",
+      "software_version": "1.0.2",
+      "source_inventory": "provenance/components.json#stage2"
+    },
+    "stage3": {
+      "candidate_implementation_sha256": "6b0ac07074ff3ecf340aa7c30deae6760d8a8cd4807e3dd9b71348d72e86e66a",
+      "compatible_pipeline_release": "2.0.0",
+      "models": [
+        {
+          "path": "stages/stage3/models/pair_mlp_small.pt",
+          "sha256": "5d47fc1f7249fb72b64252e0a448e08e5cc3f09d751621106cc34562eccdb930",
+          "size": 1341677
+        },
+        {
+          "path": "stages/stage3/models/paired_strip_cnn_small.pt",
+          "sha256": "0b26ec36d171bed520062e7cbef2694c30db7b3e3ff37839b8132dcfcdb6bb3e",
+          "size": 1792045
+        }
+      ],
+      "package_metadata": "stages/stage3/pyproject.toml",
+      "python_major_minor": "3.12",
+      "software_version": "0.9.32",
+      "source_inventory": "provenance/components.json#stage3"
+    },
+    "stage4": {
+      "compatible_pipeline_release": "2.0.0",
+      "models": [],
+      "package_metadata": "stages/stage4/pyproject.toml",
+      "python_major_minor": "3.12",
+      "software_version": "0.1.0",
+      "source_inventory": "provenance/components.json#stage4",
+      "source_sdk_fingerprint": "10270c9ef986d15529e05fd2bdc7b8d39675ba598d59b1876be815445084761e"
+    }
+  }
+}

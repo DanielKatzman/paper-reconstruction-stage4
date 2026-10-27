@@ -21,6 +21,7 @@ This cohort was used during development. It assumes every piece of one rectangul
 | `stages/stage3` | Exact qualified unit-scale-v5 source, frozen two-ranker manifest, profiling/pooling tools |
 | `stages/stage4` | V21r4 global solver, independent assessment, tests and historical diagnostic tooling |
 | `contracts/sdk` | Shared immutable Stage 3→4 file contract SDK |
+| `compatibility.json` | Release-pinned stage versions, source inventory, model hashes and runtime assumptions |
 | `baseline` | Fourteen-case manifest, measured results, previews and upstream profiles |
 | `provenance` | Component source inventories, asset hashes and original baseline commitments |
 | `tools` | Portable setup, asset verification, pipeline and regression commands |
@@ -30,11 +31,11 @@ The umbrella release is **2.0.0**. Component software versions remain unchanged 
 ## Clone and install
 
 ```powershell
+git lfs install
 git clone --branch v2.0.0 https://github.com/DanielKatzman/paper-reconstruction-stage4.git
 cd paper-reconstruction-stage4
-
-Invoke-WebRequest -Uri 'https://github.com/DanielKatzman/paper-reconstruction-stage4/releases/download/v2.0.0/models-v2.0.0.zip' -OutFile models-v2.0.0.zip
-Expand-Archive -LiteralPath models-v2.0.0.zip -DestinationPath .
+git lfs pull
+python -B tools/verify_compatibility.py
 
 powershell -File tools/setup.ps1
 python -B tools/assets.py verify --groups models
@@ -42,6 +43,8 @@ python -B tools/doctor.py
 ```
 
 The validated Windows setup uses Python 3.14 for Stages 1/2 and Python 3.12 for Stages 3/4. Stage 3 uses Torch 2.7.1 with CUDA 11.8 on the original GPU; the remaining runtime stages use CPU inference/computation. Setup creates separate environments and an ignored interpreter mapping. See [runtime details](docs/RUNNING.md) for other hardware.
+
+The four frozen model files are versioned with **Git LFS** and pinned by the same release tag as the source. `compatibility.json` and the original producer manifests verify their identities. The [model ZIP](https://github.com/DanielKatzman/paper-reconstruction-stage4/releases/download/v2.0.0/models-v2.0.0.zip) is an alternative if using a source ZIP or a checkout without LFS; extract it at the repository root. A GitHub-generated source archive alone is not guaranteed to include LFS payloads.
 
 To reproduce the fourteen-case regression, also download and extract [benchmark-v2.0.0.zip](https://github.com/DanielKatzman/paper-reconstruction-stage4/releases/download/v2.0.0/benchmark-v2.0.0.zip) at the repository root. Its observable bundles, Stage 1 generator inputs and evaluation-only references are separate asset groups. Verify the files before running:
 
@@ -95,9 +98,9 @@ Raw captures can enter through `--captures <folder> --mode shared-scale-capture 
 
 ## New checkout
 
-Model weights, input datasets, full experimental outputs, environments and local paths are excluded from Git. The optional model and benchmark archives preserve repository-relative paths and are authenticated by `provenance/assets.json`.
+The four release model weights use Git LFS. Input datasets, full experimental outputs, environments, local paths and unrelated training checkpoints are excluded from Git. Optional model and benchmark archives preserve repository-relative paths and are authenticated by `provenance/assets.json`.
 
-1. Extract the model/benchmark archives from [release v2.0.0](https://github.com/DanielKatzman/paper-reconstruction-stage4/releases/tag/v2.0.0) into this folder. [Archive checksums](provenance/release_asset_checksums.json) and per-file asset receipts are included.
+1. Clone with Git LFS to obtain the pinned models, or extract the model archive from [release v2.0.0](https://github.com/DanielKatzman/paper-reconstruction-stage4/releases/tag/v2.0.0). Extract the benchmark archive for regression testing. [Archive checksums](provenance/release_asset_checksums.json) and per-file asset receipts are included.
 2. On Windows with Python 3.14 and 3.12 installed, run `powershell -File tools/setup.ps1`. The default Torch index matches the validated CUDA 11.8 build; choose the appropriate wheel index for other hardware.
 3. Run asset verification, `tools/doctor.py`, the tests and the benchmark above.
 

@@ -1,2 +1,5 @@
 # The release inventory binds bytes. Preserve them on every checkout/platform.
 * -text
+stages/stage1/models/*.onnx filter=lfs diff=lfs merge=lfs -text
+stages/stage2/models/*.onnx filter=lfs diff=lfs merge=lfs -text
+stages/stage3/models/*.pt filter=lfs diff=lfs merge=lfs -text

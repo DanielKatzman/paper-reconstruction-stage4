@@ -7,7 +7,7 @@ def verify_sources():
     count=0
     for stage,data in expected.items():
         source=ROOT/'stages'/stage/'src'
-        actual={p.relative_to(source).as_posix():sha(p) for p in source.rglob('*') if p.is_file() and '__pycache__' not in p.parts and p.suffix!='.pyc'}
+        actual={p.relative_to(source).as_posix():sha(p) for p in source.rglob('*') if p.is_file() and '__pycache__' not in p.parts and p.suffix!='.pyc' and not any(x.endswith('.egg-info') for x in p.parts)}
         if actual!=data['files']: raise ValueError('Component source changed: '+stage)
         count+=len(actual)
     candidate=read(ROOT/'stages/stage3/provenance/candidate.json')
@@ -19,6 +19,8 @@ def verify_sources():
 
 def main():
     verify_sources()
+    from verify_compatibility import verify
+    verify()
     expressions={
         'stage1':"import universal_segmenter,onnxruntime; from universal_segmenter.inference.release import locate_release; print(universal_segmenter.__file__); print(locate_release())",
         'stage2':"import paper_reconstruction_stage2,onnxruntime; print(paper_reconstruction_stage2.__file__)",

@@ -1,12 +1,6 @@
 {
   "stage1": {
     "files": {
-      "paper_segmentation_stage.egg-info/PKG-INFO": "e40a3547ee332fc4dd1d9e2d462788d057756b2813a9abf606d11a47fdad347e",
-      "paper_segmentation_stage.egg-info/SOURCES.txt": "33757432902fb9d996ed797fc884d3be9bbb9811e670f6ef79532d97792595a8",
-      "paper_segmentation_stage.egg-info/dependency_links.txt": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
-      "paper_segmentation_stage.egg-info/entry_points.txt": "31a3c3fc58539fbf2c62d2deeb2672769af6b0745285541c8c80159afe03feed",
-      "paper_segmentation_stage.egg-info/requires.txt": "306d4f7178dea552044029b0a4cbffb174dde28e22bef0457ed6cc110038c87b",
-      "paper_segmentation_stage.egg-info/top_level.txt": "6f1acea40330dcdb216f5ccee6fb12652d1f9e71e11aaff16c776f775d8af418",
       "universal_segmenter/__init__.py": "0079e677fcf606c2da30ac452b3bec1f91e6cfbce9726dfbf74e4776b410b5d4",
       "universal_segmenter/annotation/__init__.py": "1d93701dfeebda2a968d0e1d8f2e9c673780bbbcdd95ebbe9645beea434e8e1d",
       "universal_segmenter/annotation/app.py": "f554a11fcff8586d6a7b323a1a5ce7b3b7158b412e87f1449e7b8e5a1d57dfcc",
@@ -61,12 +55,6 @@
   },
   "stage2": {
     "files": {
-      "paper_reconstruction_stage2.egg-info/PKG-INFO": "d40ecbf3f7583cf9c7b42a27ecbee81fde771995691c83df6f6c0942ef5889a1",
-      "paper_reconstruction_stage2.egg-info/SOURCES.txt": "444fb8e242264c63ba26e5d004da168de880b1e463d168c8e514a00c9946a63a",
-      "paper_reconstruction_stage2.egg-info/dependency_links.txt": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
-      "paper_reconstruction_stage2.egg-info/entry_points.txt": "3139ce5ba5d984abd79dc3bf3628ccc42067911f6d22eb99276f0db398fb1537",
-      "paper_reconstruction_stage2.egg-info/requires.txt": "00d957a1ef13280eec630c4e8c959938045c6f0b88b9abbf49ac8a71b4ca3853",
-      "paper_reconstruction_stage2.egg-info/top_level.txt": "8fcffe65971663e8f92eab002a61ba262aaedc77b957018607dce34da429010b",
       "paper_reconstruction_stage2/__init__.py": "acdd541e6f6e3c0bed08967bc412abeb71aa82b3bed028d3b0c3876b1abf584d",
       "paper_reconstruction_stage2/atomic_io.py": "7b309f954f587eeae9ef963e5672f6b040fce3cef594c7c609cd51f2e9208fe6",
       "paper_reconstruction_stage2/boundary.py": "3fe2c886eebd92454726b8b1486a2ee59495bc5128408fe494c9e43101dc480c",

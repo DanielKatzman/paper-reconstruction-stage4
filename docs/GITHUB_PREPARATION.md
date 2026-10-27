@@ -6,7 +6,7 @@ Tracked content contains inlined source, packaging/configuration, tests, schemas
 
 The original Desktop projects, datasets, frozen controls and sealed outputs were preserved. No recursive cleanup, source reset or original-result modification was performed. The source export is separate so publication does not sweep old experiment trees into the new repository.
 
-Ignored content includes `local/`, `assets/`, `outputs/`, virtual environments, checkpoints and ONNX/Torch weights. `local/runtimes.json` and `local/assets-sources.json` hold this workstation's interpreter/source paths. The model/benchmark archives are separate release assets; local copies and their checksums are in `local/release-assets`, with tracked checksums in `provenance/release_asset_checksums.json`. The source-only repository is approximately 13 MB before Git compression.
+Ignored content includes `local/`, `assets/`, `outputs/`, virtual environments and unrelated checkpoints. The four frozen release models are explicitly allowed and tracked with Git LFS (about 85.6 MB); they do not become ordinary Git blobs. `local/runtimes.json` and `local/assets-sources.json` hold workstation paths. Model/benchmark ZIPs are separate release assets; their tracked checksums are in `provenance/release_asset_checksums.json`. Source is approximately 13 MB before compression, plus small LFS pointers. `compatibility.json` pins stage metadata, source inventories and model identities together.
 
 `provenance/EXPORT_MANIFEST.json` seals Git-eligible bytes. Verify immediately before staging/pushing:
 
