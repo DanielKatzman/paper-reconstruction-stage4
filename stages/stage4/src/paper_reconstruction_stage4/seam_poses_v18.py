@@ -95,9 +95,15 @@ def frontier_priority(pairs,frontiers,ids):
     return {pair:sum(m[a]!=m[b] for m in maps) for pair in pairs for a,b in [pair]}
 
 
-def generate(problem,config,deadline,maximum_checks=None,samples=256,peaks=4,frontiers=()):
-    if not problem.capture_metadata or problem.capture_metadata.get('rotation_family')!='quarter_turn':
+def generate(problem,config,deadline,maximum_checks=None,samples=256,peaks=4,frontiers=(),
+             _rotation_provider=None,_fit_provider=None,_retain_provider=None):
+    family=(problem.capture_metadata or {}).get('rotation_family')
+    if family=='continuous_rigid' and _rotation_provider is None:
+        from .seam_poses_rigid import generate as rigid_generate
+        return rigid_generate(problem,config,deadline,maximum_checks,samples,peaks,frontiers)
+    if family!='quarter_turn' and not (family=='continuous_rigid' and _rotation_provider is not None):
         raise ValueError('Quarter-turn native alignment requires authenticated capture metadata')
+    prepare=_rotation_provider or prepare_modes;fit=_fit_provider or fit_task;retainer=_retain_provider or retain
     if maximum_checks is not None and (type(maximum_checks) is not int or maximum_checks<0):raise ValueError('Invalid native batch size')
     started=time.perf_counter();data={};ids=sorted(problem.pieces);pairs=list(combinations(ids,2))
     priority=frontier_priority(pairs,frontiers,ids)
@@ -126,16 +132,16 @@ def generate(problem,config,deadline,maximum_checks=None,samples=256,peaks=4,fro
         block=blocks[pair];checks+=1;block['checks']+=1
         block['rotations'].add(value[0]['quarter'])
         block['channels'][value[1]]=block['channels'].get(value[1],0)+1
-        block['candidates'].extend(fit_task(problem,config,physical,data,*pair,value))
+        block['candidates'].extend(fit(problem,config,physical,data,*pair,value))
 
     ordered=sorted(pairs,key=lambda p:(-priority[p],p))
     # Prepare one pair at a time and fit its first rotation before preparing
     # another pair. Expensive vote work is never repeated in later rounds.
     for pair in ordered:
         if not available():break
-        rotations=prepare_modes(data,*pair,peaks,rotation_cache);foundation,expansion=queues(rotations,peaks)
+        rotations=prepare(data,*pair,peaks,rotation_cache);foundation,expansion=queues(rotations,peaks)
         blocks[pair]={'foundation':foundation,'expansion':expansion,'candidates':[],
-                      'checks':0,'rotations':set(),'channels':{},'configured':len(foundation)+len(expansion)}
+                      'checks':0,'rotations':set(),'channels':{},'configured':len(foundation)+len(expansion),'rotation_count':len(rotations)}
         if foundation:
             if not available():break
             consume(pair,foundation.popleft())
@@ -157,7 +163,7 @@ def generate(problem,config,deadline,maximum_checks=None,samples=256,peaks=4,fro
     if complete:reasons.clear()
     results=[];pair_rows=[]
     for pair in pairs:
-        block=blocks.get(pair);kept=retain(block['candidates']) if block else []
+        block=blocks.get(pair);kept=retainer(block['candidates']) if block else []
         results.extend(kept)
         pair_rows.append({'pieces':list(pair),'retained':len(kept),'conditioned_retained':sum(v['conditioned'] for v in kept),
             'native_checks':block['checks'] if block else 0,'tested_rotations':len(block['rotations']) if block else 0,
@@ -175,11 +181,11 @@ def generate(problem,config,deadline,maximum_checks=None,samples=256,peaks=4,fro
                 'fitted_cross_pairs':sum(r['native_checks']>0 for r in rows),
                 'native_checks':sum(r['native_checks'] for r in rows)})
     audit.update(native_checks=checks,pair_rotations=sum(r['tested_rotations'] for r in pair_rows),
-        vote_rotations_prepared=4*len(blocks),pairs=pair_rows,possible_pair_count=len(pairs),
+        vote_rotations_prepared=sum(b['rotation_count'] for b in blocks.values()),pairs=pair_rows,possible_pair_count=len(pairs),
         untested_pair_count=len(pairs)-len(blocks),
         pairs_without_fitted_checks=sum(r['native_checks']==0 for r in pair_rows),
         pairs_without_modes=sum(b['configured']==0 for b in blocks.values()),
-        pairs_with_all_rotations_fitted=sum(r['tested_rotations']==4 for r in pair_rows),
+        pairs_with_all_rotations_fitted=sum(r['tested_rotations']==blocks.get(tuple(r['pieces']),{}).get('rotation_count',4) for r in pair_rows),
         preparation_completed=prepared,all_configured_work_completed=complete,
         unperformed_known_fits=remaining,budget_abstained=not complete,budget_reason_codes=sorted(reasons),
         per_piece_coverage=per_piece,frontier_coverage=frontier_rows,

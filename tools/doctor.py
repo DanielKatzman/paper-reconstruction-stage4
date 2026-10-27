@@ -25,7 +25,7 @@ def main():
         'stage1':"import universal_segmenter,onnxruntime; from universal_segmenter.inference.release import locate_release; print(universal_segmenter.__file__); print(locate_release())",
         'stage2':"import paper_reconstruction_stage2,onnxruntime; print(paper_reconstruction_stage2.__file__)",
         'stage3':"import paper_reconstruction_stage3,torch; from paper_reconstruction_stage3.alpha_package import load_package; from pathlib import Path; print(paper_reconstruction_stage3.__file__); print(load_package(Path('stages/stage3/models'))[1]['manifest_sha256']); print('torch',torch.__version__,'cuda',torch.cuda.is_available())",
-        'stage4':"from paper_reconstruction_stage4.outputs import implementation_identity; import paper_reconstruction_stage4; print(paper_reconstruction_stage4.__file__); x=implementation_identity(); print(x['sha256']); assert x['sha256']=='10270c9ef986d15529e05fd2bdc7b8d39675ba598d59b1876be815445084761e'"}
+        'stage4':"from paper_reconstruction_stage4.outputs import implementation_identity; import paper_reconstruction_stage4; import json; from pathlib import Path; print(paper_reconstruction_stage4.__file__); x=implementation_identity(); print(x['sha256']); expected=json.loads(Path('compatibility.json').read_text())['stages']['stage4']['source_sdk_fingerprint']; assert x['sha256']==expected"}
     for stage,code in expressions.items(): execute(stage,['-c',code],ROOT/'outputs/doctor',stage)
     print('All four inlined runtimes passed preflight.',flush=True)
 

@@ -149,7 +149,7 @@ class NativeRecoveryV17Tests(unittest.TestCase):
             completed, audit = graph_search(ctx, basis, rows, time.perf_counter()+2., 1)
             self.assertFalse(completed); self.assertEqual(audit['merge_checks'], 1)
             p.capture_metadata = None
-            with self.assertRaisesRegex(ValueError, 'quarter-turn'):
+            with self.assertRaisesRegex(ValueError, 'authenticated rigid capture'):
                 graph_search(ctx, basis, rows, time.perf_counter()+1., 10)
 
     def test_incremental_checks_match_full_checks_when_previous_group_is_valid(self):

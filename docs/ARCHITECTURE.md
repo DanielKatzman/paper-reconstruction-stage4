@@ -1,6 +1,6 @@
 # Stage modules and the future orchestrator
 
-This repository preserves the Stage 4 construction baseline from **v2.0.0** and adds CPU-default orchestration in **v2.0.1**. Its inlined Stage 1/2/3 snapshots make the baseline reproducible. The owner also maintains each stage separately; those repositories can publish compatible releases without requiring a separate network service for every stage.
+This repository preserves the Stage 4 construction baseline from **v2.0.0**, adds CPU-default orchestration in **v2.0.1**, and routes shared-scale predicted-mask captures through V21 in **v2.0.2**. Its inlined Stage 1/2/3 snapshots make the baseline reproducible. The owner also maintains each stage separately; those repositories can publish compatible releases without requiring a separate network service for every stage.
 
 The intended final deployment is a **modular monolith**: one application/container exposing an API or GUI, with an internal pipeline coordinator and replaceable stage modules. The current repository implements the CLI coordinator and file contracts. It does not yet contain that API, GUI or Docker deployment.
 
@@ -43,6 +43,6 @@ The future orchestration repository should add a job submission/status/artifact 
 
 The validated workstation currently uses separate Python environments: 3.14 for Stages 1/2 and 3.12 for Stages 3/4. A first container can preserve that split with internal subprocesses. Consolidating interpreters is a separate compatibility/performance change to validate; it is not required by the modular monolith architecture. Stage modules do not need their own HTTP servers.
 
-Do not treat the present synthetic exact-mask benchmark as qualification for arbitrary phone photos. The V21 complete-page profile assumes shared native scale, a full rectangular page and exact generator masks; the earlier general capture route remains separately qualified work. The coordinator must choose a truthful profile and present the resulting assessment to the caller.
+The original synthetic benchmark uses exact generator masks and quarter turns. V21 now also accepts predicted masks and observed continuous rigid angles under the same shared-scale/full-page model, with separate provenance. The synthetic result does not establish a real-photo success rate. The coordinator must choose a truthful profile and present the resulting assessment to the caller.
 
 The immediate algorithm priority is still Stage 3 pose coverage and latency. Its recorded 30-piece inference plus pooling takes 45–52 minutes, versus approximately two minutes for Stage 4. The [Stage 3 handoff](STAGE3_HANDOFF.md) provides concrete parent/mode misses, telemetry and acceptance comparisons.

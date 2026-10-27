@@ -1,0 +1,264 @@
+{
+  "cold_exact_controls": [
+    {
+      "case_id": "puzzle_000330_c783e29dd569",
+      "common_gauge": {
+        "alignment": "One shared transform using the smallest ID in the largest component; no per-piece fitting.",
+        "anchor_piece": "piece_001",
+        "non_anchor_probe_errors_reference_px": {
+          "maximum": 5.099019513592813,
+          "p50": 4.472135954999681,
+          "p95": 5.099019513592792
+        },
+        "other_components_aligned": false,
+        "per_piece": [
+          {
+            "anchor_piece": true,
+            "local_orientation_error_degrees": 0.0,
+            "local_scale_ratio": 1.0,
+            "p95_fraction_reference_diagonal": 0.0,
+            "p95_reference_px": 0.0,
+            "piece_id": "piece_001"
+          },
+          {
+            "anchor_piece": false,
+            "local_orientation_error_degrees": 0.0,
+            "local_scale_ratio": 1.0,
+            "p95_fraction_reference_diagonal": 0.0009310773061032976,
+            "p95_reference_px": 2.0,
+            "piece_id": "piece_002"
+          },
+          {
+            "anchor_piece": false,
+            "local_orientation_error_degrees": 0.0,
+            "local_scale_ratio": 1.0,
+            "p95_fraction_reference_diagonal": 0.0023737906762420716,
+            "p95_reference_px": 5.099019513592813,
+            "piece_id": "piece_003"
+          },
+          {
+            "anchor_piece": false,
+            "local_orientation_error_degrees": 0.0,
+            "local_scale_ratio": 1.0,
+            "p95_fraction_reference_diagonal": 0.0020819521487544243,
+            "p95_reference_px": 4.4721359549997315,
+            "piece_id": "piece_004"
+          }
+        ],
+        "scope_piece_ids": [
+          "piece_001",
+          "piece_002",
+          "piece_003",
+          "piece_004"
+        ],
+        "whole_page_error_available": true
+      },
+      "construction_regression_pass": true,
+      "elapsed_seconds": 7.73399999999674,
+      "pieces": 4,
+      "result_sha256": "f3fadd84cb153ae10f85e2df5ece247966e524cef1d49834f87a789c9b6d1d67",
+      "source_sdk_fingerprint": "55109c0c38ee3622be5174763ba263f9722c8094f19fb51a303999f1d4bfdec6",
+      "supported_connected_zero_false_neighbors": true
+    },
+    {
+      "case_id": "puzzle_000678_004586b006b3",
+      "common_gauge": {
+        "alignment": "One shared transform using the smallest ID in the largest component; no per-piece fitting.",
+        "anchor_piece": "piece_001",
+        "non_anchor_probe_errors_reference_px": {
+          "maximum": 4.123105625617771,
+          "p50": 2.0000000000001705,
+          "p95": 4.123105625617661
+        },
+        "other_components_aligned": false,
+        "per_piece": [
+          {
+            "anchor_piece": true,
+            "local_orientation_error_degrees": 0.0,
+            "local_scale_ratio": 1.0,
+            "p95_fraction_reference_diagonal": 0.0,
+            "p95_reference_px": 0.0,
+            "piece_id": "piece_001"
+          },
+          {
+            "anchor_piece": false,
+            "local_orientation_error_degrees": 0.0,
+            "local_scale_ratio": 1.0,
+            "p95_fraction_reference_diagonal": 0.0019194650393397727,
+            "p95_reference_px": 4.123105625617771,
+            "piece_id": "piece_002"
+          },
+          {
+            "anchor_piece": false,
+            "local_orientation_error_degrees": 0.0,
+            "local_scale_ratio": 1.0,
+            "p95_fraction_reference_diagonal": 0.0009310773061032975,
+            "p95_reference_px": 1.9999999999999998,
+            "piece_id": "piece_003"
+          },
+          {
+            "anchor_piece": false,
+            "local_orientation_error_degrees": 0.0,
+            "local_scale_ratio": 1.0,
+            "p95_fraction_reference_diagonal": 0.0006583710769545447,
+            "p95_reference_px": 1.4142135623730951,
+            "piece_id": "piece_004"
+          },
+          {
+            "anchor_piece": false,
+            "local_orientation_error_degrees": 0.0,
+            "local_scale_ratio": 1.0,
+            "p95_fraction_reference_diagonal": 0.0010409760743771766,
+            "p95_reference_px": 2.23606797749979,
+            "piece_id": "piece_005"
+          },
+          {
+            "anchor_piece": false,
+            "local_orientation_error_degrees": 0.0,
+            "local_scale_ratio": 1.0,
+            "p95_fraction_reference_diagonal": 0.0009310773061033506,
+            "p95_reference_px": 2.0000000000001137,
+            "piece_id": "piece_006"
+          },
+          {
+            "anchor_piece": false,
+            "local_orientation_error_degrees": 0.0,
+            "local_scale_ratio": 1.0,
+            "p95_fraction_reference_diagonal": 0.0013966159591550257,
+            "p95_reference_px": 3.0000000000001705,
+            "piece_id": "piece_007"
+          },
+          {
+            "anchor_piece": false,
+            "local_orientation_error_degrees": 0.0,
+            "local_scale_ratio": 1.0,
+            "p95_fraction_reference_diagonal": 0.0009310773061034035,
+            "p95_reference_px": 2.0000000000002274,
+            "piece_id": "piece_008"
+          }
+        ],
+        "scope_piece_ids": [
+          "piece_001",
+          "piece_002",
+          "piece_003",
+          "piece_004",
+          "piece_005",
+          "piece_006",
+          "piece_007",
+          "piece_008"
+        ],
+        "whole_page_error_available": true
+      },
+      "construction_regression_pass": true,
+      "elapsed_seconds": 21.67200000002049,
+      "pieces": 8,
+      "result_sha256": "4c00e7f65aba7f3b43a0cef63ceda335440dbb5f15cb61b85af95ae9f07ec4cb",
+      "source_sdk_fingerprint": "55109c0c38ee3622be5174763ba263f9722c8094f19fb51a303999f1d4bfdec6",
+      "supported_connected_zero_false_neighbors": true
+    }
+  ],
+  "continuous_rigid_current": {
+    "assessment": {
+      "reason_codes": [
+        "incomplete_candidate"
+      ],
+      "status": "unresolved"
+    },
+    "complete_candidates_for_geometry": 0,
+    "component_sizes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "evaluation_truth_opened": false,
+    "native_deepest_depth": 5,
+    "native_generations": {
+      "expanded_native_generation": {
+        "all_configured_work_completed": true,
+        "angle_coverage_is_exhaustive": false,
+        "native_checks": 2148,
+        "pair_rotations": 245,
+        "policy": "native-contour-observed-rigid-angles.v1",
+        "pose_translation_inherited": false,
+        "possible_pair_count": 15,
+        "reference_coordinates_used": false,
+        "relative_piece_scale": 1.0,
+        "retained_poses": 2035
+      },
+      "native_generation": {
+        "all_configured_work_completed": false,
+        "angle_coverage_is_exhaustive": false,
+        "native_checks": 768,
+        "pair_rotations": 245,
+        "policy": "native-contour-observed-rigid-angles.v1",
+        "pose_translation_inherited": false,
+        "possible_pair_count": 15,
+        "reference_coordinates_used": false,
+        "relative_piece_scale": 1.0,
+        "retained_poses": 726
+      }
+    },
+    "native_proposal_checks": 1205189,
+    "native_unavailable_reason": null,
+    "old_assembly_seed_used": false,
+    "raw_images_masks_poses_published": false,
+    "result_sha256": "923484af8e3e7509ac89733eaca9e8fb1349413b312e278831c377d0bc9910cf",
+    "source_sdk_fingerprint": "55109c0c38ee3622be5174763ba263f9722c8094f19fb51a303999f1d4bfdec6",
+    "status": "budget_exhausted",
+    "subprocess_elapsed_seconds": 603.5630000000237,
+    "termination": "time_budget",
+    "upstream_reused_from_prior_cpu_only_execution": true,
+    "verified_complete_candidates": 0
+  },
+  "cpu_ranker_check": {
+    "device": "cpu",
+    "rankers_loaded": 2,
+    "torch": "2.7.1+cpu",
+    "torch_cuda_build": null
+  },
+  "fourteen_case_patch_rerun_performed": false,
+  "known_stage4_limit": "Native growth reached five pieces, but the unresolved published primary fell back to six singleton components",
+  "models_and_stage3_source_unchanged": true,
+  "portable_runner_tests_passed": 16,
+  "profile_only_diagnostic": {
+    "assessment": {
+      "reason_codes": [
+        "incomplete_candidate",
+        "unresolved_straight_or_underconstrained_bridge"
+      ],
+      "status": "unresolved"
+    },
+    "complete_candidates_for_geometry": 0,
+    "component_sizes": [
+      1,
+      5
+    ],
+    "evaluation_truth_opened": false,
+    "native_deepest_depth": 1,
+    "native_generations": {},
+    "native_proposal_checks": 0,
+    "native_unavailable_reason": "capture_does_not_declare_quarter_turns",
+    "old_assembly_seed_used": false,
+    "raw_images_masks_poses_published": false,
+    "result_sha256": "049951f5bea9fe1ce9c15115d169286e5b15d7141ddf870472fb6f797a26ec3b",
+    "source_sdk_fingerprint": "718c950c955cd1e729ea779b85bd02ee63da95b92ae4e668d1e1879c0e0cb71a",
+    "status": "partial_candidate",
+    "subprocess_elapsed_seconds": 96.15600000001723,
+    "termination": "exhausted_candidates",
+    "upstream_reused_from_prior_cpu_only_execution": true,
+    "verified_complete_candidates": 0
+  },
+  "real_capture_success_claimed": false,
+  "real_photo_reliability_or_thirty_piece_full_cpu_latency_qualified": false,
+  "real_primary_preview_visually_reviewed": true,
+  "release": "2.0.2",
+  "scope": "Separate cold Stage 4 reruns on existing immutable CPU-produced evidence; not fresh upstream inference",
+  "stage4_tests": {
+    "discovered": 359,
+    "explicit_skips": 16,
+    "passed": 343
+  }
+}

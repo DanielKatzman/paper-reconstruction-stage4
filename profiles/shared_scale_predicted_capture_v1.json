@@ -1,0 +1,13 @@
+{
+  "schema_version": "stage1.capture-profile.v1",
+  "name": "shared-native-scale-predicted-masks.v1",
+  "motion_model": "rotation_translation",
+  "relative_piece_scale": 1.0,
+  "shared_native_pixel_scale": true,
+  "per_piece_resize": false,
+  "perspective": false,
+  "rotation_family": "continuous_rigid",
+  "stage1_masks": "segformer_v3_predicted",
+  "mask_perturbation": false,
+  "scope": "User-declared common native pixel scale for same-DPI scans or fixed-distance parallel flat captures; not a measured calibration or an accuracy guarantee"
+}

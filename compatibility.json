@@ -1,4 +1,11 @@
 {
+  "acquisition_profiles": {
+    "continuous_rigid_native_policy": "native-contour-observed-rigid-angles.v1",
+    "exact_generator_masks": "stages/stage4/configs/shared_scale_complete_rectangle_v1.json",
+    "predicted_masks": "stages/stage4/configs/shared_scale_complete_rectangle_predicted_v1.json",
+    "relative_piece_scale": 1.0,
+    "solver_configuration": "stages/stage4/configs/joint_v21_cut_repair_development.json"
+  },
   "assumptions": {
     "baseline_mask_mode": "exact_generator_development",
     "baseline_rotation_family": "quarter_turn",
@@ -7,7 +14,7 @@
     "relative_piece_scale": 1.0
   },
   "compatible_model_data_baseline": "2.0.0",
-  "component_inventory_sha256": "03db65626284e79eba4a83fa5f9975ee156932598b89d29c0ec4129fcc285ee5",
+  "component_inventory_sha256": "6edf9b798d290100e858a2e1f1e109f0fa8447d85a40f95c5345ebedb102ec8e",
   "contracts": {
     "sdk_path": "contracts/sdk",
     "sdk_software_version": "0.1.0",
@@ -19,11 +26,11 @@
     "gpu_required": false,
     "torch_cpu_wheel_version": "2.7.1"
   },
-  "release_version": "2.0.1",
+  "release_version": "2.0.2",
   "schema_version": "paper-reconstruction.release-compatibility.v1",
   "stages": {
     "stage1": {
-      "compatible_pipeline_release": "2.0.1",
+      "compatible_pipeline_release": "2.0.2",
       "models": [
         {
           "path": "stages/stage1/models/segformer_b1_detail_768_v3.onnx",
@@ -37,7 +44,7 @@
       "source_inventory": "provenance/components.json#stage1"
     },
     "stage2": {
-      "compatible_pipeline_release": "2.0.1",
+      "compatible_pipeline_release": "2.0.2",
       "models": [
         {
           "path": "stages/stage2/models/stage2_boundary_v1.0.0.onnx",
@@ -52,7 +59,7 @@
     },
     "stage3": {
       "candidate_implementation_sha256": "6b0ac07074ff3ecf340aa7c30deae6760d8a8cd4807e3dd9b71348d72e86e66a",
-      "compatible_pipeline_release": "2.0.1",
+      "compatible_pipeline_release": "2.0.2",
       "models": [
         {
           "path": "stages/stage3/models/pair_mlp_small.pt",
@@ -71,13 +78,13 @@
       "source_inventory": "provenance/components.json#stage3"
     },
     "stage4": {
-      "compatible_pipeline_release": "2.0.1",
+      "compatible_pipeline_release": "2.0.2",
       "models": [],
       "package_metadata": "stages/stage4/pyproject.toml",
       "python_major_minor": "3.12",
       "software_version": "0.1.0",
       "source_inventory": "provenance/components.json#stage4",
-      "source_sdk_fingerprint": "10270c9ef986d15529e05fd2bdc7b8d39675ba598d59b1876be815445084761e"
+      "source_sdk_fingerprint": "55109c0c38ee3622be5174763ba263f9722c8094f19fb51a303999f1d4bfdec6"
     }
   }
 }

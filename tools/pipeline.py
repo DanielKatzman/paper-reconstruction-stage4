@@ -7,6 +7,7 @@ from common import ROOT, execute, read, save, inventory, sha
 
 CONFIG=ROOT/'stages/stage4/configs/joint_v21_cut_repair_development.json'
 PROFILE=ROOT/'stages/stage4/configs/shared_scale_complete_rectangle_v1.json'
+CAPTURE_PROFILE=ROOT/'stages/stage4/configs/shared_scale_complete_rectangle_predicted_v1.json'
 
 
 def solve(bundle,capture,output,config=CONFIG,profile=PROFILE):
@@ -90,8 +91,8 @@ def run(args):
     execute('stage3',[ROOT/'tools/stage3_worker.py','infer','--stage1',stage1,'--stage2',output/'stage2','--output',output/'stage3_native',
         '--device',args.device,'--puzzle-id',args.puzzle_id],output,'stage3_native')
     execute('stage3',[ROOT/'tools/stage3_worker.py','pool','--input',output/'stage3_native','--output',output/'stage3'],output,'stage3_pool')
-    config=CONFIG if args.mode=='development-page' else ROOT/'stages/stage4/configs/joint_continuation_development.json'
-    solve(output/'stage3',capture,output/'stage4',config,PROFILE if args.mode=='development-page' else None)
+    profile=PROFILE if args.mode=='development-page' else CAPTURE_PROFILE
+    solve(output/'stage3',capture,output/'stage4',CONFIG,profile)
     save(output/'predictions_sealed.json',{'predictions':inventory(output/'stage4'),'references_opened':False})
     print('Pipeline complete: '+str(output/'stage4/preview.png'),flush=True)
 

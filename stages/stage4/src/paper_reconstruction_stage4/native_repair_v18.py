@@ -105,7 +105,7 @@ class RepairContext(PreviousRepairContext):
         from .seam_poses_v18 import generate
         from .search.common import SearchResult
         started = time.perf_counter()
-        if not self.problem.capture_metadata or self.problem.capture_metadata.get('rotation_family') != 'quarter_turn':
+        if not self.problem.capture_metadata or self.problem.capture_metadata.get('rotation_family') not in {'quarter_turn','continuous_rigid'}:
             self.repair_audit['unavailable_reason'] = 'capture_does_not_declare_quarter_turns'
             return None
         deadline = self.problem.deadline-self.config.joint_finalize_seconds

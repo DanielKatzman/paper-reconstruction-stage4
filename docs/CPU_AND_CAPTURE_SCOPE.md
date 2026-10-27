@@ -12,9 +12,9 @@ Version 2.0.1 preserves raw `stage1_native` output and publishes a separate Stag
 
 ## Real photographed pieces
 
-The 14/14 construction result comes from exact generator masks and declared common native pixel scale. It bypassed Stage 1 inference and does not establish assembly reliability with predicted masks from real captures. The original real-capture CLI route also uses the earlier general Stage 4 continuation configuration, not the exact-mask V21 page profile.
+The 14/14 construction result comes from exact generator masks and declared common native pixel scale. It bypassed Stage 1 inference and does not establish assembly reliability with predicted masks from real captures. Version 2.0.1's capture route used an older configuration; v2.0.2 uses V21 with explicit predicted-mask provenance and unchanged geometry/support gates.
 
-The user's intended input is phone photographs at a fixed distance, with pieces flat. That is compatible with the intended setup only to the extent that the images preserve common native pixel scale and have negligible perspective. Keep camera orientation parallel to the piece plane, keep capture settings consistent, and avoid independent image resizing or scanner-app normalization. Fixed distance and flatness alone do not measure calibration accuracy.
+The user's intended input is same-DPI scans or fixed-distance photographs with flat pieces. “1:1” means common relative physical/native pixel scale, not generator masks or perfect alignment. V21 accepts both mask provenances under the same rigid/common-scale model. Keep camera orientation/settings consistent and avoid independent image resizing. Native rotations may be continuous; 1:1 scale does not imply 90-degree turns.
 
 Do not mark real images as `generator_exact_bypass` to get past the development-only page guards. Use the truthful capture route, inspect masks/acceptance flags and assess the resulting construction. If perspective or scale differences are significant, add measured normalization or qualify an appropriate transform model before assuming rigid matching applies.
 

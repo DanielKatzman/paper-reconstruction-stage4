@@ -36,8 +36,8 @@ class NativeFrontier:
             raise ValueError('Independent native graph requires empty singletons')
         if any(not np.array_equal(h,np.eye(3)) for h in basis.poses.values()):
             raise ValueError('Independent native graph cannot inherit old poses')
-        if not context.problem.capture_metadata or context.problem.capture_metadata.get('rotation_family')!='quarter_turn':
-            raise ValueError('Native graph requires declared quarter turns')
+        if not context.problem.capture_metadata or context.problem.capture_metadata.get('rotation_family') not in {'quarter_turn','continuous_rigid'}:
+            raise ValueError('Native graph requires authenticated rigid capture metadata')
         self.context,self.basis,self.physical,self.on_complete,self.lane=context,basis,physical,on_complete,lane
         self.proposals={}; self.indexed=defaultdict(list); self.primary=defaultdict(list)
         self.seed_order=[]; self.seed_cursor=0; self.seed_primary=True

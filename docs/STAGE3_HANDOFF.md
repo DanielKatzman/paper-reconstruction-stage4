@@ -2,7 +2,17 @@
 
 Stage 4 now reconstructs all fourteen development pages through 30 pieces: two each at 4, 8, 12, 16, 20, 24 and 30, with 228 pieces total. Every primary is supported, connected and has zero false selected neighbor pairs. Independent replay and manual inspection confirm the intended approximate construction. Relative orientations/scales are correct; the largest measured probe displacement is 30 native pixels. **The target is correct fragment placement and a coherent page, not one-to-one or subpixel reproduction.**
 
-The source is now inlined at `stages/stage1` through `stages/stage4`; no sibling source checkout is required. The shared contract is at `contracts/sdk`. Models and datasets are optional ignored assets with exact receipts, not Git source. Read `README.md`, `docs/BASELINE.md` and `docs/TELEMETRY.md` before changing inference.
+The source is now inlined at `stages/stage1` through `stages/stage4`; no sibling source checkout is required. The shared contract is at `contracts/sdk`. Four frozen release models are tracked with Git LFS; benchmark datasets are optional ignored assets with exact receipts. Read `README.md`, `docs/BASELINE.md` and `docs/TELEMETRY.md` before changing inference.
+
+## Current capture integration: v2.0.2
+
+The original construction measurements below belong to v2.0.0. Version 2.0.1 made CPU the installation/execution default and added the audited Stage 1 boundary adapter. Version 2.0.2 corrects the real-capture route to use V21 with explicit predicted-mask provenance, rather than the older general continuation configuration. Stage 3 source and the four model files remain unchanged.
+
+The user's “1:1” requirement means common relative physical/native pixel scale, with arbitrary rigid rotation and translation. It does not mean exact masks or pixel-perfect placement. Same-DPI scans or fixed-distance parallel flat phone captures must preserve that common scale. Complete-page shape, format and DPI remain unknown. The exact-mask quarter-turn benchmark is one development acquisition, not the definition of the supported transform model.
+
+For continuous rotations Stage 4 now takes distinct observed working-pool angles, refits translation from native contours and verifies the resulting support/collisions/page geometry. It never inherits an old whole assembly or fits scale/perspective. This is not exhaustive angular coverage: retained observed modes and quarter-turn fallbacks can miss a needed angle. Stage 3 should preserve meaningful rotation and translation alternatives, with uncertainty and parent provenance, especially under predicted-mask boundary error. A failed bounded downstream run alone cannot prove the bank lacks a real construction.
+
+CPU-only real-input timing and the V21 rerun outcome are recorded separately in `docs/REAL_CAPTURE_CPU_REVIEW_2026-10-27.md` and `docs/V202_SHARED_SCALE_PROFILE_REVIEW.md`. Use `compatibility.json` for the current Stage 4 source fingerprint; the fingerprint below identifies the immutable original baseline.
 
 ## Exact starting point
 

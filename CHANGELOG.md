@@ -1,3 +1,10 @@
+# 2.0.2 - Independent scale/mask declarations and rigid native proposals
+
+- Treat relative scale 1:1 independently from exact versus predicted segmentation masks.
+- Route shared-scale real captures through V21 with explicit predicted-mask provenance.
+- Extend native proposals to observed rigid rotation angles while keeping relative scale fixed at 1.0; recompute translations from observed contours and preserve independent verification.
+- Preserve the quarter-turn benchmark route, its declared provenance and its geometry/support/collision thresholds.
+
 # 2.0.1 - CPU-default portability update
 
 - Default the umbrella pipeline and Stage 3 worker to CPU. Install the CPU-only Torch wheel unless CUDA is explicitly selected.

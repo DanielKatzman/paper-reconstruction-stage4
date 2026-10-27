@@ -6,6 +6,10 @@ from .outputs import digest, file_hash
 
 POLICY = 'shared-scale-complete-rectangle.v1'
 RIGID_TOLERANCE = 1e-6
+MASK_PROVENANCE = {
+    'exact_generator_development': ('generator_exact_bypass',),
+    'predicted_segmentation': ('segformer_v3_predicted', 'segformer_v3_reviewed'),
+}
 
 
 def rigid_check(h):
@@ -33,20 +37,25 @@ def bind_profile(problem, config, profile_path, capture_path):
     if not profile_path or not capture_path:
         raise ValueError('Complete-page policy needs --constraint-profile and --capture-profile')
     profile = json.loads(Path(profile_path).read_text(encoding='utf-8-sig'))
+    mask_mode = profile.get('mask_mode')
+    if mask_mode not in MASK_PROVENANCE:
+        raise ValueError('Unsupported mask provenance in complete-page constraint profile')
     expected = {'schema_version': 'stage4.constraint-profile.v1', 'policy': POLICY,
                 'motion_model': 'proper_rigid', 'relative_piece_scale': 1.0,
                 'page_completeness': 'all_pieces_one_page', 'page_shape': 'rectangle',
                 'page_dimensions': 'unknown', 'page_aspect_ratio': 'unknown', 'dpi': 'unknown',
-                'mask_mode': 'exact_generator_development', 'rigid_tolerance': RIGID_TOLERANCE}
+                'mask_mode': mask_mode, 'rigid_tolerance': RIGID_TOLERANCE}
     if profile != expected:
         raise ValueError('Unsupported or mismatched complete-page constraint profile')
     capture = json.loads(Path(capture_path).read_text(encoding='utf-8-sig'))
     if not (capture.get('schema_version') == 'stage1.capture-profile.v1' and
             capture.get('motion_model') == 'rotation_translation' and capture.get('relative_piece_scale') == 1.0 and
             capture.get('shared_native_pixel_scale') is True and capture.get('per_piece_resize') is False and
-            capture.get('perspective') is False and capture.get('stage1_masks') == 'generator_exact_bypass' and
-            capture.get('mask_perturbation') is False):
-        raise ValueError('Capture profile does not declare shared scale and exact development masks')
+            capture.get('perspective') is False):
+        raise ValueError('Capture profile does not declare shared native scale and rigid acquisition')
+    perturbation = capture.get('mask_perturbation') if mask_mode == 'exact_generator_development' else capture.get('mask_perturbation', False)
+    if capture.get('stage1_masks') not in MASK_PROVENANCE[mask_mode] or perturbation is not False:
+        raise ValueError('Capture mask provenance does not match the declared mask mode')
     sha = file_hash(capture_path)
     provenance = problem.manifest.get('provenance', {})
     while 'source_provenance' in provenance:
@@ -57,7 +66,10 @@ def bind_profile(problem, config, profile_path, capture_path):
     problem.constraint_profile = {'profile': profile, 'profile_sha256': digest(profile),
         'profile_file_sha256': file_hash(profile_path), 'capture_profile_sha256': sha,
         'capture_profile_file_size': Path(capture_path).stat().st_size}
-    problem.capture_metadata={'rotation_family':capture.get('rotation_family','unknown'),
+    rotation_family=capture.get('rotation_family','unknown')
+    if mask_mode == 'predicted_segmentation' and rotation_family in {'unknown','continuous','continuous_rigid'}:
+        rotation_family='continuous_rigid'
+    problem.capture_metadata={'rotation_family':rotation_family,
         'capture_profile_sha256':sha}
 
 

@@ -31,5 +31,18 @@ class CpuDefaults(unittest.TestCase):
         self.assertIn('2.7.1+cpu',text)
         self.assertIn('check_cpu_runtime.py',text)
 
+    def test_shared_scale_capture_uses_v21_instead_of_the_legacy_config(self):
+        import json,tempfile
+        from types import SimpleNamespace
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);source=root/'stage1';source.mkdir()
+            (source/'capture_profile.json').write_text(json.dumps({'stage1_masks':'segformer_v3_predicted'}))
+            args=SimpleNamespace(stage1=source,captures=None,output=root/'run',mode='shared-scale-capture',
+                device='cpu',cpu_threads=4,puzzle_id='routing-test')
+            with patch.object(pipeline,'execute'),patch.object(pipeline,'solve') as solve:
+                pipeline.run(args)
+            self.assertEqual(solve.call_args.args[3],pipeline.CONFIG)
+            self.assertEqual(solve.call_args.args[4],pipeline.CAPTURE_PROFILE)
+
 
 if __name__=='__main__':unittest.main()

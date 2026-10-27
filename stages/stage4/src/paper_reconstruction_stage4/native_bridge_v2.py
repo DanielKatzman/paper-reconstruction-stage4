@@ -37,11 +37,11 @@ def validate_record(value):
     if len(merged)!=2 or merged[0] not in groups or merged[1] not in groups or merged[0]==merged[1] or a not in merged[0] or b not in merged[1]:
         raise ValueError('Native contact does not cross its declared source components')
     if value['role'] not in {'merge','cycle'}:raise ValueError('Unknown native bridge graph role')
-    if set(value['capture_binding'])!={'rotation_family','capture_profile_sha256'} or value['capture_binding']['rotation_family']!='quarter_turn':
+    if set(value['capture_binding'])!={'rotation_family','capture_profile_sha256'} or value['capture_binding']['rotation_family'] not in {'quarter_turn','continuous_rigid'}:
         raise ValueError('Native seam rotation seeds lack declared acquisition metadata')
     require_rigid(value['transform_b_to_a']);require_rigid(value['proposed_transform_b_to_a'])
     q=np.asarray(value['proposed_transform_b_to_a'])[:2,:2]
-    if not np.allclose(q,np.rint(q),atol=1e-7,rtol=0.):
+    if value['capture_binding']['rotation_family']=='quarter_turn' and not np.allclose(q,np.rint(q),atol=1e-7,rtol=0.):
         raise ValueError('Quarter-turn pose seed contains an undeclared rotation')
 
 

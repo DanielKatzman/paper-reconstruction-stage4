@@ -31,8 +31,8 @@ def search(context, basis, proposals, deadline, on_complete, physical=None, fast
         raise ValueError('Independent native graph requires an empty singleton source')
     if any(not np.array_equal(h, np.eye(3)) for h in basis.poses.values()):
         raise ValueError('Independent native graph cannot inherit old piece poses')
-    if not context.problem.capture_metadata or context.problem.capture_metadata.get('rotation_family') != 'quarter_turn':
-        raise ValueError('Independent native graph requires declared quarter-turn capture')
+    if not context.problem.capture_metadata or context.problem.capture_metadata.get('rotation_family') not in {'quarter_turn','continuous_rigid'}:
+        raise ValueError('Independent native graph requires authenticated rigid capture')
     started = time.perf_counter(); physical = physical or Feasibility(context.problem, context.config)
     indexed = defaultdict(list); primary_index = defaultdict(list); decoded = {}; rejected = Counter(); checks = 0
     replay_checks = 0

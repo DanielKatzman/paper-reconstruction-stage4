@@ -1,5 +1,7 @@
 # CPU execution and real-capture review
 
+This records the v2.0.1 execution test and its older Stage 4 route. Version 2.0.2 corrects that route to V21 with truthful predicted-mask provenance and observed rigid angles. See `V202_SHARED_SCALE_PROFILE_REVIEW.md` for the separate rerun; the original results and timings below remain historical evidence.
+
 The user confirmed that the six existing PDF inputs represent phone photographs taken at fixed distance with pieces flat. All six were run through fresh Stage 1 segmentation, the audited boundary adapter, Stage 2 inference/verification, CPU-only Stage 3 inference/pooling and Stage 4. No GPU inference was used. The Stage 3 environment was newly created with the CPU-only Torch wheel; `CUDA_VISIBLE_DEVICES=-1` was also set.
 
 | Step | Four-piece prepared masks | Four-piece fresh predicted masks | Six real PDF captures |
