@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/paper-reconstruction/stage2/boundary-puzzle.v1.schema.json",
+  "title": "Stage 2 Boundary Puzzle Manifest v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "compiler_version",
+    "puzzle_id",
+    "boundary_puzzle_fingerprint",
+    "canonical_puzzle_fingerprint",
+    "observation_puzzle_fingerprint",
+    "split",
+    "difficulty_tier",
+    "coordinate_system",
+    "seam_ids",
+    "page_border_segment_ids",
+    "boundaries_path",
+    "boundary_arrays_sha256",
+    "correspondences_path",
+    "correspondence_arrays_sha256",
+    "observation_count",
+    "boundary_point_count",
+    "correspondence_track_count",
+    "usable_correspondence_track_count",
+    "matchable_seam_count",
+    "observations",
+    "correspondence_tracks",
+    "validation"
+  ],
+  "properties": {
+    "schema_version": {"const": "stage2.boundary-puzzle.v1"},
+    "boundary_puzzle_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "boundary_arrays_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "correspondence_arrays_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "observation_count": {"type": "integer", "minimum": 1},
+    "boundary_point_count": {"type": "integer", "minimum": 1},
+    "correspondence_track_count": {"type": "integer", "minimum": 1},
+    "usable_correspondence_track_count": {"type": "integer", "minimum": 0},
+    "matchable_seam_count": {"type": "integer", "minimum": 0},
+    "observations": {"type": "array", "minItems": 1},
+    "correspondence_tracks": {"type": "array", "minItems": 1},
+    "validation": {
+      "type": "object",
+      "required": [
+        "valid",
+        "minimum_aligned_fraction",
+        "mean_aligned_fraction",
+        "all_role_targets_sum_to_one",
+        "finite_boundary_arrays",
+        "matchable_seams_with_both_owners_covered",
+        "missing_matchable_owner_track_count"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

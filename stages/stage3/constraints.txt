@@ -1,0 +1,7 @@
+# Exact versions in the validated Windows environment.
+# ==2.7.1 also accepts the existing 2.7.1+cu118 local Torch build.
+numpy==2.5.3
+Pillow==12.3.0
+threadpoolctl==3.7.0
+jsonschema==4.26.0
+torch==2.7.1

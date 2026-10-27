@@ -1,0 +1,11 @@
+{
+  "schema_version": "stage4.external-experiment.v1",
+  "benchmark": "C:\\Users\\danka\\Desktop\\paper-reconstruction-stage4\\benchmarks\\development_v2\\benchmark.json",
+  "benchmark_sha256": "d036dcfac8157bcb12078cfbd80389c33b6c8ad9ed7ffbf260ad2c7791127068",
+  "case_id": "puzzle_000174_0f1f6d83b42a",
+  "bundle": "C:\\Users\\danka\\Desktop\\paper-reconstruction-stage3\\outputs\\pool_replays\\pool8_20261022T113942_745224Z\\candidate_evidence",
+  "input_manifest_sha256": "d54a37e4a68ef94fafc334a40938ae318bf308eb157090ec3182778a95401e16",
+  "control_result": "C:\\Users\\danka\\Desktop\\paper-reconstruction-stage3\\outputs\\pool_replays\\pool8_20261022T113942_745224Z\\candidate_stage4",
+  "control_run_id": "d23756619ec5c004c93a107ae502ea9702ebe919f1d99a56c9aa95228b72223d",
+  "control_config": "C:\\Users\\danka\\Desktop\\paper-reconstruction-stage3\\outputs\\pool_replays\\pool8_20261022T113942_745224Z\\stage4_config.json"
+}

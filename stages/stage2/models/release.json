@@ -1,0 +1,143 @@
+{
+  "boundary_dataset_fingerprint": "6f0b7adee1bff720e387b91917466337ee87ee7b1fcb08fd376aa4358d0f6c50",
+  "created_utc": "2026-10-08T16:22:21.413315+00:00",
+  "default_inference_config": {
+    "batch_size": 8,
+    "role_temperature": 1.0099457379066281,
+    "sequence_length": 129,
+    "stride": 32,
+    "strip_width": 33,
+    "transition_temperature": 1.7260857055549328
+  },
+  "fragment_config": {
+    "endpoint_search_radius": 6,
+    "high_threshold": 0.8,
+    "low_threshold": 0.55,
+    "maximum_candidates": 32,
+    "maximum_transition_splits": 4,
+    "merge_gap_points": 3,
+    "minimum_fragment_points": 8,
+    "relaxed_high_threshold": 0.7000000000000001,
+    "relaxed_low_threshold": 0.45000000000000007,
+    "relaxed_transition_split_threshold": 0.4,
+    "smoothing_sigma_samples": 1.5,
+    "strict_high_threshold": 0.9,
+    "strict_low_threshold": 0.65,
+    "transition_split_threshold": 0.65
+  },
+  "geometry_config": {
+    "boundary_spacing_px": 2.0,
+    "max_inward_thickness_px": 96,
+    "maximum_boundary_points": 4096,
+    "minimum_boundary_points": 64,
+    "tangent_smoothing_sigma_samples": 1.5
+  },
+  "holdout": {
+    "observation_count": 3582,
+    "page_border_f1": 0.9960099803691035,
+    "recall_at_10_iou_50": 0.992296222664016,
+    "recall_at_10_iou_80": 0.9823558648111332,
+    "seam_f1": 0.9990484554065864,
+    "selection_score": 0.9603005207483868,
+    "transition_f1": 0.7991162662247998,
+    "truth_count": 4024
+  },
+  "known_limitations": [
+    "Microscopic seam segments at seam-to-seam junctions may not produce a distinct transition signal.",
+    "Protected quality metrics use synthetic Stage 1-like data; an unlabeled six-piece real Stage 1 smoke test verifies interoperability, not real-world accuracy."
+  ],
+  "model_config": {
+    "architecture": "global_context_hybrid",
+    "attention_expansion": 2.0,
+    "attention_heads": 8,
+    "attention_layers": 2,
+    "branch_channels": 128,
+    "dropout": 0.1,
+    "fusion_channels": 256,
+    "geometry_features": 7,
+    "global_attention_layers": 2,
+    "global_context_points": 256,
+    "global_geometry_features": 9,
+    "global_mask_size": 64,
+    "raster_channels": 4,
+    "use_geometry": true,
+    "use_global_context": true,
+    "use_raster": true
+  },
+  "model_name": "global_context_hybrid",
+  "parameter_count": 6337604,
+  "observation_dataset_fingerprint": "c5ab61fdbf2647c8ed981642719ac70788de56400b2095802116c328380b0833",
+  "onnx_parity": {
+    "cases": [
+      {
+        "batch_size": 1,
+        "role_logits_max_abs_error": 4.76837158203125e-06,
+        "transition_logits_max_abs_error": 3.337860107421875e-06
+      },
+      {
+        "batch_size": 2,
+        "role_logits_max_abs_error": 5.7220458984375e-06,
+        "transition_logits_max_abs_error": 3.814697265625e-06
+      },
+      {
+        "batch_size": 8,
+        "role_logits_max_abs_error": 9.5367431640625e-06,
+        "transition_logits_max_abs_error": 5.245208740234375e-06
+      }
+    ],
+    "maximum_allowed_absolute_error": 0.0001,
+    "maximum_observed_absolute_error": 9.5367431640625e-06,
+    "seed": 20261008,
+    "status": "passed"
+  },
+  "production_model": {
+    "asset": "stage2_boundary_v1.0.0.onnx",
+    "dynamic_axes": {
+      "batch": true,
+      "sequence": false
+    },
+    "execution_provider": "CPUExecutionProvider",
+    "format": "onnx",
+    "inputs": [
+      "geometry",
+      "raster",
+      "global_geometry",
+      "global_mask"
+    ],
+    "opset": 18,
+    "outputs": [
+      "role_logits",
+      "transition_logits"
+    ],
+    "sha256": "3e80716280375146e2ef66942688e2a262e503df1011918caff262f0bae388a4",
+    "size_bytes": 25662051
+  },
+  "release_version": "1.0.0",
+  "schema_version": "stage2.model-release.v2",
+  "source_checkpoint": {
+    "asset": "stage2_boundary_v1.0.0.pt",
+    "package_version": "0.6.2",
+    "schema_version": "stage2.boundary-role-checkpoint.v3",
+    "sha256": "36dd4eb0f13bc49fc2efc791cca1de03d34997704e11cce5d7cff8a326c1a6fc"
+  },
+  "validation_artifacts": {
+    "end_to_end_parity": "onnx_end_to_end_parity.json"
+  },
+  "validation": {
+    "observation_count": 512,
+    "recall_at_10_iou_50": 0.9965928449744463,
+    "recall_at_10_iou_80": 0.9812606473594548,
+    "selection_score": 0.961437460398102,
+    "truth_count": 587
+  },
+  "window_config": {
+    "global_context_cache_size": 64,
+    "image_cache_size": 8,
+    "inside_extent_px": 24.0,
+    "minimum_label_confidence": 0.25,
+    "outside_extent_px": 8.0,
+    "puzzle_cache_size": 2,
+    "sequence_length": 129,
+    "strip_width": 33
+  }
+}

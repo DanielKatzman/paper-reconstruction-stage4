@@ -1,0 +1,10 @@
+{
+  "solver": "legacy_forest_control_v1",
+  "beam_width": 16,
+  "portfolio_size": 3,
+  "max_proposals": 250000,
+  "max_seconds": 120.0,
+  "collision_grid": 24,
+  "maximum_assembly_collision": 0.08,
+  "cycle_tolerance_px": 8.0
+}

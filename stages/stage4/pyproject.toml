@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "paper-reconstruction-stage4"
+version = "0.1.0"
+description = "Independent support-aware global assembly of torn-paper pieces"
+requires-python = ">=3.12"
+dependencies = ["paper-reconstruction-contracts==0.1.0", "numpy>=2,<3", "Pillow>=12", "jsonschema>=4,<5", "scipy>=1.14,<2"]
+
+[project.scripts]
+stage4 = "paper_reconstruction_stage4.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+paper_reconstruction_stage4 = ["schemas/*.json"]

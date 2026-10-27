@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "stage4.assembly-result.v1",
+  "type": "object",
+  "required": ["schema_version", "solver_version", "run_id", "solver", "status", "termination", "configuration", "input", "implementation", "layouts", "search", "rejections", "resources", "confidence_calibrated", "evaluation_truth_opened", "demonstrated_reliable_piece_capacity", "legacy_control_support_enforced"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"enum": ["stage4.assembly-result.v1", "stage4.assembly-result.v2", "stage4.assembly-result.v3", "stage4.assembly-result.v4"]},
+    "solver_version": {"type": "string"},
+    "run_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "solver": {"enum": ["partial_beam_v1", "legacy_forest_control_v1", "structural_beam_v2", "joint_beam_v3"]},
+    "status": {"enum": ["complete_candidate", "partial_candidate", "budget_exhausted", "interrupted"]},
+    "termination": {"enum": ["exhausted_candidates", "proposal_budget", "time_budget", "interrupted", "verified_construction"]},
+    "configuration": {"type": "object"},
+    "input": {"type": "object", "required": ["manifest_sha256", "puzzle_id", "schema_version", "counts", "working_pool_pairs", "load"]},
+    "implementation": {"type": "object", "required": ["sha256", "files", "versions", "python"]},
+    "layouts": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/layout"}},
+    "search": {"type": "object"},
+    "rejections": {"type": "object"},
+    "resources": {"type": "object"},
+    "confidence_calibrated": {"const": false},
+    "evaluation_truth_opened": {"const": false},
+    "demonstrated_reliable_piece_capacity": {"type": "null"},
+    "legacy_control_support_enforced": {"type": "boolean"}
+  },
+  "$defs": {
+    "matrix": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number"}}},
+    "layout": {
+      "type": "object", "additionalProperties": false,
+      "required": ["layout_index", "pieces", "components", "selected_joins", "objective_score", "confidence_calibrated", "all_pieces_connected", "feasibility", "refinement", "unresolved_piece_ids", "layout_sha256"],
+      "properties": {
+        "layout_index": {"type": "integer", "minimum": 0},
+        "pieces": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["piece_id", "observation_key", "component_id", "native_to_component", "size_hw", "native_probes", "status"], "properties": {
+          "piece_id": {"type": "string"}, "observation_key": {"type": "string"}, "component_id": {"type": "string"}, "native_to_component": {"$ref": "#/$defs/matrix"},
+          "size_hw": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "integer", "minimum": 1}},
+          "native_probes": {"type": "array", "minItems": 1, "items": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}}},
+          "status": {"enum": ["isolated", "component_relative"]}
+        }}},
+        "components": {"type": "array", "minItems": 1, "items": {"type": "array", "minItems": 1, "items": {"type": "string"}}},
+        "selected_joins": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["geometry_id", "piece_a", "piece_b", "occurrence_id", "support_assignment_checked", "tree_join", "source_transform_b_to_a", "final_transform_b_to_a", "source_weight", "score_method", "score_variant", "support"], "properties": {
+          "geometry_id": {"type": "string"}, "piece_a": {"type": "string"}, "piece_b": {"type": "string"}, "occurrence_id": {"type": ["string", "null"]},
+          "support_assignment_checked": {"type": "boolean"}, "tree_join": {"type": "boolean"},
+          "source_transform_b_to_a": {"$ref": "#/$defs/matrix"}, "final_transform_b_to_a": {"$ref": "#/$defs/matrix"},
+          "source_weight": {"type": "number"}, "score_method": {"type": "string"}, "score_variant": {"type": "string"}, "support": {"type": ["object", "null"]},
+          "active_support": {"type": "object", "required": ["policy", "support_id", "occurrence_id", "arcs", "raw_arcs", "raw_lengths", "coverage", "normal_cosine_median", "monotone_fraction"]},
+          "native_bridge": {"type": "object", "required": ["policy", "bridge_id", "input_manifest_sha256", "pieces", "arcs", "transform_b_to_a", "source_groups", "source_candidate_id", "placement_proposal_id", "producer", "upstream_pose_or_occurrence_claimed"]}
+        }}},
+        "objective_score": {"type": "number"}, "confidence_calibrated": {"const": false}, "all_pieces_connected": {"type": "boolean"},
+        "feasibility": {"type": "object", "required": ["valid"]}, "refinement": {"type": "object"},
+        "unresolved_piece_ids": {"type": "array", "items": {"type": "string"}}, "layout_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "display_packing": {"type": "object", "additionalProperties": {"$ref": "#/$defs/matrix"}}
+      }
+    }
+  }
+}

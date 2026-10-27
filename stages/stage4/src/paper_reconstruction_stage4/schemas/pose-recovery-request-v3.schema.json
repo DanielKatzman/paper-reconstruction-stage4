@@ -1,0 +1,299 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "policy",
+    "binding",
+    "assessment_status",
+    "reason_codes",
+    "motion_model",
+    "regions",
+    "uncovered_boundary_intervals",
+    "uncovered_regions_may_be_outer_page_border",
+    "budget",
+    "budget_is_maximum_not_sufficiency_claim",
+    "evaluation_truth_opened",
+    "producer_response_required",
+    "observed_components",
+    "regions_omitted_by_budget",
+    "request_policy",
+    "current_component_poses_are_revisable"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "stage4.pose-recovery-request.v3"
+    },
+    "policy": {
+      "const": "shared-scale-complete-rectangle.v1"
+    },
+    "binding": {
+      "type": "object"
+    },
+    "assessment_status": {
+      "enum": [
+        "supported",
+        "unresolved",
+        "profile_violation"
+      ]
+    },
+    "reason_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "motion_model": {
+      "const": "proper_rigid_unit_scale"
+    },
+    "regions": {
+      "type": "array",
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "region_id",
+          "piece_ids",
+          "suspect_geometry_id",
+          "suspect_occurrence_id",
+          "native_spans",
+          "reason",
+          "available_geometry_ids",
+          "published_alternative_tests",
+          "request",
+          "region_kind",
+          "component_piece_ids",
+          "candidate_piece_pairs",
+          "pair_possibilities_exceed_budget",
+          "untested_pairs_must_be_reported",
+          "occupied_spans_may_be_reconsidered"
+        ],
+        "properties": {
+          "region_id": {
+            "type": "string"
+          },
+          "piece_ids": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 100,
+            "items": {
+              "type": "string"
+            }
+          },
+          "suspect_geometry_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "suspect_occurrence_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "native_spans": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "piece_id",
+                "intervals"
+              ],
+              "properties": {
+                "piece_id": {
+                  "type": "string"
+                },
+                "intervals": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                      "type": "number",
+                      "minimum": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "reason": {
+            "type": "string"
+          },
+          "available_geometry_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "published_alternative_tests": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "layout_index",
+                "geometry_ids"
+              ],
+              "properties": {
+                "layout_index": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "geometry_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "request": {
+            "type": "string"
+          },
+          "region_kind": {
+            "enum": [
+              "uncovered_piece",
+              "connect_components",
+              "rebuild_component",
+              "check_join",
+              "uncovered_component"
+            ]
+          },
+          "component_piece_ids": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 2,
+            "items": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "candidate_piece_pairs": {
+            "type": "array",
+            "maxItems": 10000,
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "pair_possibilities_exceed_budget": {
+            "type": "boolean"
+          },
+          "untested_pairs_must_be_reported": {
+            "const": true
+          },
+          "occupied_spans_may_be_reconsidered": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "uncovered_boundary_intervals": {
+      "type": "object"
+    },
+    "uncovered_regions_may_be_outer_page_border": {
+      "const": true
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rounds",
+        "regions",
+        "poses_per_region",
+        "maximum_new_rigid_poses",
+        "maximum_pair_investigations_per_region"
+      ],
+      "properties": {
+        "rounds": {
+          "const": 1
+        },
+        "regions": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6
+        },
+        "poses_per_region": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32
+        },
+        "maximum_new_rigid_poses": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 192
+        },
+        "maximum_pair_investigations_per_region": {
+          "const": 8
+        }
+      }
+    },
+    "budget_is_maximum_not_sufficiency_claim": {
+      "const": true
+    },
+    "evaluation_truth_opened": {
+      "const": false
+    },
+    "producer_response_required": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "observed_components": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "regions_omitted_by_budget": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "region_kind",
+          "piece_ids",
+          "reason"
+        ],
+        "properties": {
+          "region_kind": {
+            "type": "string"
+          },
+          "piece_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reason": {
+            "const": "region_budget"
+          }
+        }
+      }
+    },
+    "request_policy": {
+      "const": "occupied-and-unoccupied-native-recovery.v1"
+    },
+    "current_component_poses_are_revisable": {
+      "const": true
+    }
+  }
+}

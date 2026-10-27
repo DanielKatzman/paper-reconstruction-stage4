@@ -1,0 +1,21 @@
+schema_version: stage2.generator-config.v2
+puzzle_count: 100
+seed: 20261004
+min_pieces: 2
+max_pieces: 30
+page_width: 1240
+page_height: 1754
+min_piece_area_fraction: 0.0025
+min_piece_dimension_px: 10
+max_split_attempts: 300
+preview_max_side: 1400
+difficulty_mix:
+  simple: 0.15
+  moderate: 0.35
+  hard: 0.35
+  extreme: 0.15
+split_ratios:
+  train: 0.70
+  validation: 0.10
+  calibration: 0.10
+  holdout: 0.10

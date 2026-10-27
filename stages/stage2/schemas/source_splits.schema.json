@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/paper-reconstruction/stage2/source-splits.v1.schema.json",
+  "title": "Stage 2 Source Split Manifest v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "root_seed",
+    "split_ratios",
+    "source_grouping_unit",
+    "source_split_fingerprint",
+    "sources"
+  ],
+  "properties": {
+    "schema_version": {"const": "stage2.source-splits.v1"},
+    "source_split_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_relpath", "source_sha256", "split"]
+      }
+    }
+  },
+  "additionalProperties": true
+}

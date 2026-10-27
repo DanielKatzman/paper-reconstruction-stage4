@@ -1,0 +1,2 @@
+-e ./vendor/contracts-sdk
+-e .

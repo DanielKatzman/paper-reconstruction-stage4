@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://paper-reconstruction.local/schemas/stage2_edge_hypotheses.schema.json",
+  "title": "Stage 2 edge hypotheses for one accepted Stage 1 piece",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "software_version",
+    "config_hash",
+    "release_version",
+    "release_manifest_sha256",
+    "model_format",
+    "runtime",
+    "model_sha256",
+    "source_checkpoint_sha256",
+    "stage1_input_fingerprint",
+    "stage1_record_fingerprint",
+    "capture_id",
+    "piece_id",
+    "stage1_provenance",
+    "piece_sha256",
+    "piece_mask_sha256",
+    "coordinate_frames",
+    "point_order",
+    "point_count",
+    "perimeter_px",
+    "actual_spacing_px",
+    "arrays_path",
+    "arrays_sha256",
+    "overlay_sha256",
+    "role_names",
+    "candidate_count",
+    "candidate_fragments"
+  ],
+  "properties": {
+    "schema_version": {"const": "stage2.edge-hypotheses.v1"},
+    "created_utc": {"type": "string", "format": "date-time"},
+    "software_version": {"type": "string"},
+    "config_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "release_version": {"type": "string", "minLength": 1},
+    "release_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "model_format": {"const": "onnx"},
+    "runtime": {"const": "onnxruntime-cpu"},
+    "model_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "source_checkpoint_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "stage1_input_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "stage1_record_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "capture_id": {"type": "string"},
+    "piece_id": {"type": "string"},
+    "stage1_provenance": {"type": "object"},
+    "piece_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "piece_mask_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "coordinate_frames": {
+      "type": "object",
+      "required": ["piece_crop", "source_capture", "crop_to_source_homography"]
+    },
+    "point_order": {"const": "clockwise_circular"},
+    "point_count": {"type": "integer", "minimum": 16},
+    "perimeter_px": {"type": "number", "exclusiveMinimum": 0},
+    "actual_spacing_px": {"type": "number", "exclusiveMinimum": 0},
+    "arrays_path": {"type": "string", "minLength": 1},
+    "arrays_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "overlay_path": {"type": ["string", "null"]},
+    "overlay_sha256": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "role_names": {
+      "const": ["seam", "page_border", "uncertain"]
+    },
+    "candidate_count": {"type": "integer", "minimum": 0},
+    "candidate_fragments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "candidate_id",
+          "rank",
+          "start_index",
+          "end_index",
+          "length_points",
+          "wraps",
+          "score",
+          "start_xy_crop",
+          "end_xy_crop",
+          "start_xy_source",
+          "end_xy_source"
+        ],
+        "properties": {
+          "candidate_id": {"type": "string"},
+          "rank": {"type": "integer", "minimum": 1},
+          "start_index": {"type": "integer", "minimum": 0},
+          "end_index": {"type": "integer", "minimum": 0},
+          "length_points": {"type": "integer", "minimum": 1},
+          "wraps": {"type": "boolean"},
+          "score": {"type": "number"}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}
+

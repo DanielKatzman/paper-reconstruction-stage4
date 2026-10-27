@@ -1,0 +1,39 @@
+{
+  "candidate_structures_match": true,
+  "cases": [
+    {
+      "candidate_structures_match": true,
+      "capture_id": "capture_piece_b",
+      "onnx_candidate_count": 4,
+      "point_count": 218,
+      "pytorch_candidate_count": 4,
+      "role_logits_max_abs_error": 1.049041748046875e-05,
+      "role_probabilities_max_abs_error": 2.3245811462402344e-06,
+      "transition_logits_max_abs_error": 6.318092346191406e-06,
+      "transition_probabilities_max_abs_error": 6.854534149169922e-07
+    },
+    {
+      "candidate_structures_match": true,
+      "capture_id": "capture_piece_a",
+      "onnx_candidate_count": 0,
+      "point_count": 190,
+      "pytorch_candidate_count": 0,
+      "role_logits_max_abs_error": 4.887580871582031e-06,
+      "role_probabilities_max_abs_error": 2.384185791015625e-07,
+      "transition_logits_max_abs_error": 3.814697265625e-06,
+      "transition_probabilities_max_abs_error": 1.7881393432617188e-07
+    }
+  ],
+  "created_utc": "2026-10-08T16:29:06.413685+00:00",
+  "maximum_allowed_absolute_error": 0.0001,
+  "maximum_observed_absolute_error": 1.049041748046875e-05,
+  "model_sha256": "3e80716280375146e2ef66942688e2a262e503df1011918caff262f0bae388a4",
+  "piece_count": 2,
+  "point_count": 408,
+  "release_manifest_sha256": "0381683f5c8226974d73915b355bdd5936d80707219e7f083dcdf08f1ecfcfbc",
+  "release_version": "1.0.0",
+  "schema_version": "stage2.onnx-end-to-end-parity.v1",
+  "source_checkpoint_sha256": "36dd4eb0f13bc49fc2efc791cca1de03d34997704e11cce5d7cff8a326c1a6fc",
+  "stage1_input_fingerprint": "86deb3b8f3a9abcaa3f1d23bdab36478a3495a73115fbe3256650e9e442b7429",
+  "status": "passed"
+}

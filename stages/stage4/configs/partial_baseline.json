@@ -1,0 +1,8 @@
+{
+  "solver": "partial_beam_v1",
+  "beam_width": 32,
+  "max_proposals": 100000,
+  "max_seconds": 60.0,
+  "join_cost": 0.55,
+  "portfolio_size": 3
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": "stage4.constraint-profile.v1",
+  "policy": "shared-scale-complete-rectangle.v1",
+  "motion_model": "proper_rigid",
+  "relative_piece_scale": 1.0,
+  "page_completeness": "all_pieces_one_page",
+  "page_shape": "rectangle",
+  "page_dimensions": "unknown",
+  "page_aspect_ratio": "unknown",
+  "dpi": "unknown",
+  "mask_mode": "exact_generator_development",
+  "rigid_tolerance": 0.000001
+}

@@ -1,0 +1,222 @@
+{
+  "schema_version": "stage3.alpha-runtime.v1",
+  "software_version": "0.9.32",
+  "alpha_version": "0.1.1",
+  "algorithm": "stage3.alpha-evidence.v0931",
+  "configuration": {
+    "correction_configuration": {
+      "alternatives_per_parent": 24,
+      "alternatives_per_piece_pair": 12,
+      "beam_width": 32,
+      "coarse_samples": 32,
+      "consensus_distance_px": 8.0,
+      "local_seeds_per_window": 16,
+      "maximum_refinement_displacement_px": 64.0,
+      "minimum_observable_score": 0.35,
+      "minimum_support_length_px": 48.0,
+      "refinement_distance_px": 16.0,
+      "refinement_iterations": 10,
+      "refinement_seeds": 12,
+      "seeds_per_parent": 640,
+      "support_distance_px": 8.0,
+      "verification_samples": 96
+    },
+    "policy": {
+      "alternatives_per_piece_pair": 24,
+      "beam_width": 32,
+      "evaluation_tolerance_px": 4.0,
+      "expanded_control_budget": 24,
+      "extension_family_slots": 2,
+      "extension_quality_slots": 8,
+      "extension_slots": 12,
+      "guided_geometry_score_slack": 0.03,
+      "guided_maximum_peak_width_px": 8.0,
+      "guided_minimum_gain": 0.03,
+      "guided_scan_radii_px": [
+        16,
+        32,
+        48
+      ],
+      "guided_scan_step_px": 4,
+      "guided_seeds_per_piece_pair": 8,
+      "larger_pilot_started": false,
+      "learned_maximum_crop_displacement_px": 32.0,
+      "learned_minimum_score_gain": 0.02,
+      "learned_minimum_valid_fraction": 0.1,
+      "learned_refinement_perspective_steps": [
+        2e-06,
+        5e-07
+      ],
+      "learned_refinement_rotation_degrees": [
+        0.15,
+        0.05
+      ],
+      "learned_refinement_scale_steps": [
+        0.005,
+        0.001
+      ],
+      "learned_refinement_seeds": 4,
+      "learned_refinement_steps_px": [
+        4.0,
+        1.0
+      ],
+      "learned_weight_limit": 0.15,
+      "maximum_fit_condition": 1000000.0,
+      "maximum_local_anisotropy": 8.0,
+      "maximum_local_scale": 7.0,
+      "maximum_probe_displacement_fraction": 0.5,
+      "maximum_probe_displacement_px": 1024.0,
+      "minimum_denominator_ratio": 0.15,
+      "minimum_fit_anisotropy": 0.0005,
+      "minimum_fit_length_px": 96.0,
+      "minimum_fit_pairs": 24,
+      "minimum_local_scale": 0.15,
+      "minimum_refinement_displacement_px": 128.0,
+      "minimum_validation_samples": 12,
+      "mode_quality_temperature": 0.12,
+      "mode_radius_px": 12.0,
+      "new_pose_fitting": true,
+      "new_proposal_slots": 4,
+      "new_proposals_per_seed_family": 2,
+      "original_fallback_slots": 12,
+      "parent_membership_changed": false,
+      "parents_per_evaluation_block": 16,
+      "pipeline_baseline_goal_physical_pieces": 30,
+      "pool_control_underconstraint_penalty": 0.1,
+      "projective_ridge": 0.001,
+      "protected_original_slots": 6,
+      "quality_slots": 3,
+      "rank_metadata_scope": "controls preserve historical metadata; new variants recompute shortlist and screening ranks",
+      "refinement_distance_px": 32.0,
+      "refinement_iterations": 16,
+      "refinement_samples": 192,
+      "refinement_seeds_per_piece_pair": 24,
+      "refinement_step_fractions": [
+        1.0,
+        0.5,
+        0.25
+      ],
+      "robust_keep_fraction": 0.9,
+      "score_before_pruning": true,
+      "selection_samples": 384,
+      "shortlist_cap": 128,
+      "shortlist_new_origin_slots": 12,
+      "stability_blocks": 4,
+      "stability_iterations": 8,
+      "stability_perturbation_px": 0.25,
+      "stability_probe_limit_px": 12.0,
+      "stability_ridge_factors": [
+        0.5,
+        2.0
+      ],
+      "stability_seed_limit": 8,
+      "stability_source_anisotropy_minimum": 0.0,
+      "tangent_seed_offsets_px": [
+        -12.0,
+        0.0,
+        12.0
+      ],
+      "training_performed": true,
+      "transform_duplicate_px": 2.0,
+      "unchanged_control_budget": 12,
+      "underconstraint_penalty": 0.0,
+      "validation_block_score_slack": 0.03,
+      "validation_blocks": 8,
+      "validation_score_improvement": 1e-05,
+      "validation_support_ratio": 0.95,
+      "verification_samples": 384,
+      "visual_ambiguous_width_query_px": 8.0,
+      "visual_depths_query_px": [
+        2.0,
+        4.0,
+        8.0,
+        12.0,
+        16.0
+      ],
+      "visual_highpass_radius": 3,
+      "visual_mask_validity": 0.99,
+      "visual_minimum_length_query_px": 48.0,
+      "visual_minimum_samples": 32,
+      "visual_minimum_texture_rms": 0.01,
+      "visual_offsets_query_px": [
+        -16,
+        -12,
+        -8,
+        -4,
+        0,
+        4,
+        8,
+        12,
+        16
+      ],
+      "visual_samples": 512,
+      "visual_score_slack": 0.03,
+      "visual_weight_limit": 0.05
+    },
+    "pose_configuration": {
+      "alignment_samples": 24,
+      "alternatives_per_parent": 3,
+      "alternatives_per_piece_pair": 3,
+      "beam_width": 16,
+      "collision_grid": 24,
+      "cycle_tolerance_px": 8.0,
+      "evaluation_tolerance_px": 4.0,
+      "family": "similarity",
+      "maximum_assembly_collision": 0.08,
+      "maximum_normal_penalty": 0.35,
+      "maximum_normalized_residual": 0.03,
+      "maximum_pair_collision": 0.08,
+      "maximum_scale": 2.0,
+      "minimum_fit_length_px": 24.0,
+      "minimum_scale": 0.5,
+      "pair_block_size": 32,
+      "seed": 9001
+    },
+    "recipe": {
+      "global_samples": 512,
+      "historical_chain_exactly_reproduced_on_new_inputs": false,
+      "local_spacing_px": 4.0,
+      "local_uncertainty": 0.25,
+      "local_window_budget": 16,
+      "maximum_candidates": 1024,
+      "name": "frozen-core-composition-v1",
+      "parents_per_physical_pair": 4,
+      "parents_per_query": 20,
+      "retrieval_pool_per_query": 80,
+      "scope": "Frozen shape retrieval, symmetric MLP/CNN ranking, gated windows, similarity, sliding and guarded projective fitting, broad geometry and RGB continuation. No unqualified displacement/choice correction.",
+      "strip_depth": 33,
+      "working_pool_per_physical_pair": 24
+    }
+  },
+  "rankers": [
+    {
+      "name": "pair_mlp_small",
+      "context": "cbd559b8e21e9c68bb1c983329f9b0f0d1e7ac342ad44c9456cba7d7cc879bcc",
+      "weights_sha256": "cd37a50ad33b5b13de7d984aa67269ca3c17a589fab18dec87823bd9b854eca4",
+      "checkpoint": {
+        "path": "pair_mlp_small.pt",
+        "size": 1341677,
+        "sha256": "5d47fc1f7249fb72b64252e0a448e08e5cc3f09d751621106cc34562eccdb930"
+      },
+      "upstream_checkpoint_sha256": "88a9581d4d80f0170e86b63fb61877728715cd9e8b69ed324ea6584e83150380",
+      "optimizer_state_included": false
+    },
+    {
+      "name": "paired_strip_cnn_small",
+      "context": "7679d89c40dc939381131edef3edb5e50fe90fd76b1341688567fa8f87cb1fc5",
+      "weights_sha256": "4c44efe84dba9c25dfa0158e34d7c72e03ef3bce57d8d7a56d14d6acb0a122ac",
+      "checkpoint": {
+        "path": "paired_strip_cnn_small.pt",
+        "size": 1792045,
+        "sha256": "0b26ec36d171bed520062e7cbef2694c30db7b3e3ff37839b8132dcfcdb6bb3e"
+      },
+      "upstream_checkpoint_sha256": "9325d37f46cd42bb3d2fc0a4abf7c6876bced140440616552a0f54f55a435003",
+      "optimizer_state_included": false
+    }
+  ],
+  "source_signature": "610be9108ac03f68328927d551bfc6a0912468e3aa546da998f4ed43a1264e32",
+  "qualification_review_sha256": "c93028148905db007aeea8a8e33d64f6b03a3413be7bb42fac242ebd63be070d",
+  "correction_scorer_enabled": false,
+  "demonstrated_reliable_piece_capacity": null,
+  "manifest_sha256": "86d547731a0b3b629647d01d657c19170859e47264a79ed1e947c2c1e0b6e59e"
+}

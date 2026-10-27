@@ -1,0 +1,11 @@
+# Tested Stage 4 CPU environment; upstream environments remain independent.
+numpy==2.5.4
+Pillow==13.0.0
+scipy==1.18.1
+jsonschema==4.26.0
+attrs==26.1.0
+jsonschema-specifications==2025.9.1
+referencing==0.37.0
+rpds-py==2026.9.1
+typing_extensions==4.16.0
+setuptools==84.2.1

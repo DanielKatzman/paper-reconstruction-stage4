@@ -1,0 +1,104 @@
+{
+  "all_four_inlined_runtime_imports_verified": true,
+  "archive_crc_and_inventory_checks_passed": true,
+  "cold_relocated_stage4_cases": [
+    {
+      "case_id": "puzzle_000330_c783e29dd569",
+      "max_orientation_error_degrees": 0.0,
+      "max_scale_error": 0.0,
+      "maximum_probe_error_px": 5.099019513592813,
+      "pieces": 4,
+      "result_sha256": "39c182fe12e633787b1bea8a692a559a97e8ee3a2d4bed11fff734801d435040",
+      "supported_connected_zero_false_neighbors": true,
+      "whole_page_p95_px": 5.099019513592792,
+      "worker_seconds": 6.546999999962281
+    },
+    {
+      "case_id": "puzzle_000600_139279105ea8",
+      "max_orientation_error_degrees": 0.0,
+      "max_scale_error": 0.0,
+      "maximum_probe_error_px": 30.0,
+      "pieces": 20,
+      "result_sha256": "9a8e98b94951ca6a9717a1a5f9fbba2120e852f5daacae0f5eb758b1cb2e9fdd",
+      "supported_connected_zero_false_neighbors": true,
+      "whole_page_p95_px": 29.999999999999908,
+      "worker_seconds": 159.90700000000652
+    },
+    {
+      "case_id": "puzzle_000847_0c6407e2d3af",
+      "max_orientation_error_degrees": 0.0,
+      "max_scale_error": 0.0,
+      "maximum_probe_error_px": 12.369316876853423,
+      "pieces": 30,
+      "result_sha256": "1e35df0fed32c95a4941415dbee64ec4ebc86002f82d47e216a78197f9f104dd",
+      "supported_connected_zero_false_neighbors": true,
+      "whole_page_p95_px": 11.66190378969099,
+      "worker_seconds": 106.15599999995902
+    }
+  ],
+  "cold_relocated_stage4_construction_regressions_pass": true,
+  "date": "2026-10-27",
+  "evaluation_wrapper_repair": "First offline evaluation adapter read a nonexistent top-level assessment status; corrected to layouts[0].status, then re-evaluated the same sealed predictions without rerunning or modifying them.",
+  "fresh_stage2_stage3_pool_stage4_case": {
+    "case_id": "puzzle_000330_c783e29dd569",
+    "stages": {
+      "stage2": 7.14100000000326,
+      "stage2_verify": 1.1099999999860302,
+      "stage3_native": 82.15599999995902,
+      "stage3_pool": 5.172000000020489,
+      "stage4": 6.563000000023749
+    },
+    "supported_connected_zero_false_neighbors": true,
+    "whole_page_p95_px": 5.099019513592792
+  },
+  "new_orchestration_tests": {
+    "failures": 0,
+    "passed": 8
+  },
+  "optional_release_archives": [
+    {
+      "bytes": 79235835,
+      "files": 4,
+      "name": "models-v2.0.0.zip",
+      "sha256": "734b15cc227ac84de98f52100d22ed1a3fd90bdcc4b952a5dfaf32ad393c95b7"
+    },
+    {
+      "bytes": 171300445,
+      "files": 1294,
+      "name": "benchmark-v2.0.0.zip",
+      "sha256": "f2442a0b8944b5102ecfc59d52f38a032e71698ffd32e6c5c691d267b383c037"
+    }
+  ],
+  "original_14_case_review_preserved": true,
+  "post_seal_saved_bank_probe": {
+    "case_id": "puzzle_000600_139279105ea8",
+    "counts_as_blind_success": false,
+    "new_pose_fits": false,
+    "positive_compatible_reference_construction": true,
+    "primary_changed": false
+  },
+  "predictions_unchanged_during_evaluation": true,
+  "schema_version": "paper-pipeline.packaging-validation.v2",
+  "scope": "Separate relocation/integration validation, not a new fresh 14-case upstream run or a new reliability cohort.",
+  "source_files_verified": 224,
+  "stage1_smoke": {
+    "accepted": true,
+    "capture_kind": "one generator piece; runtime smoke only",
+    "optional_original_pytest_suite": "Not run: pytest is absent from the validated Stage 1 runtime; no environment was modified.",
+    "real_onnx_inference": true,
+    "receipt": {
+      "elapsed_seconds": 3.0780000000377186,
+      "log_sha256": "ee023b748d25e05ef19ff0332feb3174ee0b4f22a19c28301dcf726a5ff34116",
+      "returncode": 0,
+      "stage": "stage1"
+    }
+  },
+  "stage4_portable_tests": {
+    "discovered": 350,
+    "failures": 0,
+    "log_sha256": "6d842ba0771bf78a00b969de23d11c22efeab58861c814006e0c382816f589f8",
+    "passed": 334,
+    "skipped": 16
+  },
+  "stage4_source_sdk_fingerprint": "10270c9ef986d15529e05fd2bdc7b8d39675ba598d59b1876be815445084761e"
+}

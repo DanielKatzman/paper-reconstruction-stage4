@@ -1,0 +1,2 @@
+# The release inventory binds bytes. Preserve them on every checkout/platform.
+* -text

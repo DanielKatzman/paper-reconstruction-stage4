@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "paper-reconstruction-stage2"
+version = "1.0.2"
+description = "Truth-free boundary-role and edge-hypothesis inference for torn-paper reconstruction."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.24",
+  "Pillow>=10.0",
+  "PyYAML>=6.0",
+  "scipy>=1.10",
+  "PyMuPDF>=1.23",
+]
+
+[project.optional-dependencies]
+training = [
+  "torch>=2.1",
+]
+inference = [
+  "onnxruntime>=1.22,<2",
+]
+export = [
+  "torch>=2.1",
+  "onnx>=1.18,<2",
+  "onnxruntime>=1.22,<2",
+]
+
+[project.scripts]
+generate-stage2-dataset = "paper_reconstruction_stage2.cli:main"
+compile-stage2-observations = "paper_reconstruction_stage2.observation_cli:main"
+compile-stage2-boundaries = "paper_reconstruction_stage2.boundary_cli:main"
+run-stage2-pipeline = "paper_reconstruction_stage2.pipeline_cli:main"
+inspect-stage2-training-data = "paper_reconstruction_stage2.training_data_cli:main"
+compute-stage2-training-statistics = "paper_reconstruction_stage2.statistics_cli:main"
+profile-boundary-role-training = "paper_reconstruction_stage2.profiling_cli:main"
+run-boundary-role-experiments = "paper_reconstruction_stage2.experiments_cli:main"
+train-boundary-role-model = "paper_reconstruction_stage2.training_cli:main"
+calibrate-boundary-role-model = "paper_reconstruction_stage2.calibration_cli:main"
+evaluate-boundary-role-model = "paper_reconstruction_stage2.evaluation_cli:main"
+predict-boundary-roles = "paper_reconstruction_stage2.prediction_cli:main"
+run-boundary-role-pipeline = "paper_reconstruction_stage2.role_pipeline_cli:main"
+refine-boundary-fragments = "paper_reconstruction_stage2.fragment_refinement_cli:main"
+run-stage2-inference = "paper_reconstruction_stage2.production_cli:main"
+verify-stage2-output = "paper_reconstruction_stage2.verification_cli:main"
+export-stage2-onnx = "paper_reconstruction_stage2.onnx_export_cli:main"
+validate-stage2-onnx = "paper_reconstruction_stage2.onnx_parity_cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

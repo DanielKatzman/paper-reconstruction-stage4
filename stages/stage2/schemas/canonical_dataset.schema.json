@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/paper-reconstruction/stage2/canonical-dataset.v2.schema.json",
+  "title": "Stage 2 Canonical Dataset Manifest v2",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generator_version",
+    "generation_config",
+    "source_split_manifest_path",
+    "source_split_fingerprint",
+    "split_counts",
+    "difficulty_counts",
+    "dataset_fingerprint",
+    "puzzles"
+  ],
+  "properties": {
+    "schema_version": {"const": "stage2.canonical-dataset.v2"},
+    "generator_version": {"type": "string"},
+    "created_utc": {"type": "string"},
+    "dataset_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "source_split_manifest_path": {"type": "string"},
+    "source_split_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "split_counts": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
+    "difficulty_counts": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
+    "generation_config": {
+      "type": "object",
+      "required": [
+        "min_pieces",
+        "max_pieces",
+        "seed",
+        "puzzle_count",
+        "difficulty_mix",
+        "split_ratios"
+      ]
+    },
+    "puzzles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "puzzle_id",
+          "puzzle_path",
+          "puzzle_fingerprint",
+          "split",
+          "difficulty_tier",
+          "target_piece_count",
+          "actual_piece_count",
+          "successful_cut_count"
+        ]
+      }
+    }
+  },
+  "additionalProperties": true
+}

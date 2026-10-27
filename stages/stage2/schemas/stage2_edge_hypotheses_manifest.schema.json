@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://paper-reconstruction.local/schemas/stage2_edge_hypotheses_manifest.schema.json",
+  "title": "Completed Stage 2 production inference manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "status",
+    "software_version",
+    "config_hash",
+    "release_version",
+    "release_manifest_sha256",
+    "model_format",
+    "runtime",
+    "model_sha256",
+    "source_checkpoint_sha256",
+    "stage1_manifest_sha256",
+    "stage1_input_fingerprint",
+    "piece_count",
+    "candidate_count",
+    "truth_free",
+    "pieces"
+  ],
+  "properties": {
+    "schema_version": {"const": "stage2.edge-hypotheses-manifest.v1"},
+    "status": {"const": "complete"},
+    "software_version": {"type": "string"},
+    "config_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "release_version": {"type": "string", "minLength": 1},
+    "release_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "model_format": {"const": "onnx"},
+    "runtime": {"const": "onnxruntime-cpu"},
+    "model_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "source_checkpoint_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "stage1_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "stage1_input_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "piece_count": {"type": "integer", "minimum": 1},
+    "candidate_count": {"type": "integer", "minimum": 0},
+    "truth_free": {"const": true},
+    "pieces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "capture_id",
+          "piece_id",
+          "record_path",
+          "arrays_path",
+          "point_count",
+          "candidate_count",
+          "stage1_record_fingerprint"
+        ]
+      }
+    }
+  },
+  "additionalProperties": true
+}
+

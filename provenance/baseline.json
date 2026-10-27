@@ -1,0 +1,9 @@
+{
+  "full_upstream_rerun_by_v21": false,
+  "original_request_sha256": "5a657b03d83db9a47eddb4954b0fc972ebd1f70ab0408a776a726a7e8587632f",
+  "portable_export_is_a_new_packaging_validation": true,
+  "prediction_barrier_sha256": "78f23b8cd2b36f6be95a6df64e8b8985eef7f2f068e70a3f36d98e6b40fca68d",
+  "release": "2.0.0",
+  "stage3_candidate_implementation_sha256": "6b0ac07074ff3ecf340aa7c30deae6760d8a8cd4807e3dd9b71348d72e86e66a",
+  "stage4_source_sha256": "10270c9ef986d15529e05fd2bdc7b8d39675ba598d59b1876be815445084761e"
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/paper-reconstruction/stage2/observation-puzzle.v1.schema.json",
+  "title": "Stage 2 Observation Puzzle Manifest v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "puzzle_id",
+    "canonical_puzzle_fingerprint",
+    "observation_puzzle_fingerprint",
+    "split",
+    "difficulty_tier",
+    "piece_count",
+    "views_per_piece",
+    "observation_count",
+    "observations",
+    "validation"
+  ],
+  "properties": {
+    "schema_version": {"const": "stage2.observation-puzzle.v1"},
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "observation_id",
+          "observation_fingerprint",
+          "piece_id",
+          "observed_piece_path",
+          "observed_mask_path",
+          "canonical_crop_to_observed_homography",
+          "observed_to_canonical_crop_homography",
+          "source_page_to_observed_homography",
+          "observed_to_source_page_homography",
+          "mask_perturbation",
+          "photometric_parameters",
+          "validation"
+        ]
+      }
+    }
+  },
+  "additionalProperties": true
+}

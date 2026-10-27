@@ -1,0 +1,305 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Stage 3 to Stage 4 v2 bundle",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "stage3.assembly-evidence.v2"
+    },
+    "algorithm": {
+      "type": "string",
+      "minLength": 1
+    },
+    "identity": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "puzzle_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pieces": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "piece_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "observation_key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "size_hw": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "image": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mask": {
+            "type": "string",
+            "minLength": 1
+          },
+          "contour": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "piece_id",
+          "observation_key",
+          "size_hw",
+          "image",
+          "mask",
+          "contour"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "candidate_key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "piece_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "observation_key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "candidate": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "candidate_key",
+          "piece_id",
+          "observation_key",
+          "candidate"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "assets": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "path",
+          "size",
+          "sha256"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "archive": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "size",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "working_pool": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "size",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "counts": {
+      "type": "object",
+      "properties": {
+        "pieces": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "candidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "geometries": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "occurrences": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "working_edges": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "pieces",
+        "candidates",
+        "geometries",
+        "occurrences",
+        "working_edges"
+      ],
+      "additionalProperties": false
+    },
+    "coordinate_frame": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occurrence_contract": {
+      "type": "string",
+      "minLength": 1
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "configuration": {
+      "type": "object"
+    },
+    "correction_scorer": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "const": false
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "enabled",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "training_performed": {
+      "const": false
+    },
+    "optimizer_steps": {
+      "const": 0
+    },
+    "validation_truth_opened": {
+      "const": false
+    },
+    "protected_truth_opened": {
+      "const": false
+    },
+    "scores_are_calibrated_probabilities": {
+      "const": false
+    },
+    "global_assembly_performed": {
+      "const": false
+    },
+    "capacity": {
+      "type": "object",
+      "properties": {
+        "demonstrated_reliable_piece_capacity": {
+          "type": "null"
+        },
+        "baseline_target_pieces": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "milestone_pieces": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "demonstrated_reliable_piece_capacity",
+        "baseline_target_pieces",
+        "milestone_pieces"
+      ],
+      "additionalProperties": false
+    },
+    "manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "algorithm",
+    "identity",
+    "puzzle_id",
+    "pieces",
+    "candidates",
+    "assets",
+    "archive",
+    "working_pool",
+    "counts",
+    "coordinate_frame",
+    "occurrence_contract",
+    "provenance",
+    "configuration",
+    "correction_scorer",
+    "training_performed",
+    "optimizer_steps",
+    "validation_truth_opened",
+    "protected_truth_opened",
+    "scores_are_calibrated_probabilities",
+    "global_assembly_performed",
+    "capacity",
+    "manifest_sha256"
+  ],
+  "additionalProperties": false
+}

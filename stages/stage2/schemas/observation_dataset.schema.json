@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/paper-reconstruction/stage2/observation-dataset.v1.schema.json",
+  "title": "Stage 2 Observation Dataset Manifest v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "compiler_version",
+    "canonical_dataset_fingerprint",
+    "observation_config",
+    "puzzle_count",
+    "observation_count",
+    "observation_dataset_fingerprint",
+    "puzzles"
+  ],
+  "properties": {
+    "schema_version": {"const": "stage2.observation-dataset.v1"},
+    "canonical_dataset_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "observation_dataset_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "puzzle_count": {"type": "integer", "minimum": 0},
+    "observation_count": {"type": "integer", "minimum": 0},
+    "puzzles": {"type": "array"}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,283 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Stage 3 to Stage 4 v2 working_pool",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "stage3.working-pool.v1"
+    },
+    "maximum_per_physical_pair": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 128
+    },
+    "selection": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scores_are_calibrated_probabilities": {
+      "const": false
+    },
+    "pairs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "pieces": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "available_geometries": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "working_geometries": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "resource_truncated": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "pieces",
+          "available_geometries",
+          "working_geometries",
+          "resource_truncated"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "hypothesis_id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "piece_a": {
+            "type": "string",
+            "minLength": 1
+          },
+          "piece_b": {
+            "type": "string",
+            "minLength": 1
+          },
+          "observation_a": {
+            "type": "string",
+            "minLength": 1
+          },
+          "observation_b": {
+            "type": "string",
+            "minLength": 1
+          },
+          "transform_b_to_a": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "weight": {
+            "type": "number"
+          },
+          "score_method": {
+            "type": "string",
+            "minLength": 1
+          },
+          "score_variant": {
+            "type": "string",
+            "minLength": 1
+          },
+          "representative_occurrence": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "occurrence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "pose": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "target": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "windows": {
+                "type": "array",
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "span_a": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "start_px": {
+                        "type": "number"
+                      },
+                      "end_px": {
+                        "type": "number"
+                      },
+                      "requested_length_px": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "start_px",
+                      "end_px"
+                    ],
+                    "additionalProperties": true
+                  }
+                ]
+              },
+              "span_b": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "start_px": {
+                        "type": "number"
+                      },
+                      "end_px": {
+                        "type": "number"
+                      },
+                      "requested_length_px": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "start_px",
+                      "end_px"
+                    ],
+                    "additionalProperties": true
+                  }
+                ]
+              },
+              "samples": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "alignment": {
+                "type": "object",
+                "properties": {
+                  "transform": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "family": {
+                    "enum": [
+                      "rigid",
+                      "similarity",
+                      "projective"
+                    ]
+                  },
+                  "query_arc_fraction": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "target_arc_fraction": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "geometry_score": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "transform"
+                ],
+                "additionalProperties": true
+              }
+            },
+            "required": [
+              "query",
+              "target",
+              "windows",
+              "span_a",
+              "span_b",
+              "alignment"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "hypothesis_id",
+          "piece_a",
+          "piece_b",
+          "observation_a",
+          "observation_b",
+          "transform_b_to_a",
+          "weight",
+          "score_method",
+          "score_variant",
+          "representative_occurrence",
+          "occurrence_ids",
+          "pose"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "maximum_per_physical_pair",
+    "selection",
+    "scores_are_calibrated_probabilities",
+    "pairs",
+    "edges"
+  ],
+  "additionalProperties": false
+}

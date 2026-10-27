@@ -1,0 +1,20 @@
+{
+  "reason": "Original source test bodies retained; these specific tests require historical snapshots, sibling layouts or experiment outputs outside the v2 export. Algorithm tests remain enabled.",
+  "tests": {
+    "test_candidate.CandidateTests.test_request_identity_pins_candidate_recipe_threads_config_and_sources": "Requires original historical experiment archive; excluded from the portable source release",
+    "test_experiment.ExperimentTests.test_consumer_plan_never_invokes_upstream_and_control_is_explicit": "Requires original historical experiment archive; excluded from the portable source release",
+    "test_geometry_v18_r2.GeometryRevisionTwoTests.test_new_runner_preserves_the_bound_first_revision_controllers": "Requires original historical experiment archive; excluded from the portable source release",
+    "test_joint_experiment.ExternalExperimentTests.test_external_frozen_replay_and_offline_diagnosis_match_control": "Requires original historical experiment archive; excluded from the portable source release",
+    "test_joint_experiment.ExternalExperimentTests.test_external_plan_binds_native_inputs_and_never_routes_upstream": "Requires original historical experiment archive; excluded from the portable source release",
+    "test_joint_experiment.ExternalExperimentTests.test_failed_serving_child_never_opens_diagnostics": "Requires original historical experiment archive; excluded from the portable source release",
+    "test_joint_experiment.ExternalExperimentTests.test_initial_result_is_bound_into_run_identity": "Requires original historical experiment archive; excluded from the portable source release",
+    "test_joint_experiment.ExternalExperimentTests.test_interrupted_serving_child_never_opens_diagnostics": "Requires original historical experiment archive; excluded from the portable source release",
+    "test_policy_retention_runner_v9.RetentionRunnerTests.test_named_presets_expose_budgets_and_preserve_physical_and_score_rules": "Requires original historical experiment archive; excluded from the portable source release",
+    "test_policy_retention_runner_v9.RetentionRunnerTests.test_v8_reference_binds_request_receipt_summary_controller_and_prediction": "Requires original historical experiment archive; excluded from the portable source release",
+    "test_retention_v6.RetentionV6Tests.test_diagnostic_bootstrap_uses_the_result_snapshot_in_a_fresh_interpreter": "Requires original historical experiment archive; excluded from the portable source release",
+    "test_retention_v6.RetentionV6Tests.test_previous_v5_config_roundtrip_is_exact_and_new_parameters_are_versioned": "Requires original historical experiment archive; excluded from the portable source release",
+    "test_scale_extension_v20.ScaleExtensionTests.test_frozen_solver_and_past_confirmation_controllers_remain_unchanged": "Requires original historical experiment archive; excluded from the portable source release",
+    "test_scale_extension_v20.ScaleExtensionTests.test_wrong_piece_inventory_cannot_be_published_as_a_larger_case": "Requires original historical experiment archive; excluded from the portable source release",
+    "test_straight_deferred_v19.StraightDeferredTests.test_frozen_v18_controllers_and_predictions_are_untouched": "Requires original historical experiment archive; excluded from the portable source release"
+  }
+}

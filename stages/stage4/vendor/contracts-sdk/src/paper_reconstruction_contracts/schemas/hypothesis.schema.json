@@ -1,0 +1,307 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Stage 3 to Stage 4 v2 hypothesis",
+  "type": "object",
+  "properties": {
+    "hypothesis_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "piece_a": {
+      "type": "string",
+      "minLength": 1
+    },
+    "piece_b": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observation_a": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observation_b": {
+      "type": "string",
+      "minLength": 1
+    },
+    "transform_b_to_a": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 3,
+        "maxItems": 3
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "occurrences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "occurrence_id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "variant": {
+            "type": "string",
+            "minLength": 1
+          },
+          "row_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "record_id": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          },
+          "source_record_id": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          },
+          "parent_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "pose_id": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          },
+          "pose_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "new_proposal": {
+            "type": "boolean"
+          },
+          "query_key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target_key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "query_observation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target_observation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "query_piece": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target_piece": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pose": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "target": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "windows": {
+                "type": "array",
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "span_a": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "start_px": {
+                        "type": "number"
+                      },
+                      "end_px": {
+                        "type": "number"
+                      },
+                      "requested_length_px": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "start_px",
+                      "end_px"
+                    ],
+                    "additionalProperties": true
+                  }
+                ]
+              },
+              "span_b": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "start_px": {
+                        "type": "number"
+                      },
+                      "end_px": {
+                        "type": "number"
+                      },
+                      "requested_length_px": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "start_px",
+                      "end_px"
+                    ],
+                    "additionalProperties": true
+                  }
+                ]
+              },
+              "samples": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "alignment": {
+                "type": "object",
+                "properties": {
+                  "transform": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "family": {
+                    "enum": [
+                      "rigid",
+                      "similarity",
+                      "projective"
+                    ]
+                  },
+                  "query_arc_fraction": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "target_arc_fraction": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "geometry_score": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "transform"
+                ],
+                "additionalProperties": true
+              }
+            },
+            "required": [
+              "query",
+              "target",
+              "windows",
+              "span_a",
+              "span_b",
+              "alignment"
+            ],
+            "additionalProperties": true
+          },
+          "original_canonical_transform_b_to_a": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "methods": {
+            "type": "object"
+          },
+          "content_evidence": {
+            "type": "object"
+          },
+          "learned_evidence": {
+            "type": "object"
+          },
+          "selection_evidence": {
+            "type": "object"
+          },
+          "tangent_observability": {
+            "type": "object"
+          },
+          "visual_evidence": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "occurrence_id",
+          "variant",
+          "row_index",
+          "query_key",
+          "target_key",
+          "query_observation",
+          "target_observation",
+          "query_piece",
+          "target_piece",
+          "pose",
+          "original_canonical_transform_b_to_a"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "hypothesis_id",
+    "piece_a",
+    "piece_b",
+    "observation_a",
+    "observation_b",
+    "transform_b_to_a",
+    "occurrences"
+  ],
+  "additionalProperties": false
+}

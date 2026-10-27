@@ -1,0 +1,16 @@
+{
+  "solver": "partial_beam_v1",
+  "beam_width": 64,
+  "max_proposals": 250000,
+  "max_seconds": 120.0,
+  "join_cost": 0.55,
+  "loop_proposals": true,
+  "max_loop_checks": 2000,
+  "max_loop_seeds": 16,
+  "repair_rounds": 1,
+  "max_repair_checks": 1000,
+  "refine": true,
+  "refine_seconds": 20.0,
+  "refine_max_nfev": 50,
+  "portfolio_size": 3
+}

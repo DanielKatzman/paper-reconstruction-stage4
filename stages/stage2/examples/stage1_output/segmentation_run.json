@@ -1,0 +1,6 @@
+{
+  "capture_count": 2,
+  "manifest_path": "segmentation_manifest.jsonl",
+  "schema_version": "stage1.segmentation-run.example.v1",
+  "status": "complete"
+}

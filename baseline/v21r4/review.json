@@ -1,0 +1,965 @@
+{
+  "all_cases_supported_connected_and_zero_false_neighbors": true,
+  "baseline_worker_seconds_total": 1386.6623921999708,
+  "case_results": [
+    {
+      "backtracks": 0,
+      "baseline_page_p95_px": 5.099019513592792,
+      "baseline_worker_seconds": 6.85671680001542,
+      "boundary_joins_replayed": 0,
+      "case_id": "puzzle_000330_c783e29dd569",
+      "cold_completed_attempts": 1,
+      "connected": true,
+      "cut_alternatives_examined": 0,
+      "cut_verified_completions": 0,
+      "dfs_sessions_started": 28,
+      "false_selected_neighbor_pairs": 0,
+      "final_physical": {
+        "fidelity": "bounded_native_interior_sampling",
+        "maximum_sampled_overlap": 0.00019807209824376074,
+        "pairs_checked": 6,
+        "valid": true
+      },
+      "independent_geometry": {
+        "area_ratio": 1.0057495310258584,
+        "aspect_ratio_prior_used": false,
+        "fill_fraction": 0.9939662105013896,
+        "interior_hole_fraction": 0.001922130285347414,
+        "native_pixels_per_raster_pixel": 2.299738219895288,
+        "orientation_freely_fitted": true,
+        "overlap_fraction": 0.000214009863909182,
+        "raster_fraction_uncertainty_estimate": 0.006315225541292385,
+        "raster_shape_hw": [
+          768,
+          546
+        ],
+        "raster_side_limit": 768,
+        "rectangle_area_px2": 2187465.000000001,
+        "rectangle_sides_px": [
+          1245.0000000000005,
+          1757.0
+        ],
+        "score": 0.9957469153103193,
+        "shape_gate_pass": true,
+        "unfilled_fraction": 0.006033789498610442,
+        "union_area_px2_estimate": 2174266.296654423
+      },
+      "independent_support": {
+        "active_joins_checked": 0,
+        "layouts_checked": 1,
+        "valid": true
+      },
+      "input_manifest_sha256": "337eb2aca80735f6a4941f08ec0c17cc1f77912b7b018c8e242865a90c0f6cd3",
+      "max_per_piece_p95_px": 5.099019513592813,
+      "maximum_probe_error_px": 5.099019513592813,
+      "native_fitting_seconds": 2.229354400013108,
+      "native_joins_replayed": 4,
+      "pieces": 4,
+      "reference_sha256": "3c0c6f831dc79fdb22f9b55100892fba9ebaad5084ed7171df253dd0f1146d8e",
+      "result_sha256": "e4889855032badca5a257739e09134f156ab67211ee3936f0fa944df9b4753a2",
+      "review_seconds": 1.7435209999675862,
+      "scheduler_seconds": {
+        "all_modes_fallback/beam": 0.10168469999916852,
+        "nonstraight_first/beam": 0.1045913000125438,
+        "nonstraight_first/dfs": 0.28339120000600815
+      },
+      "selected_joins": 4,
+      "solver_seconds": 3.372790299996268,
+      "whole_page_p95_px": 5.099019513592792,
+      "worker_seconds": 6.801832500030287
+    },
+    {
+      "backtracks": 0,
+      "baseline_page_p95_px": 3.162277660168523,
+      "baseline_worker_seconds": 6.672143800009508,
+      "boundary_joins_replayed": 0,
+      "case_id": "puzzle_000450_dbaf91d313a9",
+      "cold_completed_attempts": 1,
+      "connected": true,
+      "cut_alternatives_examined": 0,
+      "cut_verified_completions": 0,
+      "dfs_sessions_started": 24,
+      "false_selected_neighbor_pairs": 0,
+      "final_physical": {
+        "fidelity": "bounded_native_interior_sampling",
+        "maximum_sampled_overlap": 0.0028599271248199304,
+        "pairs_checked": 6,
+        "valid": true
+      },
+      "independent_geometry": {
+        "area_ratio": 1.0065702357744513,
+        "aspect_ratio_prior_used": false,
+        "fill_fraction": 0.9917551143153895,
+        "interior_hole_fraction": 0.0013588674029390286,
+        "native_pixels_per_raster_pixel": 2.2905759162303667,
+        "orientation_freely_fitted": true,
+        "overlap_fraction": 0.002194203925937178,
+        "raster_fraction_uncertainty_estimate": 0.006283863016765667,
+        "raster_shape_hw": [
+          551,
+          768
+        ],
+        "raster_side_limit": 768,
+        "rectangle_area_px2": 2189250.0000000005,
+        "rectangle_sides_px": [
+          1251.0000000000002,
+          1750.0
+        ],
+        "score": 0.9939981534093749,
+        "shape_gate_pass": true,
+        "unfilled_fraction": 0.008244885684610459,
+        "union_area_px2_estimate": 2171199.884014967
+      },
+      "independent_support": {
+        "active_joins_checked": 0,
+        "layouts_checked": 1,
+        "valid": true
+      },
+      "input_manifest_sha256": "f1dec73667fa749bbdc27230b3b5a28b5a842d31aaa6d87c26a7a08be2f7e3c9",
+      "max_per_piece_p95_px": 9.219544457293035,
+      "maximum_probe_error_px": 9.219544457293035,
+      "native_fitting_seconds": 2.107828799984418,
+      "native_joins_replayed": 6,
+      "pieces": 4,
+      "reference_sha256": "fb139a353f650a893ed2b950888c3288e1deb3dbcc30c7f6ddd0046cf7cc1ebe",
+      "result_sha256": "67cb06eaa4c41323c875d373834bdb611a531e47ec0eb251e136333f30359e6d",
+      "review_seconds": 1.3328233999782242,
+      "scheduler_seconds": {
+        "all_modes_fallback/beam": 0.10025190003216267,
+        "nonstraight_first/beam": 0.10107869998319075,
+        "nonstraight_first/dfs": 0.34898439998505637
+      },
+      "selected_joins": 6,
+      "solver_seconds": 3.324230400030501,
+      "whole_page_p95_px": 9.219544457292931,
+      "worker_seconds": 6.797829200048
+    },
+    {
+      "backtracks": 0,
+      "baseline_page_p95_px": 4.123105625617661,
+      "baseline_worker_seconds": 18.49337220005691,
+      "boundary_joins_replayed": 0,
+      "case_id": "puzzle_000678_004586b006b3",
+      "cold_completed_attempts": 1,
+      "connected": true,
+      "cut_alternatives_examined": 0,
+      "cut_verified_completions": 0,
+      "dfs_sessions_started": 48,
+      "false_selected_neighbor_pairs": 0,
+      "final_physical": {
+        "fidelity": "bounded_native_interior_sampling",
+        "maximum_sampled_overlap": 0.008442074739254478,
+        "pairs_checked": 28,
+        "valid": true
+      },
+      "independent_geometry": {
+        "area_ratio": 1.0079385368006768,
+        "aspect_ratio_prior_used": false,
+        "fill_fraction": 0.9905578080246406,
+        "interior_hole_fraction": 0.003420022422938706,
+        "native_pixels_per_raster_pixel": 2.3010471204188483,
+        "orientation_freely_fitted": true,
+        "overlap_fraction": 0.0024639048879202988,
+        "raster_fraction_uncertainty_estimate": 0.006308685429884111,
+        "raster_shape_hw": [
+          768,
+          546
+        ],
+        "raster_side_limit": 768,
+        "rectangle_area_px2": 2192226.0,
+        "rectangle_sides_px": [
+          1247.0,
+          1758.0
+        ],
+        "score": 0.9928567908749915,
+        "shape_gate_pass": true,
+        "unfilled_fraction": 0.009442191975359449,
+        "union_area_px2_estimate": 2171526.5812546257
+      },
+      "independent_support": {
+        "active_joins_checked": 0,
+        "layouts_checked": 1,
+        "valid": true
+      },
+      "input_manifest_sha256": "0acfc64c1391d26160422f3dc231554f5cc52ad4239053e09da854457c44e9f7",
+      "max_per_piece_p95_px": 4.123105625617771,
+      "maximum_probe_error_px": 4.123105625617771,
+      "native_fitting_seconds": 7.2291728000273,
+      "native_joins_replayed": 14,
+      "pieces": 8,
+      "reference_sha256": "af6dc5d99e8871b996de240b448dd8fd81b92709370949dbdf514dec0b4e3aac",
+      "result_sha256": "5199f7e4b85b98e8ca1391e7f4cfdefa1f8c49b9f143528961edf7c04a9c892c",
+      "review_seconds": 5.680506499949843,
+      "scheduler_seconds": {
+        "all_modes_fallback/beam": 0.20382749993586913,
+        "all_modes_fallback/dfs": 0.20239679998485371,
+        "nonstraight_first/beam": 2.068613300099969,
+        "nonstraight_first/dfs": 0.2021377999917604
+      },
+      "selected_joins": 14,
+      "solver_seconds": 11.053141999989748,
+      "whole_page_p95_px": 4.123105625617661,
+      "worker_seconds": 18.59318710002117
+    },
+    {
+      "backtracks": 0,
+      "baseline_page_p95_px": 18.973665961010298,
+      "baseline_worker_seconds": 20.300008399994113,
+      "boundary_joins_replayed": 0,
+      "case_id": "puzzle_000917_5da663844c03",
+      "cold_completed_attempts": 1,
+      "connected": true,
+      "cut_alternatives_examined": 0,
+      "cut_verified_completions": 0,
+      "dfs_sessions_started": 48,
+      "false_selected_neighbor_pairs": 0,
+      "final_physical": {
+        "fidelity": "bounded_native_interior_sampling",
+        "maximum_sampled_overlap": 0.004517824872679481,
+        "pairs_checked": 28,
+        "valid": true
+      },
+      "independent_geometry": {
+        "area_ratio": 1.011047559495347,
+        "aspect_ratio_prior_used": false,
+        "fill_fraction": 0.9885229131951505,
+        "interior_hole_fraction": 0.0009203409852076815,
+        "native_pixels_per_raster_pixel": 2.3324607329842935,
+        "orientation_freely_fitted": true,
+        "overlap_fraction": 0.0017189385554420146,
+        "raster_fraction_uncertainty_estimate": 0.006402802337950214,
+        "raster_shape_hw": [
+          768,
+          534
+        ],
+        "raster_side_limit": 768,
+        "rectangle_area_px2": 2198988.0,
+        "rectangle_sides_px": [
+          1234.0,
+          1782.0
+        ],
+        "score": 0.9920580547179781,
+        "shape_gate_pass": true,
+        "unfilled_fraction": 0.01147708680484949,
+        "union_area_px2_estimate": 2173750.0238411776
+      },
+      "independent_support": {
+        "active_joins_checked": 0,
+        "layouts_checked": 1,
+        "valid": true
+      },
+      "input_manifest_sha256": "7283d98e3cdf2f44ac1d16595cf4e8d018f58582876643330e537ce081d0f355",
+      "max_per_piece_p95_px": 27.31300056749537,
+      "maximum_probe_error_px": 27.313000567495372,
+      "native_fitting_seconds": 7.117626799969003,
+      "native_joins_replayed": 11,
+      "pieces": 8,
+      "reference_sha256": "162725e409dbdef4ce7b80888a5bbd1779d15493d42eec774cdfdf8ca3f06f96",
+      "result_sha256": "a9738c4301500ff665eda83724ac5c33caf3c7c1a94307f4b7fa282e331e5d71",
+      "review_seconds": 5.144045600027312,
+      "scheduler_seconds": {
+        "all_modes_fallback/beam": 0.10608870000578463,
+        "all_modes_fallback/dfs": 0.20196669996948913,
+        "nonstraight_first/beam": 0.9090429000207223,
+        "nonstraight_first/dfs": 0.7242682000505738
+      },
+      "selected_joins": 11,
+      "solver_seconds": 10.2911516999593,
+      "whole_page_p95_px": 27.313000567495354,
+      "worker_seconds": 18.18047409999417
+    },
+    {
+      "backtracks": 0,
+      "baseline_page_p95_px": 21.954498400099972,
+      "baseline_worker_seconds": 58.33733749995008,
+      "boundary_joins_replayed": 0,
+      "case_id": "puzzle_000341_ed2561390853",
+      "cold_completed_attempts": 1,
+      "connected": true,
+      "cut_alternatives_examined": 1,
+      "cut_verified_completions": 0,
+      "dfs_sessions_started": 48,
+      "false_selected_neighbor_pairs": 0,
+      "final_physical": {
+        "fidelity": "bounded_native_interior_sampling",
+        "maximum_sampled_overlap": 0.020923259415466737,
+        "pairs_checked": 66,
+        "valid": true
+      },
+      "independent_geometry": {
+        "area_ratio": 1.0205892989203926,
+        "aspect_ratio_prior_used": false,
+        "fill_fraction": 0.975500515478956,
+        "interior_hole_fraction": 0.0025428664714046657,
+        "native_pixels_per_raster_pixel": 2.314155907735374,
+        "orientation_freely_fitted": true,
+        "overlap_fraction": 0.004515328481529992,
+        "raster_fraction_uncertainty_estimate": 0.006306501856026372,
+        "raster_shape_hw": [
+          768,
+          547
+        ],
+        "raster_side_limit": 768,
+        "rectangle_area_px2": 2219740.9015798974,
+        "rectangle_sides_px": [
+          1255.4988272545452,
+          1768.0151135098256
+        ],
+        "score": 0.9827908393943047,
+        "shape_gate_pass": true,
+        "unfilled_fraction": 0.024499484521044,
+        "union_area_px2_estimate": 2165358.3937209127
+      },
+      "independent_support": {
+        "active_joins_checked": 0,
+        "layouts_checked": 1,
+        "valid": true
+      },
+      "input_manifest_sha256": "c60d211a16070babc518d5a00f309809a0a334bdb4059a0f8d205853ffb44a54",
+      "max_per_piece_p95_px": 21.95449840010008,
+      "maximum_probe_error_px": 21.95449840010008,
+      "native_fitting_seconds": 27.53386570001021,
+      "native_joins_replayed": 17,
+      "pieces": 12,
+      "reference_sha256": "8967c5a0eba7c32faaf3150207e044e419dd5dcd90d9d300b532c0462fcae379",
+      "result_sha256": "2592a48f410211c5c43ab456d358adb07c9a9c0e9778d39f4c30c6d55145315b",
+      "review_seconds": 11.106576099991798,
+      "scheduler_seconds": {
+        "all_modes_fallback/beam": 0.7084654999780469,
+        "all_modes_fallback/dfs": 0.7080742999678478,
+        "cut": 2.6985103999613784,
+        "nonstraight_first/beam": 5.765885400003754,
+        "nonstraight_first/dfs": 3.0815658998908475,
+        "support": 2.084035700012464
+      },
+      "selected_joins": 17,
+      "solver_seconds": 44.19261379999807,
+      "whole_page_p95_px": 21.954498400099972,
+      "worker_seconds": 58.296978599973954
+    },
+    {
+      "backtracks": 0,
+      "baseline_page_p95_px": 5.38516480713431,
+      "baseline_worker_seconds": 29.576843700022437,
+      "boundary_joins_replayed": 0,
+      "case_id": "puzzle_000362_2c257c3cdfe6",
+      "cold_completed_attempts": 1,
+      "connected": true,
+      "cut_alternatives_examined": 0,
+      "cut_verified_completions": 0,
+      "dfs_sessions_started": 48,
+      "false_selected_neighbor_pairs": 0,
+      "final_physical": {
+        "fidelity": "bounded_native_interior_sampling",
+        "maximum_sampled_overlap": 0.0007951287899395284,
+        "pairs_checked": 66,
+        "valid": true
+      },
+      "independent_geometry": {
+        "area_ratio": 1.0077031301725092,
+        "aspect_ratio_prior_used": false,
+        "fill_fraction": 0.9916022918304445,
+        "interior_hole_fraction": 0.0035335504468717257,
+        "native_pixels_per_raster_pixel": 2.3023560209424083,
+        "orientation_freely_fitted": true,
+        "overlap_fraction": 0.0010233593965103445,
+        "raster_fraction_uncertainty_estimate": 0.006317340018637199,
+        "raster_shape_hw": [
+          546,
+          768
+        ],
+        "raster_side_limit": 768,
+        "rectangle_area_px2": 2191714.0000000005,
+        "rectangle_sides_px": [
+          1246.0000000000002,
+          1759.0
+        ],
+        "score": 0.9938067852434561,
+        "shape_gate_pass": true,
+        "unfilled_fraction": 0.00839770816955554,
+        "union_area_px2_estimate": 2173308.6254368713
+      },
+      "independent_support": {
+        "active_joins_checked": 0,
+        "layouts_checked": 1,
+        "valid": true
+      },
+      "input_manifest_sha256": "a6dcb4b08e6fcc056a7352123188911f8026a5bd6f784d00b125efdfc6d9b116",
+      "max_per_piece_p95_px": 5.385164807134509,
+      "maximum_probe_error_px": 5.385164807134565,
+      "native_fitting_seconds": 8.220683699997608,
+      "native_joins_replayed": 22,
+      "pieces": 12,
+      "reference_sha256": "e2bb872194e3b76318fcd4ba6d95c13e2d21a980bfd6e70aa543f59ff4fc15f6",
+      "result_sha256": "47216d9ed3fd99ad3c1a4bb71ef673a8148383465b142a9fdffaeb5b403a6354",
+      "review_seconds": 12.252017199993134,
+      "scheduler_seconds": {
+        "all_modes_fallback/beam": 0.6041419999673963,
+        "all_modes_fallback/dfs": 0.5655949999345466,
+        "nonstraight_first/beam": 5.088502099970356,
+        "nonstraight_first/dfs": 0.6056566999759525
+      },
+      "selected_joins": 22,
+      "solver_seconds": 16.75809749995824,
+      "whole_page_p95_px": 5.38516480713431,
+      "worker_seconds": 30.961567499965895
+    },
+    {
+      "backtracks": 0,
+      "baseline_page_p95_px": 3.162277660168595,
+      "baseline_worker_seconds": 43.14747129997704,
+      "boundary_joins_replayed": 0,
+      "case_id": "puzzle_000681_29c5f6c02ba4",
+      "cold_completed_attempts": 1,
+      "connected": true,
+      "cut_alternatives_examined": 0,
+      "cut_verified_completions": 0,
+      "dfs_sessions_started": 48,
+      "false_selected_neighbor_pairs": 0,
+      "final_physical": {
+        "fidelity": "bounded_native_interior_sampling",
+        "maximum_sampled_overlap": 0.00012379046400792259,
+        "pairs_checked": 120,
+        "valid": true
+      },
+      "independent_geometry": {
+        "area_ratio": 1.0052438710707972,
+        "aspect_ratio_prior_used": false,
+        "fill_fraction": 0.9934513316799568,
+        "interior_hole_fraction": 0.002502731626455014,
+        "native_pixels_per_raster_pixel": 2.300425777932308,
+        "orientation_freely_fitted": true,
+        "overlap_fraction": 0.0014086837200928417,
+        "raster_fraction_uncertainty_estimate": 0.006317339985539253,
+        "raster_shape_hw": [
+          768,
+          545
+        ],
+        "raster_side_limit": 768,
+        "rectangle_area_px2": 2186365.209824141,
+        "rectangle_sides_px": [
+          1244.002130077354,
+          1757.5252943402834
+        ],
+        "score": 0.9950862191039852,
+        "shape_gate_pass": true,
+        "unfilled_fraction": 0.006548668320043194,
+        "union_area_px2_estimate": 2172047.4292385215
+      },
+      "independent_support": {
+        "active_joins_checked": 0,
+        "layouts_checked": 1,
+        "valid": true
+      },
+      "input_manifest_sha256": "41236db0e42511988355bb42ba03e269187a64ae5f31833cea7e1eda24cce590",
+      "max_per_piece_p95_px": 3.162277660168595,
+      "maximum_probe_error_px": 3.162277660168667,
+      "native_fitting_seconds": 7.489650400006212,
+      "native_joins_replayed": 28,
+      "pieces": 16,
+      "reference_sha256": "89c3b5a8d80a4ec265251ec6c8d6da0daa9949d6384edff70e16ef53ed8bd0b7",
+      "result_sha256": "1adf9c2f264ca9da20309223d4d20542b4d977c0004d14c9af3c3ff0db2c1f3d",
+      "review_seconds": 17.722136299998965,
+      "scheduler_seconds": {
+        "all_modes_fallback/beam": 1.3386075001908466,
+        "all_modes_fallback/dfs": 1.2593412999412976,
+        "nonstraight_first/beam": 11.185235000273678,
+        "nonstraight_first/dfs": 1.3318223001551814
+      },
+      "selected_joins": 28,
+      "solver_seconds": 24.799013899988495,
+      "whole_page_p95_px": 3.162277660168595,
+      "worker_seconds": 46.45971969998209
+    },
+    {
+      "backtracks": 8,
+      "baseline_page_p95_px": 17.26267650163207,
+      "baseline_worker_seconds": 122.74243179999758,
+      "boundary_joins_replayed": 0,
+      "case_id": "puzzle_000801_4effadfdf42a",
+      "cold_completed_attempts": 1,
+      "connected": true,
+      "cut_alternatives_examined": 7,
+      "cut_verified_completions": 1,
+      "dfs_sessions_started": 48,
+      "false_selected_neighbor_pairs": 0,
+      "final_physical": {
+        "fidelity": "bounded_native_interior_sampling",
+        "maximum_sampled_overlap": 0.041771115137375595,
+        "pairs_checked": 120,
+        "valid": true
+      },
+      "independent_geometry": {
+        "area_ratio": 1.010340420053702,
+        "aspect_ratio_prior_used": false,
+        "fill_fraction": 0.9844994043084989,
+        "interior_hole_fraction": 0.0025889973531267895,
+        "native_pixels_per_raster_pixel": 2.323298429319372,
+        "orientation_freely_fitted": true,
+        "overlap_fraction": 0.0052887860858515665,
+        "raster_fraction_uncertainty_estimate": 0.006371782859592877,
+        "raster_shape_hw": [
+          768,
+          537
+        ],
+        "raster_side_limit": 768,
+        "rectangle_area_px2": 2197450.0,
+        "rectangle_sides_px": [
+          1238.0,
+          1775.0
+        ],
+        "score": 0.988478505980385,
+        "shape_gate_pass": true,
+        "unfilled_fraction": 0.015500595691501085,
+        "union_area_px2_estimate": 2163388.2159977113
+      },
+      "independent_support": {
+        "active_joins_checked": 0,
+        "layouts_checked": 1,
+        "valid": true
+      },
+      "input_manifest_sha256": "fd863bbdd27e65784dffc39f1b09a1b1a95e6e80578161418a86261331f2cf31",
+      "max_per_piece_p95_px": 17.26267650163209,
+      "maximum_probe_error_px": 17.26267650163209,
+      "native_fitting_seconds": 50.05313760007266,
+      "native_joins_replayed": 28,
+      "pieces": 16,
+      "reference_sha256": "a968023ac84a33af844c06af2a7f754798f12f29de43507df186922d9abc1ef8",
+      "result_sha256": "3beb142d4823f43f0d7bf0a7ce303c7e93ef08448f15cc45156cc28ff92cadbd",
+      "review_seconds": 20.444989899988286,
+      "scheduler_seconds": {
+        "all_modes_fallback/beam": 12.8202094999142,
+        "all_modes_fallback/dfs": 12.735690100234933,
+        "cut": 15.017590100120287,
+        "nonstraight_first/beam": 102.9475908005843,
+        "nonstraight_first/dfs": 12.76151989994105,
+        "support": 13.22933040006319
+      },
+      "selected_joins": 28,
+      "solver_seconds": 222.11226179997902,
+      "whole_page_p95_px": 17.26267650163207,
+      "worker_seconds": 246.4269233000232
+    },
+    {
+      "backtracks": 0,
+      "baseline_page_p95_px": null,
+      "baseline_worker_seconds": 612.0518039999879,
+      "boundary_joins_replayed": 0,
+      "case_id": "puzzle_000600_139279105ea8",
+      "cold_completed_attempts": 1,
+      "connected": true,
+      "cut_alternatives_examined": 1,
+      "cut_verified_completions": 1,
+      "dfs_sessions_started": 48,
+      "false_selected_neighbor_pairs": 0,
+      "final_physical": {
+        "fidelity": "bounded_native_interior_sampling",
+        "maximum_sampled_overlap": 0.0726960726960727,
+        "pairs_checked": 190,
+        "valid": true
+      },
+      "independent_geometry": {
+        "area_ratio": 1.011951943943797,
+        "aspect_ratio_prior_used": false,
+        "fill_fraction": 0.9804667615753312,
+        "interior_hole_fraction": 0.002252720198606311,
+        "native_pixels_per_raster_pixel": 2.3102094240837694,
+        "orientation_freely_fitted": true,
+        "overlap_fraction": 0.008151440668403417,
+        "raster_fraction_uncertainty_estimate": 0.006324105788983056,
+        "raster_shape_hw": [
+          768,
+          544
+        ],
+        "raster_side_limit": 768,
+        "rectangle_area_px2": 2200955.0000000005,
+        "rectangle_sides_px": [
+          1247.0000000000002,
+          1765.0
+        ],
+        "score": 0.9853351988604936,
+        "shape_gate_pass": true,
+        "unfilled_fraction": 0.01953323842466881,
+        "union_area_px2_estimate": 2157963.221223034
+      },
+      "independent_support": {
+        "active_joins_checked": 0,
+        "layouts_checked": 1,
+        "valid": true
+      },
+      "input_manifest_sha256": "78e633baf743219b58fb0fe45c0174349f891b84ccb6a288ac8e8377d227eb58",
+      "max_per_piece_p95_px": 30.0,
+      "maximum_probe_error_px": 30.0,
+      "native_fitting_seconds": 62.11292070004856,
+      "native_joins_replayed": 36,
+      "pieces": 20,
+      "reference_sha256": "f6eae6c1c2b9c55685ba8f0151a85519d867fa0875dc4448aa7ed17fbeb709f6",
+      "result_sha256": "4896a95380c0ac8d5bcecf536285943293e096990d825c902054918422c4f216",
+      "review_seconds": 23.990618599986192,
+      "scheduler_seconds": {
+        "all_modes_fallback/beam": 5.986088099889457,
+        "all_modes_fallback/dfs": 5.990730400022585,
+        "cut": 1.6631254000240006,
+        "nonstraight_first/beam": 49.444685800524894,
+        "nonstraight_first/dfs": 5.993889899807982
+      },
+      "selected_joins": 36,
+      "solver_seconds": 134.2104626999935,
+      "whole_page_p95_px": 29.999999999999908,
+      "worker_seconds": 162.62591480003903
+    },
+    {
+      "backtracks": 0,
+      "baseline_page_p95_px": 13.152946437965909,
+      "baseline_worker_seconds": 61.04219559999183,
+      "boundary_joins_replayed": 0,
+      "case_id": "puzzle_000654_8b3ab997e3c3",
+      "cold_completed_attempts": 1,
+      "connected": true,
+      "cut_alternatives_examined": 0,
+      "cut_verified_completions": 0,
+      "dfs_sessions_started": 48,
+      "false_selected_neighbor_pairs": 0,
+      "final_physical": {
+        "fidelity": "bounded_native_interior_sampling",
+        "maximum_sampled_overlap": 0.008096101779565228,
+        "pairs_checked": 190,
+        "valid": true
+      },
+      "independent_geometry": {
+        "area_ratio": 1.0062020458365513,
+        "aspect_ratio_prior_used": false,
+        "fill_fraction": 0.9927186299120483,
+        "interior_hole_fraction": 0.001874685135889329,
+        "native_pixels_per_raster_pixel": 2.305280373884658,
+        "orientation_freely_fitted": true,
+        "overlap_fraction": 0.0019872173586121702,
+        "raster_fraction_uncertainty_estimate": 0.006333133205180531,
+        "raster_shape_hw": [
+          544,
+          768
+        ],
+        "raster_side_limit": 768,
+        "rectangle_area_px2": 2188449.2016126653,
+        "rectangle_sides_px": [
+          1242.5656931910617,
+          1761.2342056478788
+        ],
+        "score": 0.9945884632007256,
+        "shape_gate_pass": true,
+        "unfilled_fraction": 0.007281370087951711,
+        "union_area_px2_estimate": 2172514.2930570412
+      },
+      "independent_support": {
+        "active_joins_checked": 0,
+        "layouts_checked": 1,
+        "valid": true
+      },
+      "input_manifest_sha256": "c70310ef61a7f7186756ca5b874ec9d6e259241783541ba5313b0bc6c2dbb428",
+      "max_per_piece_p95_px": 9.055385138137527,
+      "maximum_probe_error_px": 9.055385138137527,
+      "native_fitting_seconds": 8.621609999972861,
+      "native_joins_replayed": 35,
+      "pieces": 20,
+      "reference_sha256": "7100dda40fa6ebc4cc53362c633bac46f4d1a10f4e90ff9f60c4a0c25f79bbcd",
+      "result_sha256": "b1053d178604ea09b2df93f78c22c25d6beccac78b88b3c1060f9034f92775d5",
+      "review_seconds": 25.97082159999991,
+      "scheduler_seconds": {
+        "all_modes_fallback/beam": 1.866276699991431,
+        "all_modes_fallback/dfs": 1.7889415000099689,
+        "nonstraight_first/beam": 14.164854200207628,
+        "nonstraight_first/dfs": 3.413842600013595
+      },
+      "selected_joins": 35,
+      "solver_seconds": 32.6414087000303,
+      "whole_page_p95_px": 9.055385138137407,
+      "worker_seconds": 62.73121729999548
+    },
+    {
+      "backtracks": 0,
+      "baseline_page_p95_px": 10.049875621121004,
+      "baseline_worker_seconds": 101.17901070002699,
+      "boundary_joins_replayed": 0,
+      "case_id": "puzzle_000187_aa7faf896549",
+      "cold_completed_attempts": 1,
+      "connected": true,
+      "cut_alternatives_examined": 0,
+      "cut_verified_completions": 0,
+      "dfs_sessions_started": 48,
+      "false_selected_neighbor_pairs": 0,
+      "final_physical": {
+        "fidelity": "bounded_native_interior_sampling",
+        "maximum_sampled_overlap": 0.05689900426742532,
+        "pairs_checked": 276,
+        "valid": true
+      },
+      "independent_geometry": {
+        "area_ratio": 1.0019476220252328,
+        "aspect_ratio_prior_used": false,
+        "fill_fraction": 0.9938073412581444,
+        "interior_hole_fraction": 0.0019345007581905312,
+        "native_pixels_per_raster_pixel": 2.2984293193717282,
+        "orientation_freely_fitted": true,
+        "overlap_fraction": 0.004480330257406508,
+        "raster_fraction_uncertainty_estimate": 0.0063222781671189296,
+        "raster_shape_hw": [
+          544,
+          768
+        ],
+        "raster_side_limit": 768,
+        "rectangle_area_px2": 2179196.0000000005,
+        "rectangle_sides_px": [
+          1241.0,
+          1756.0000000000005
+        ],
+        "score": 0.994788530652584,
+        "shape_gate_pass": true,
+        "unfilled_fraction": 0.0061926587418555945,
+        "union_area_px2_estimate": 2165700.9828403834
+      },
+      "independent_support": {
+        "active_joins_checked": 0,
+        "layouts_checked": 1,
+        "valid": true
+      },
+      "input_manifest_sha256": "9539116d60a2b6f0b6aa7cf2169dfe6630b521e2bea85f551f20f06ab8d9d886",
+      "max_per_piece_p95_px": 15.99999999999983,
+      "maximum_probe_error_px": 15.999999999999886,
+      "native_fitting_seconds": 8.977363900048658,
+      "native_joins_replayed": 47,
+      "pieces": 24,
+      "reference_sha256": "7efc54bed7837a44c2f57ec74ddb386ad216a0012e653da664f892d3e3384680",
+      "result_sha256": "0b717233a5b43e0c869e1513b9d297972950709795b67c835fc89498437a7699",
+      "review_seconds": 34.49308329995256,
+      "scheduler_seconds": {
+        "all_modes_fallback/beam": 3.3732770000351593,
+        "all_modes_fallback/dfs": 3.397537700016983,
+        "nonstraight_first/beam": 26.537273899884894,
+        "nonstraight_first/dfs": 5.680561099783517
+      },
+      "selected_joins": 47,
+      "solver_seconds": 51.36111880000681,
+      "whole_page_p95_px": 15.033296378372908,
+      "worker_seconds": 89.82957950001583
+    },
+    {
+      "backtracks": 0,
+      "baseline_page_p95_px": 31.57530680769373,
+      "baseline_worker_seconds": 79.78865379997296,
+      "boundary_joins_replayed": 0,
+      "case_id": "puzzle_000976_13e78443450c",
+      "cold_completed_attempts": 1,
+      "connected": true,
+      "cut_alternatives_examined": 1,
+      "cut_verified_completions": 1,
+      "dfs_sessions_started": 48,
+      "false_selected_neighbor_pairs": 0,
+      "final_physical": {
+        "fidelity": "bounded_native_interior_sampling",
+        "maximum_sampled_overlap": 0.03268358465121981,
+        "pairs_checked": 276,
+        "valid": true
+      },
+      "independent_geometry": {
+        "area_ratio": 1.0130200095633946,
+        "aspect_ratio_prior_used": false,
+        "fill_fraction": 0.984273632399676,
+        "interior_hole_fraction": 0.002169981035331276,
+        "native_pixels_per_raster_pixel": 2.2997382198952887,
+        "orientation_freely_fitted": true,
+        "overlap_fraction": 0.003637565334026666,
+        "raster_fraction_uncertainty_estimate": 0.006289104328061884,
+        "raster_shape_hw": [
+          768,
+          550
+        ],
+        "raster_side_limit": 768,
+        "rectangle_area_px2": 2203278.0000000005,
+        "rectangle_sides_px": [
+          1254.0,
+          1757.0000000000005
+        ],
+        "score": 0.9887248508376844,
+        "shape_gate_pass": true,
+        "unfilled_fraction": 0.015726367600323976,
+        "union_area_px2_estimate": 2168628.440246294
+      },
+      "independent_support": {
+        "active_joins_checked": 0,
+        "layouts_checked": 1,
+        "valid": true
+      },
+      "input_manifest_sha256": "2e72b5cb06fb07e7d329c8e79b430129ed568ff3ba32da34b3b58c19a9e0503e",
+      "max_per_piece_p95_px": 20.0997512422416,
+      "maximum_probe_error_px": 20.0997512422416,
+      "native_fitting_seconds": 84.04060510004638,
+      "native_joins_replayed": 42,
+      "pieces": 24,
+      "reference_sha256": "1379784ca1a999bae119e7ec3807476b033b8ee6ced8ca0ac98a21ba1cf6a1d7",
+      "result_sha256": "a82391cf93b33fb77981d4fcbd999663ed2743067f32a0f761f5387ed98d0278",
+      "review_seconds": 32.36960590002127,
+      "scheduler_seconds": {
+        "all_modes_fallback/beam": 3.674384000187274,
+        "all_modes_fallback/dfs": 3.607978100073524,
+        "cut": 1.8872784999548458,
+        "nonstraight_first/beam": 30.86807039938867,
+        "nonstraight_first/dfs": 3.665074500022456
+      },
+      "selected_joins": 42,
+      "solver_seconds": 130.74035199999344,
+      "whole_page_p95_px": 18.35755975068582,
+      "worker_seconds": 167.26828089996707
+    },
+    {
+      "backtracks": 0,
+      "baseline_page_p95_px": 21.26029162546943,
+      "baseline_worker_seconds": 122.70167209999636,
+      "boundary_joins_replayed": 0,
+      "case_id": "puzzle_000062_df198f2a133c",
+      "cold_completed_attempts": 1,
+      "connected": true,
+      "cut_alternatives_examined": 0,
+      "cut_verified_completions": 0,
+      "dfs_sessions_started": 48,
+      "false_selected_neighbor_pairs": 0,
+      "final_physical": {
+        "fidelity": "bounded_native_interior_sampling",
+        "maximum_sampled_overlap": 0.061007724719101125,
+        "pairs_checked": 435,
+        "valid": true
+      },
+      "independent_geometry": {
+        "area_ratio": 1.0101785779968366,
+        "aspect_ratio_prior_used": false,
+        "fill_fraction": 0.9837117760349166,
+        "interior_hole_fraction": 0.0032795842240425067,
+        "native_pixels_per_raster_pixel": 2.3154450261780104,
+        "orientation_freely_fitted": true,
+        "overlap_fraction": 0.0062514020050829615,
+        "raster_fraction_uncertainty_estimate": 0.006349314100415627,
+        "raster_shape_hw": [
+          768,
+          541
+        ],
+        "raster_side_limit": 768,
+        "rectangle_area_px2": 2197098.0,
+        "rectangle_sides_px": [
+          1242.0,
+          1769.0
+        ],
+        "score": 0.9876704363880728,
+        "shape_gate_pass": true,
+        "unfilled_fraction": 0.016288223965083448,
+        "union_area_px2_estimate": 2161311.1757027633
+      },
+      "independent_support": {
+        "active_joins_checked": 0,
+        "layouts_checked": 1,
+        "valid": true
+      },
+      "input_manifest_sha256": "ddedae78361fcfcc74bba49baf84307e1bd3585977eb6d54d100fe352b283e74",
+      "max_per_piece_p95_px": 25.05992817228315,
+      "maximum_probe_error_px": 25.05992817228315,
+      "native_fitting_seconds": 9.873775999993086,
+      "native_joins_replayed": 54,
+      "pieces": 30,
+      "reference_sha256": "868c15c82543453e8a2f8d39e98a2d7269b62f800f046e3be949a28163db9e13",
+      "result_sha256": "6359dc3cfc3d883732e42693e762285ad0e7527f6af664ff4259e97a2fe5516c",
+      "review_seconds": 51.83504219999304,
+      "scheduler_seconds": {
+        "all_modes_fallback/beam": 4.659633200208191,
+        "all_modes_fallback/dfs": 4.604314000054728,
+        "nonstraight_first/beam": 36.662790999165736,
+        "nonstraight_first/dfs": 7.253784599772189
+      },
+      "selected_joins": 54,
+      "solver_seconds": 67.6881709000445,
+      "whole_page_p95_px": 22.82542442102644,
+      "worker_seconds": 125.03183930000523
+    },
+    {
+      "backtracks": 0,
+      "baseline_page_p95_px": 18.027756377319978,
+      "baseline_worker_seconds": 103.77273049997166,
+      "boundary_joins_replayed": 0,
+      "case_id": "puzzle_000847_0c6407e2d3af",
+      "cold_completed_attempts": 1,
+      "connected": true,
+      "cut_alternatives_examined": 0,
+      "cut_verified_completions": 0,
+      "dfs_sessions_started": 48,
+      "false_selected_neighbor_pairs": 0,
+      "final_physical": {
+        "fidelity": "bounded_native_interior_sampling",
+        "maximum_sampled_overlap": 0.01738009822019435,
+        "pairs_checked": 435,
+        "valid": true
+      },
+      "independent_geometry": {
+        "area_ratio": 1.0128972486850336,
+        "aspect_ratio_prior_used": false,
+        "fill_fraction": 0.984488554273217,
+        "interior_hole_fraction": 0.0027324060545428942,
+        "native_pixels_per_raster_pixel": 2.304973821989529,
+        "orientation_freely_fitted": true,
+        "overlap_fraction": 0.00282380299821436,
+        "raster_fraction_uncertainty_estimate": 0.006304068337665601,
+        "raster_shape_hw": [
+          768,
+          547
+        ],
+        "raster_side_limit": 768,
+        "rectangle_area_px2": 2203011.000000001,
+        "rectangle_sides_px": [
+          1251.0000000000005,
+          1761.0
+        ],
+        "score": 0.9889429387697668,
+        "shape_gate_pass": true,
+        "unfilled_fraction": 0.01551144572678298,
+        "union_area_px2_estimate": 2168839.114437995
+      },
+      "independent_support": {
+        "active_joins_checked": 0,
+        "layouts_checked": 1,
+        "valid": true
+      },
+      "input_manifest_sha256": "1fd772f340a2b04d695633174d76134b4c9ddee015404f17238dbc5e6a5a061f",
+      "max_per_piece_p95_px": 12.369316876853423,
+      "maximum_probe_error_px": 12.369316876853423,
+      "native_fitting_seconds": 10.513205500028562,
+      "native_joins_replayed": 48,
+      "pieces": 30,
+      "reference_sha256": "912879a3e60089b6d15aec52bfe5a33c8ed116a125530ccb63f00996fdcd340d",
+      "result_sha256": "081e8db2de2da595f846e19a57edd95284e369202d970bcfb074c123ee6a4933",
+      "review_seconds": 45.909461300005205,
+      "scheduler_seconds": {
+        "all_modes_fallback/beam": 3.4946173000498675,
+        "all_modes_fallback/dfs": 3.5399737997795455,
+        "nonstraight_first/beam": 27.74388659943361,
+        "nonstraight_first/dfs": 6.103338200075086
+      },
+      "selected_joins": 48,
+      "solver_seconds": 55.658043699979316,
+      "whole_page_p95_px": 11.66190378969099,
+      "worker_seconds": 105.76713180000661
+    }
+  ],
+  "fresh_independent_replay_cases": 14,
+  "html_local_links_checked": 507,
+  "html_missing_local_links": 0,
+  "implementation_sha256": "10270c9ef986d15529e05fd2bdc7b8d39675ba598d59b1876be815445084761e",
+  "max_probe_error_across_all_cases_px": 30.0,
+  "original_prediction_files_verified": 182,
+  "original_report_files_verified": 241,
+  "prediction_barrier_sha256": "78f23b8cd2b36f6be95a6df64e8b8985eef7f2f068e70a3f36d98e6b40fca68d",
+  "primary_results_changed": false,
+  "request_sha256": "5a657b03d83db9a47eddb4954b0fc972ebd1f70ab0408a776a726a7e8587632f",
+  "run": "C:\\Users\\danka\\Desktop\\paper-reconstruction-stage4\\outputs\\v21_cut_repair_full_r4",
+  "schema_version": "stage4.v21-full-independent-review.v1",
+  "script_sha256": "5c45024dda854e94321d2e8a6087dc61c96258e098c92ff76609dbaf54b24017",
+  "solver_executed_during_review": false,
+  "source_report_receipt_sha256": "33c613c3cb3914b6de08003e3b59a84fafa68f6f66fe90ac8b486faea5ec9f3b",
+  "visual_review": "Record manual visual inspection separately; this script does not inspect pixels semantically.",
+  "worker_seconds_total": 1145.772475600068
+}

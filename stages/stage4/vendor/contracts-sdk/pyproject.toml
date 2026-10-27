@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "paper-reconstruction-contracts"
+version = "0.1.0"
+description = "Independent file contract reader between paper reconstruction Stages 3 and 4"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "Pillow>=10", "jsonschema>=4,<5"]
+[tool.setuptools.packages.find]
+where = ["src"]
+[tool.setuptools.package-data]
+paper_reconstruction_contracts = ["schemas/*.json"]

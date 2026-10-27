@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/paper-reconstruction/stage2/canonical-puzzle.v2.schema.json",
+  "title": "Stage 2 Canonical Puzzle Manifest v2",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generator_version",
+    "puzzle_id",
+    "puzzle_fingerprint",
+    "split",
+    "difficulty_tier",
+    "source",
+    "coordinate_system",
+    "target_piece_count",
+    "actual_piece_count",
+    "successful_cut_count",
+    "geometry_metrics",
+    "label_map_path",
+    "truth_path",
+    "pieces",
+    "seams",
+    "page_border_segments",
+    "validation"
+  ],
+  "properties": {
+    "schema_version": {"const": "stage2.canonical-puzzle.v2"},
+    "puzzle_id": {"type": "string", "pattern": "^puzzle_"},
+    "puzzle_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "split": {"enum": ["train", "validation", "calibration", "holdout"]},
+    "difficulty_tier": {"enum": ["simple", "moderate", "hard", "extreme"]},
+    "target_piece_count": {"type": "integer", "minimum": 2},
+    "actual_piece_count": {"type": "integer", "minimum": 2},
+    "successful_cut_count": {"type": "integer", "minimum": 1},
+    "geometry_metrics": {"type": "object"},
+    "pieces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "piece_id",
+          "label",
+          "area_px",
+          "bbox_xywh",
+          "geometry_metrics",
+          "neighbors",
+          "seam_ids",
+          "canonical_piece_path",
+          "canonical_mask_path"
+        ]
+      }
+    },
+    "seams": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "seam_id",
+          "owner_a",
+          "owner_b",
+          "owner_a_direction",
+          "owner_b_direction",
+          "canonical_polyline_ref",
+          "length_px",
+          "geometry_metrics"
+        ]
+      }
+    },
+    "validation": {
+      "type": "object",
+      "required": ["valid", "piece_count", "seam_count"]
+    }
+  },
+  "additionalProperties": true
+}

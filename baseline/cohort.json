@@ -1,0 +1,134 @@
+{
+  "cases": [
+    {
+      "bundle": "assets/benchmark/puzzle_000330_c783e29dd569/stage3",
+      "bundle_manifest_sha256": "337eb2aca80735f6a4941f08ec0c17cc1f77912b7b018c8e242865a90c0f6cd3",
+      "capture_profile": "assets/benchmark/puzzle_000330_c783e29dd569/stage1/capture_profile.json",
+      "case_id": "puzzle_000330_c783e29dd569",
+      "evaluation_reference": "assets/benchmark/puzzle_000330_c783e29dd569/evaluation_only/reference_geometry.json",
+      "pieces": 4,
+      "stage1": "assets/benchmark/puzzle_000330_c783e29dd569/stage1"
+    },
+    {
+      "bundle": "assets/benchmark/puzzle_000450_dbaf91d313a9/stage3",
+      "bundle_manifest_sha256": "f1dec73667fa749bbdc27230b3b5a28b5a842d31aaa6d87c26a7a08be2f7e3c9",
+      "capture_profile": "assets/benchmark/puzzle_000450_dbaf91d313a9/stage1/capture_profile.json",
+      "case_id": "puzzle_000450_dbaf91d313a9",
+      "evaluation_reference": "assets/benchmark/puzzle_000450_dbaf91d313a9/evaluation_only/reference_geometry.json",
+      "pieces": 4,
+      "stage1": "assets/benchmark/puzzle_000450_dbaf91d313a9/stage1"
+    },
+    {
+      "bundle": "assets/benchmark/puzzle_000678_004586b006b3/stage3",
+      "bundle_manifest_sha256": "0acfc64c1391d26160422f3dc231554f5cc52ad4239053e09da854457c44e9f7",
+      "capture_profile": "assets/benchmark/puzzle_000678_004586b006b3/stage1/capture_profile.json",
+      "case_id": "puzzle_000678_004586b006b3",
+      "evaluation_reference": "assets/benchmark/puzzle_000678_004586b006b3/evaluation_only/reference_geometry.json",
+      "pieces": 8,
+      "stage1": "assets/benchmark/puzzle_000678_004586b006b3/stage1"
+    },
+    {
+      "bundle": "assets/benchmark/puzzle_000917_5da663844c03/stage3",
+      "bundle_manifest_sha256": "7283d98e3cdf2f44ac1d16595cf4e8d018f58582876643330e537ce081d0f355",
+      "capture_profile": "assets/benchmark/puzzle_000917_5da663844c03/stage1/capture_profile.json",
+      "case_id": "puzzle_000917_5da663844c03",
+      "evaluation_reference": "assets/benchmark/puzzle_000917_5da663844c03/evaluation_only/reference_geometry.json",
+      "pieces": 8,
+      "stage1": "assets/benchmark/puzzle_000917_5da663844c03/stage1"
+    },
+    {
+      "bundle": "assets/benchmark/puzzle_000341_ed2561390853/stage3",
+      "bundle_manifest_sha256": "c60d211a16070babc518d5a00f309809a0a334bdb4059a0f8d205853ffb44a54",
+      "capture_profile": "assets/benchmark/puzzle_000341_ed2561390853/stage1/capture_profile.json",
+      "case_id": "puzzle_000341_ed2561390853",
+      "evaluation_reference": "assets/benchmark/puzzle_000341_ed2561390853/evaluation_only/reference_geometry.json",
+      "pieces": 12,
+      "stage1": "assets/benchmark/puzzle_000341_ed2561390853/stage1"
+    },
+    {
+      "bundle": "assets/benchmark/puzzle_000362_2c257c3cdfe6/stage3",
+      "bundle_manifest_sha256": "a6dcb4b08e6fcc056a7352123188911f8026a5bd6f784d00b125efdfc6d9b116",
+      "capture_profile": "assets/benchmark/puzzle_000362_2c257c3cdfe6/stage1/capture_profile.json",
+      "case_id": "puzzle_000362_2c257c3cdfe6",
+      "evaluation_reference": "assets/benchmark/puzzle_000362_2c257c3cdfe6/evaluation_only/reference_geometry.json",
+      "pieces": 12,
+      "stage1": "assets/benchmark/puzzle_000362_2c257c3cdfe6/stage1"
+    },
+    {
+      "bundle": "assets/benchmark/puzzle_000681_29c5f6c02ba4/stage3",
+      "bundle_manifest_sha256": "41236db0e42511988355bb42ba03e269187a64ae5f31833cea7e1eda24cce590",
+      "capture_profile": "assets/benchmark/puzzle_000681_29c5f6c02ba4/stage1/capture_profile.json",
+      "case_id": "puzzle_000681_29c5f6c02ba4",
+      "evaluation_reference": "assets/benchmark/puzzle_000681_29c5f6c02ba4/evaluation_only/reference_geometry.json",
+      "pieces": 16,
+      "stage1": "assets/benchmark/puzzle_000681_29c5f6c02ba4/stage1"
+    },
+    {
+      "bundle": "assets/benchmark/puzzle_000801_4effadfdf42a/stage3",
+      "bundle_manifest_sha256": "fd863bbdd27e65784dffc39f1b09a1b1a95e6e80578161418a86261331f2cf31",
+      "capture_profile": "assets/benchmark/puzzle_000801_4effadfdf42a/stage1/capture_profile.json",
+      "case_id": "puzzle_000801_4effadfdf42a",
+      "evaluation_reference": "assets/benchmark/puzzle_000801_4effadfdf42a/evaluation_only/reference_geometry.json",
+      "pieces": 16,
+      "stage1": "assets/benchmark/puzzle_000801_4effadfdf42a/stage1"
+    },
+    {
+      "bundle": "assets/benchmark/puzzle_000600_139279105ea8/stage3",
+      "bundle_manifest_sha256": "78e633baf743219b58fb0fe45c0174349f891b84ccb6a288ac8e8377d227eb58",
+      "capture_profile": "assets/benchmark/puzzle_000600_139279105ea8/stage1/capture_profile.json",
+      "case_id": "puzzle_000600_139279105ea8",
+      "evaluation_reference": "assets/benchmark/puzzle_000600_139279105ea8/evaluation_only/reference_geometry.json",
+      "pieces": 20,
+      "stage1": "assets/benchmark/puzzle_000600_139279105ea8/stage1"
+    },
+    {
+      "bundle": "assets/benchmark/puzzle_000654_8b3ab997e3c3/stage3",
+      "bundle_manifest_sha256": "c70310ef61a7f7186756ca5b874ec9d6e259241783541ba5313b0bc6c2dbb428",
+      "capture_profile": "assets/benchmark/puzzle_000654_8b3ab997e3c3/stage1/capture_profile.json",
+      "case_id": "puzzle_000654_8b3ab997e3c3",
+      "evaluation_reference": "assets/benchmark/puzzle_000654_8b3ab997e3c3/evaluation_only/reference_geometry.json",
+      "pieces": 20,
+      "stage1": "assets/benchmark/puzzle_000654_8b3ab997e3c3/stage1"
+    },
+    {
+      "bundle": "assets/benchmark/puzzle_000187_aa7faf896549/stage3",
+      "bundle_manifest_sha256": "9539116d60a2b6f0b6aa7cf2169dfe6630b521e2bea85f551f20f06ab8d9d886",
+      "capture_profile": "assets/benchmark/puzzle_000187_aa7faf896549/stage1/capture_profile.json",
+      "case_id": "puzzle_000187_aa7faf896549",
+      "evaluation_reference": "assets/benchmark/puzzle_000187_aa7faf896549/evaluation_only/reference_geometry.json",
+      "pieces": 24,
+      "stage1": "assets/benchmark/puzzle_000187_aa7faf896549/stage1"
+    },
+    {
+      "bundle": "assets/benchmark/puzzle_000976_13e78443450c/stage3",
+      "bundle_manifest_sha256": "2e72b5cb06fb07e7d329c8e79b430129ed568ff3ba32da34b3b58c19a9e0503e",
+      "capture_profile": "assets/benchmark/puzzle_000976_13e78443450c/stage1/capture_profile.json",
+      "case_id": "puzzle_000976_13e78443450c",
+      "evaluation_reference": "assets/benchmark/puzzle_000976_13e78443450c/evaluation_only/reference_geometry.json",
+      "pieces": 24,
+      "stage1": "assets/benchmark/puzzle_000976_13e78443450c/stage1"
+    },
+    {
+      "bundle": "assets/benchmark/puzzle_000062_df198f2a133c/stage3",
+      "bundle_manifest_sha256": "ddedae78361fcfcc74bba49baf84307e1bd3585977eb6d54d100fe352b283e74",
+      "capture_profile": "assets/benchmark/puzzle_000062_df198f2a133c/stage1/capture_profile.json",
+      "case_id": "puzzle_000062_df198f2a133c",
+      "evaluation_reference": "assets/benchmark/puzzle_000062_df198f2a133c/evaluation_only/reference_geometry.json",
+      "pieces": 30,
+      "stage1": "assets/benchmark/puzzle_000062_df198f2a133c/stage1"
+    },
+    {
+      "bundle": "assets/benchmark/puzzle_000847_0c6407e2d3af/stage3",
+      "bundle_manifest_sha256": "1fd772f340a2b04d695633174d76134b4c9ddee015404f17238dbc5e6a5a061f",
+      "capture_profile": "assets/benchmark/puzzle_000847_0c6407e2d3af/stage1/capture_profile.json",
+      "case_id": "puzzle_000847_0c6407e2d3af",
+      "evaluation_reference": "assets/benchmark/puzzle_000847_0c6407e2d3af/evaluation_only/reference_geometry.json",
+      "pieces": 30,
+      "stage1": "assets/benchmark/puzzle_000847_0c6407e2d3af/stage1"
+    }
+  ],
+  "held_out": false,
+  "schema_version": "paper-pipeline.cohort.v2",
+  "stage1_bypassed": true,
+  "version": "2.0.0"
+}

@@ -1,0 +1,21 @@
+{
+  "solver": "structural_beam_v2",
+  "objective_version": "observable-structure.v2",
+  "beam_width": 32,
+  "max_proposals": 100000,
+  "max_seconds": 120.0,
+  "join_cost": 0.55,
+  "loop_proposals": false,
+  "repair_rounds": 1,
+  "max_repair_checks": 1000,
+  "refine": true,
+  "refine_seconds": 20.0,
+  "refine_max_nfev": 40,
+  "refine_translation_px": 16.0,
+  "refine_rotation_degrees": 3.0,
+  "refine_log_scale": 0.03,
+  "portfolio_size": 3,
+  "evidence_policy": "working_pool",
+  "structural_alternatives_per_pair": 12,
+  "structural_repair_removals": 2
+}

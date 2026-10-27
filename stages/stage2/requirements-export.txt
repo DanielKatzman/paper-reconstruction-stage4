@@ -1,0 +1,4 @@
+# Maintainer-only environment for checkpoint-to-ONNX export and parity checks.
+-r requirements-inference.txt
+torch>=2.6
+onnx>=1.18,<2

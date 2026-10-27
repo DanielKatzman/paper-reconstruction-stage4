@@ -1,0 +1,17 @@
+{
+  "archives": [
+    {
+      "bytes": 79235835,
+      "files": 4,
+      "name": "models-v2.0.0.zip",
+      "sha256": "734b15cc227ac84de98f52100d22ed1a3fd90bdcc4b952a5dfaf32ad393c95b7"
+    },
+    {
+      "bytes": 171300445,
+      "files": 1294,
+      "name": "benchmark-v2.0.0.zip",
+      "sha256": "f2442a0b8944b5102ecfc59d52f38a032e71698ffd32e6c5c691d267b383c037"
+    }
+  ],
+  "release": "2.0.0"
+}

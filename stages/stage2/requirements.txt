@@ -1,0 +1,7 @@
+# Runtime dependencies for images, geometry, configuration, and PDF sources.
+numpy>=1.24
+Pillow>=10.0
+PyYAML>=6.0
+scipy>=1.10
+PyMuPDF>=1.23
+
