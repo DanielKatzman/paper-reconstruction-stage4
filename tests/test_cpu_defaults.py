@@ -28,6 +28,7 @@ class CpuDefaults(unittest.TestCase):
         text=(ROOT/'tools/setup.ps1').read_text(encoding='utf-8')
         self.assertIn("$Device = 'cpu'",text)
         self.assertIn('https://download.pytorch.org/whl/cpu',text)
+        self.assertIn('2.7.1+cpu',text)
         self.assertIn('check_cpu_runtime.py',text)
 
 

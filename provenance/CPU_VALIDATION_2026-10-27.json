@@ -1,0 +1,94 @@
+{
+  "additional_unit_tests_passed": 15,
+  "cases": [
+    {
+      "case": "prepared_generator_masks",
+      "component_sizes": [
+        4
+      ],
+      "device": "cpu",
+      "gpu_visibility_disabled": true,
+      "pieces": 4,
+      "ranking_score_inclusive_seconds": 89.7222837000154,
+      "raw_images_published": false,
+      "result_sha256": "fbc499d546016d4af434b923c54e7935b700668719c6d3958dadf28b913b677c",
+      "status": "complete_candidate",
+      "times_seconds": {
+        "stage2": 9.46899999998277,
+        "stage2_verify": 1.4369999999762513,
+        "stage3_native": 149.98399999999674,
+        "stage3_pool": 5.375,
+        "stage4": 6.9060000000172295
+      },
+      "torch_cuda_build": null,
+      "torch_version": "2.7.1+cpu",
+      "total_subprocess_seconds": 173.170999999973,
+      "visual_or_reference_result": "reference_verified_correct"
+    },
+    {
+      "case": "generator_images_predicted_masks",
+      "component_sizes": [
+        4
+      ],
+      "device": "cpu",
+      "gpu_visibility_disabled": true,
+      "pieces": 4,
+      "ranking_score_inclusive_seconds": 276.78331870003603,
+      "raw_images_published": false,
+      "result_sha256": "bd8a26735c6ebe38c05ff3f78ded006c6ebda064dc0c4ca20d98aa0eb67abbce",
+      "status": "complete_candidate",
+      "times_seconds": {
+        "stage1": 12.420999999972992,
+        "stage1_boundary": 1.4530000000377186,
+        "stage2": 7.48499999998603,
+        "stage2_verify": 1.187999999965541,
+        "stage3_native": 334.21899999998277,
+        "stage3_pool": 5.203000000037719,
+        "stage4": 7.594000000040978
+      },
+      "torch_cuda_build": null,
+      "torch_version": "2.7.1+cpu",
+      "total_subprocess_seconds": 369.56300000002375,
+      "visual_or_reference_result": "incorrect_visual_arrangement"
+    },
+    {
+      "case": "user_confirmed_six_pdf_phone_captures",
+      "component_sizes": [
+        6
+      ],
+      "device": "cpu",
+      "gpu_visibility_disabled": true,
+      "pieces": 6,
+      "ranking_score_inclusive_seconds": 327.01859559997683,
+      "raw_images_published": false,
+      "result_sha256": "ac5f1c9ef8ebced1e53ed93e1e9b7dd6760d1012e4aa9bd83d5b52cf5099ae8a",
+      "status": "complete_candidate",
+      "times_seconds": {
+        "stage1": 26.875,
+        "stage1_boundary": 4.469000000040978,
+        "stage2": 16.39100000000326,
+        "stage2_verify": 1.3440000000409782,
+        "stage3_native": 469.3279999999795,
+        "stage3_pool": 13.09399999998277,
+        "stage4": 19.20299999997951
+      },
+      "torch_cuda_build": null,
+      "torch_version": "2.7.1+cpu",
+      "total_subprocess_seconds": 550.704000000027,
+      "visual_or_reference_result": "misplaced_or_misoriented_fragment"
+    }
+  ],
+  "cpu_only_wheel_rankers_loaded": 2,
+  "date": "2026-10-27",
+  "frozen_models_and_solver_source_unchanged": true,
+  "prepared_mask_control_whole_page_p95_px": 5.099019513592792,
+  "raw_mask_connectivity_adapter": "bounded-predicted-mask-native-frame.v2",
+  "real_capture_constraints": "Common pixel scale and negligible perspective declared for an exploratory run based on fixed distance/flat pieces; not measured calibration.",
+  "real_photograph_accuracy_qualified": false,
+  "release": "2.0.1",
+  "schema_version": "paper-pipeline.cpu-validation.v1",
+  "stage1_stage2_onnx_providers": "CPUExecutionProvider",
+  "stage4_backend": "CPU NumPy/SciPy",
+  "thirty_piece_cpu_full_pipeline_qualified": false,
+  "timing_scope": "The two fresh-segmentation runs overlapped on one workstation; these are observed execution times, not isolated latency qualifications."
+}

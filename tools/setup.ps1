@@ -1,10 +1,14 @@
 param(
     [ValidateSet('cpu', 'cuda')][string]$Device = 'cpu',
-    [string]$TorchIndexUrl = ''
+    [string]$TorchIndexUrl = '',
+    [string]$TorchPackageVersion = ''
 )
 $ErrorActionPreference = 'Stop'
 if (-not $TorchIndexUrl) {
     $TorchIndexUrl = if ($Device -eq 'cpu') { 'https://download.pytorch.org/whl/cpu' } else { 'https://download.pytorch.org/whl/cu118' }
+}
+if (-not $TorchPackageVersion) {
+    $TorchPackageVersion = if ($Device -eq 'cpu') { '2.7.1+cpu' } else { '2.7.1+cu118' }
 }
 $Repo = Split-Path -Parent $PSScriptRoot
 $Runtimes = @{}
@@ -23,7 +27,7 @@ try {
         if ($Stage -eq 'stage1') { $Package = './stages/stage1[runtime]' }
         elseif ($Stage -eq 'stage2') { $Package = './stages/stage2[inference]' }
         elseif ($Stage -eq 'stage3') {
-            & $Executable -m pip install 'torch==2.7.1' --index-url $TorchIndexUrl
+            & $Executable -m pip install "torch==$TorchPackageVersion" --index-url $TorchIndexUrl
             if ($LASTEXITCODE -ne 0) { throw 'Torch install failed' }
             & $Executable -m pip install -e ./contracts/sdk -e './stages/stage3[test]' -c ./stages/stage3/constraints.txt
             if ($LASTEXITCODE -ne 0) { throw 'Stage 3 install failed' }

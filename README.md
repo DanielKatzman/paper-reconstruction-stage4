@@ -57,7 +57,7 @@ python -B -m unittest discover -s tests -v
 python -B tools/pipeline.py benchmark --output outputs/v2_full_regression
 ```
 
-Source-only tests do not require model/benchmark downloads: install `contracts/sdk` and `stages/stage4`, then run the two test commands. The portable Stage 4 suite passes 334 tests with 16 documented archive-dependent skips; eight additional tests cover orchestration and post-seal measurements. [Packaging validation](provenance/PACKAGING_VALIDATION.json) records fresh relocation checks at 4, 20 and 30 pieces and a fresh Stage 2→3→4 four-piece run.
+Source-only tests do not require model/benchmark downloads: install `contracts/sdk` and `stages/stage4`, then run the two test commands. The portable Stage 4 suite passes 334 tests with 16 documented archive-dependent skips; fifteen additional tests cover orchestration, CPU defaults and mask boundaries. [Packaging validation](provenance/PACKAGING_VALIDATION.json) preserves the original relocation checks. [CPU validation](provenance/CPU_VALIDATION_2026-10-27.json) records CPU-only execution and the real six-piece accuracy limitation.
 
 ## Stage 4 interface
 
@@ -99,6 +99,8 @@ python -B tools/pipeline.py run `
 Raw captures can enter through `--captures <folder> --mode shared-scale-capture --capture-profile <json>` with a truthful shared-scale capture profile. Stage 1 runs first and supports manual mask review. This route uses the general Stage 4 continuation configuration because V21's exact-mask page gates are not qualified for capture masks. Arbitrary per-piece resizing or perspective violates this Stage 3 runtime's declared scale assumption. See [running and assets](docs/RUNNING.md) before using that route.
 
 Fixed-distance phone photos of flat pieces are closer to the assumed acquisition, but flatness and distance alone do not prove shared pixel scale or remove perspective/lens effects. Keep the camera parallel, preserve native pixel scale and avoid independently resizing images. Real-photo segmentation/assembly must be assessed on those actual inputs; the fourteen-case exact-mask result does not qualify that route. See [CPU and capture scope](docs/CPU_AND_CAPTURE_SCOPE.md).
+
+The first actual six-PDF CPU run completed all stages in approximately **9m11s**, but visual review found a wrongly placed/oriented fragment. This demonstrates CPU execution, not reliable photo reconstruction. The [real-capture review](docs/REAL_CAPTURE_CPU_REVIEW_2026-10-27.md) records the result, integration fixes and the next Stage 4/Stage 3 work.
 
 ## New checkout
 
