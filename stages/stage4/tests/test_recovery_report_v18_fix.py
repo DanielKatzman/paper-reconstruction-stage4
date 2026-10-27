@@ -70,7 +70,7 @@ class RecoveryReportRepairTests(unittest.TestCase):
             atomic_json(root/'request.json', request)
             atomic_json(root/'predictions_sealed.json', {'request_sha256': 'bound', 'references_opened': False,
                 'files': {str(prediction): sha(prediction)}})
-            self.assertEqual(bootstrap(root)[1], snapshot)
+            self.assertEqual(bootstrap(root)[1], snapshot.resolve())
             controller.write_text('changed')
             with self.assertRaisesRegex(ValueError, 'controller changed'):
                 bootstrap(root)

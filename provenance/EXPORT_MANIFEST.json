@@ -55,7 +55,7 @@
     "contracts/sdk/src/paper_reconstruction_contracts/validation.py": "98d81385536efc854b82f48236d2515baa1994d3953ad5a88d7def0f37a0a2a3",
     "docs/ARCHITECTURE.md": "5dc9b80c3abf3637f5f4995756cb284dd0ffc3b05482d095bb251e76048d6965",
     "docs/BASELINE.md": "4d0cac0caa0007bc7e58f2db2c28542cdb1511fd11f17619453292e4219b8cba",
-    "docs/GITHUB_PREPARATION.md": "c419f2c61cc025e95e5435ee26130f1d46b681b64d19e1704389ad64b34d8a5e",
+    "docs/GITHUB_PREPARATION.md": "c8804bcb585b0d8658caf46fafaa4b8956010205374e01c852c6fd3aa4d1f14e",
     "docs/RELEASE_V2_0_0.md": "3dda0298d0c07c1d21e6df5925c71d3e21f2d910ad05de1c37763744c208b6cb",
     "docs/RUNNING.md": "284d9d9af0541abf55d10f39977ce185046af63aa41987ff714f26ba79e9e381",
     "docs/STAGE3_HANDOFF.md": "acd120999d3317559c84b9a12d2b10f516645239fc432ead35624302ce5b34a6",
@@ -715,7 +715,7 @@
     "stages/stage4/tests/test_recovery_experiment_v16.py": "4a513e9e03b070ee34b288f81c9aa1fb60c90aabb3383fe9d7169446c97d509d",
     "stages/stage4/tests/test_recovery_experiment_v17.py": "015e46bac4aeedb863e0a66f8987e6f25c9c41075afad148d826820e56dd4a9a",
     "stages/stage4/tests/test_recovery_experiment_v18.py": "6a3f2cf2b320ad29f349f033db85ef2d0d7f33950c22b7b4473afc70b3a38647",
-    "stages/stage4/tests/test_recovery_report_v18_fix.py": "e27c8c674a19d11a51ac7cb308e75686d60918cf64176c05f5d1ae3ef4f1220c",
+    "stages/stage4/tests/test_recovery_report_v18_fix.py": "e01923d4ac99d95640c853f637aec0e92a4b2715ae0b642b4228f8c1a6ea7d33",
     "stages/stage4/tests/test_retention_v6.py": "604705a4782960109af8d318e1057dca9393a9f4064a57ab0f032002f401493b",
     "stages/stage4/tests/test_scale_extension_v20.py": "4038d17668fa7725c72621ddc7c6ddcc249a2a6c186bebc0218408a56b39ff4e",
     "stages/stage4/tests/test_scale_pipeline_v14.py": "21ec5a4f886bffd6af1e650fb80c9c2ae21439c33b912a5fc45da0f05ac6c6c8",
@@ -751,5 +751,5 @@
     "tools/verify_export.py": "be171047dac511293d6538a84d98d21af2b7420e590840d8d8e7a40cf0bbf360"
   },
   "release": "2.0.0",
-  "source_bytes": 13171430
+  "source_bytes": 13171594
 }
