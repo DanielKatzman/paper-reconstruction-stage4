@@ -1,6 +1,8 @@
-# Paper Reconstruction — Stage 4 v2.0
+# Paper Reconstruction - Stage 4 v2.0
 
-[Release v2.0.0](https://github.com/DanielKatzman/paper-reconstruction-stage4/releases/tag/v2.0.0) · [Stage 3 handoff](docs/STAGE3_HANDOFF.md) · [Architecture and integration](docs/ARCHITECTURE.md) · [Baseline results](docs/BASELINE.md)
+[CPU-default release v2.0.1](https://github.com/DanielKatzman/paper-reconstruction-stage4/releases/tag/v2.0.1) · [Stage 3 handoff](docs/STAGE3_HANDOFF.md) · [Architecture and integration](docs/ARCHITECTURE.md) · [Baseline results](docs/BASELINE.md)
+
+**CPU is the default.** Setup installs the CPU-only Torch build and the pipeline uses `--device cpu`. CUDA is optional and must be selected explicitly. Version 2.0.0 also has CPU execution paths, but its setup/runner defaults were CUDA; v2.0.1 corrects those defaults without changing the frozen models or assembly implementation.
 
 Four inlined stages reconstruct a complete torn page: segmentation → boundary observations → ranked pair poses → global assembly. This source baseline includes the qualified Stage 3 unit-scale runtime and Stage 4 V21 revision 4, with no dependency on a sibling source checkout.
 
@@ -26,13 +28,13 @@ This cohort was used during development. It assumes every piece of one rectangul
 | `provenance` | Component source inventories, asset hashes and original baseline commitments |
 | `tools` | Portable setup, asset verification, pipeline and regression commands |
 
-The umbrella release is **2.0.0**. Component software versions remain unchanged to preserve their provenance. Existing Stage 2 copyright terms are retained; this export does not grant a new open-source license.
+The umbrella release is **2.0.1**, compatible with the v2.0.0 model/data baseline. Component software versions remain unchanged to preserve their provenance. Existing Stage 2 copyright terms are retained; this export does not grant a new open-source license.
 
 ## Clone and install
 
 ```powershell
 git lfs install
-git clone --branch v2.0.0 https://github.com/DanielKatzman/paper-reconstruction-stage4.git
+git clone --branch v2.0.1 https://github.com/DanielKatzman/paper-reconstruction-stage4.git
 cd paper-reconstruction-stage4
 git lfs pull
 python -B tools/verify_compatibility.py
@@ -42,7 +44,7 @@ python -B tools/assets.py verify --groups models
 python -B tools/doctor.py
 ```
 
-The validated Windows setup uses Python 3.14 for Stages 1/2 and Python 3.12 for Stages 3/4. Stage 3 uses Torch 2.7.1 with CUDA 11.8 on the original GPU; the remaining runtime stages use CPU inference/computation. Setup creates separate environments and an ignored interpreter mapping. See [runtime details](docs/RUNNING.md) for other hardware.
+Setup uses Python 3.14 for Stages 1/2 and Python 3.12 for Stages 3/4. Stage 3 uses CPU-only Torch 2.7.1 by default; Stages 1/2 use CPU ONNX Runtime and Stage 4 uses CPU NumPy/SciPy. Setup creates separate environments and an ignored interpreter mapping. For optional CUDA setup use `tools/setup.ps1 -Device cuda`, then pass `--device cuda` to the runner. The original recorded large-case Stage 3 timings used CUDA for rankers; they are not CPU throughput measurements.
 
 The four frozen model files are versioned with **Git LFS** and pinned by the same release tag as the source. `compatibility.json` and the original producer manifests verify their identities. The [model ZIP](https://github.com/DanielKatzman/paper-reconstruction-stage4/releases/download/v2.0.0/models-v2.0.0.zip) is an alternative if using a source ZIP or a checkout without LFS; extract it at the repository root. A GitHub-generated source archive alone is not guaranteed to include LFS payloads.
 
@@ -90,18 +92,20 @@ To run fresh Stage 2, Stage 3 native inference, pooling and Stage 4 from a gener
 ```powershell
 python -B tools/pipeline.py run `
   --stage1 assets/benchmark/puzzle_000330_c783e29dd569/stage1 `
-  --output outputs/v2_pipeline4 --device cuda `
+  --output outputs/v2_pipeline4 --device cpu `
   --puzzle-id puzzle_000330_c783e29dd569
 ```
 
 Raw captures can enter through `--captures <folder> --mode shared-scale-capture --capture-profile <json>` with a truthful shared-scale capture profile. Stage 1 runs first and supports manual mask review. This route uses the general Stage 4 continuation configuration because V21's exact-mask page gates are not qualified for capture masks. Arbitrary per-piece resizing or perspective violates this Stage 3 runtime's declared scale assumption. See [running and assets](docs/RUNNING.md) before using that route.
+
+Fixed-distance phone photos of flat pieces are closer to the assumed acquisition, but flatness and distance alone do not prove shared pixel scale or remove perspective/lens effects. Keep the camera parallel, preserve native pixel scale and avoid independently resizing images. Real-photo segmentation/assembly must be assessed on those actual inputs; the fourteen-case exact-mask result does not qualify that route. See [CPU and capture scope](docs/CPU_AND_CAPTURE_SCOPE.md).
 
 ## New checkout
 
 The four release model weights use Git LFS. Input datasets, full experimental outputs, environments, local paths and unrelated training checkpoints are excluded from Git. Optional model and benchmark archives preserve repository-relative paths and are authenticated by `provenance/assets.json`.
 
 1. Clone with Git LFS to obtain the pinned models, or extract the model archive from [release v2.0.0](https://github.com/DanielKatzman/paper-reconstruction-stage4/releases/tag/v2.0.0). Extract the benchmark archive for regression testing. [Archive checksums](provenance/release_asset_checksums.json) and per-file asset receipts are included.
-2. On Windows with Python 3.14 and 3.12 installed, run `powershell -File tools/setup.ps1`. The default Torch index matches the validated CUDA 11.8 build; choose the appropriate wheel index for other hardware.
+2. On Windows with Python 3.14 and 3.12 installed, run `powershell -File tools/setup.ps1`. It installs CPU-only Torch by default and checks both frozen rankers on CPU. CUDA is an explicit opt-in.
 3. Run asset verification, `tools/doctor.py`, the tests and the benchmark above.
 
 The pipeline does not fetch assets automatically. On the original workstation, `python -B tools/assets.py hydrate` restores optional assets from ignored `local/assets-sources.json`. Original predictions are optional audit material and are not solver inputs.

@@ -30,7 +30,7 @@ def main():
                 raise ValueError('Possible embedded credential: '+name)
         files[name]=sha(path);total+=path.stat().st_size
     target=ROOT/'provenance/EXPORT_MANIFEST.json'
-    if a.seal:save(target,{'release':'2.0.0','files':files,'source_bytes':total-lfs_bytes,'git_lfs_model_bytes':lfs_bytes})
+    if a.seal:save(target,{'release':(ROOT/'VERSION').read_text().strip(),'files':files,'source_bytes':total-lfs_bytes,'git_lfs_model_bytes':lfs_bytes})
     elif read(target)['files']!=files:raise ValueError('Git-eligible source inventory differs from export seal')
     print(f'Export verified: {len(files)} files, {(total-lfs_bytes)/1e6:.2f} MB source plus {lfs_bytes/1e6:.2f} MB of hash-verified LFS models; local data/outputs excluded.')
 

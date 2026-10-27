@@ -72,10 +72,12 @@ def run(args):
     if args.stage1:
         stage1=source
     else:
+        raw_stage1=output/'stage1_native'
         stage1=output/'stage1'
-        execute('stage1',[ROOT/'stages/stage1/scripts/segment_folder.py',source,stage1,'--review',args.review],output,'stage1')
+        execute('stage1',[ROOT/'stages/stage1/scripts/segment_folder.py',source,raw_stage1,'--review',args.review],output,'stage1')
         if not args.capture_profile: raise ValueError('Shared-scale Stage 3 requires an explicit truthful capture profile')
-        shutil.copy2(args.capture_profile,stage1/'capture_profile.json')
+        shutil.copy2(args.capture_profile,raw_stage1/'capture_profile.json')
+        execute('stage1',[ROOT/'tools/prepare_stage1_for_stage2.py','--input',raw_stage1,'--output',stage1],output,'stage1_boundary')
     capture=stage1/'capture_profile.json'
     if not capture.is_file(): raise ValueError('Stage 3 requires capture_profile.json in the Stage 1 input')
     if args.mode=='development-page':
@@ -101,7 +103,7 @@ def main():
     r=sub.add_parser('run'); src=r.add_mutually_exclusive_group(required=True); src.add_argument('--stage1',type=Path); src.add_argument('--captures',type=Path)
     r.add_argument('--output',type=Path,required=True); r.add_argument('--capture-profile',type=Path)
     r.add_argument('--mode',choices=['development-page','shared-scale-capture'],default='development-page')
-    r.add_argument('--device',choices=['cuda','cpu'],default='cuda'); r.add_argument('--cpu-threads',type=int,default=4)
+    r.add_argument('--device',choices=['cuda','cpu'],default='cpu'); r.add_argument('--cpu-threads',type=int,default=4)
     r.add_argument('--review',choices=['none','flagged','all'],default='flagged'); r.add_argument('--puzzle-id',default='page')
     a=p.parse_args()
     if a.command=='benchmark': benchmark(a)

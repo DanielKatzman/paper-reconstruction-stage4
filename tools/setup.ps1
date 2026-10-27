@@ -1,5 +1,11 @@
-param([string]$TorchIndexUrl = 'https://download.pytorch.org/whl/cu118')
+param(
+    [ValidateSet('cpu', 'cuda')][string]$Device = 'cpu',
+    [string]$TorchIndexUrl = ''
+)
 $ErrorActionPreference = 'Stop'
+if (-not $TorchIndexUrl) {
+    $TorchIndexUrl = if ($Device -eq 'cpu') { 'https://download.pytorch.org/whl/cpu' } else { 'https://download.pytorch.org/whl/cu118' }
+}
 $Repo = Split-Path -Parent $PSScriptRoot
 $Runtimes = @{}
 Push-Location $Repo
@@ -32,6 +38,10 @@ try {
         & $Executable -m pip install -e $Package
         if ($LASTEXITCODE -ne 0) { throw "$Stage install failed" }
         $Runtimes[$Stage] = $Executable
+    }
+    if ($Device -eq 'cpu') {
+        & $Runtimes['stage3'] -B (Join-Path $PSScriptRoot 'check_cpu_runtime.py')
+        if ($LASTEXITCODE -ne 0) { throw 'CPU runtime verification failed' }
     }
     $Runtimes | ConvertTo-Json | Set-Content -Encoding utf8 (Join-Path $Repo 'local/runtimes.json')
 } finally { Pop-Location }

@@ -1,6 +1,6 @@
 # GitHub preparation
 
-This folder is the **2.0.0 source baseline** published to `https://github.com/DanielKatzman/paper-reconstruction-stage4`. The release tag is `v2.0.0`; its README explains the inlined upstream snapshots and the future separate API/GUI orchestrator.
+This folder preserves the **2.0.0 construction baseline** and the **2.0.1 CPU-default update** for `https://github.com/DanielKatzman/paper-reconstruction-stage4`. Its README explains the inlined upstream snapshots and the future separate API/GUI orchestrator. The original `v2.0.0` tag remains unchanged by the CPU-default update.
 
 Tracked content contains inlined source, packaging/configuration, tests, schemas/contracts, model manifests, source/asset receipts, compact baseline results/previews/profiles, documentation and CI configuration. Historical Stage 4 diagnostic/controller source is retained for regression tests; its old experiment runs and most snapshots are outside this export. The new portable commands are the supported repository-root entry points.
 

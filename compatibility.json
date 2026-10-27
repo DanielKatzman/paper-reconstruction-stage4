@@ -6,17 +6,24 @@
     "perspective": false,
     "relative_piece_scale": 1.0
   },
+  "compatible_model_data_baseline": "2.0.0",
   "component_inventory_sha256": "03db65626284e79eba4a83fa5f9975ee156932598b89d29c0ec4129fcc285ee5",
   "contracts": {
     "sdk_path": "contracts/sdk",
     "sdk_software_version": "0.1.0",
     "stage3_to_stage4_contract_directory": "contracts/sdk/src/paper_reconstruction_contracts/schemas"
   },
-  "release_version": "2.0.0",
+  "execution": {
+    "cuda_optional": true,
+    "default_device": "cpu",
+    "gpu_required": false,
+    "torch_cpu_wheel_version": "2.7.1"
+  },
+  "release_version": "2.0.1",
   "schema_version": "paper-reconstruction.release-compatibility.v1",
   "stages": {
     "stage1": {
-      "compatible_pipeline_release": "2.0.0",
+      "compatible_pipeline_release": "2.0.1",
       "models": [
         {
           "path": "stages/stage1/models/segformer_b1_detail_768_v3.onnx",
@@ -30,7 +37,7 @@
       "source_inventory": "provenance/components.json#stage1"
     },
     "stage2": {
-      "compatible_pipeline_release": "2.0.0",
+      "compatible_pipeline_release": "2.0.1",
       "models": [
         {
           "path": "stages/stage2/models/stage2_boundary_v1.0.0.onnx",
@@ -45,7 +52,7 @@
     },
     "stage3": {
       "candidate_implementation_sha256": "6b0ac07074ff3ecf340aa7c30deae6760d8a8cd4807e3dd9b71348d72e86e66a",
-      "compatible_pipeline_release": "2.0.0",
+      "compatible_pipeline_release": "2.0.1",
       "models": [
         {
           "path": "stages/stage3/models/pair_mlp_small.pt",
@@ -64,7 +71,7 @@
       "source_inventory": "provenance/components.json#stage3"
     },
     "stage4": {
-      "compatible_pipeline_release": "2.0.0",
+      "compatible_pipeline_release": "2.0.1",
       "models": [],
       "package_metadata": "stages/stage4/pyproject.toml",
       "python_major_minor": "3.12",
