@@ -5,7 +5,7 @@ import time
 import numpy as np
 from .native_graph_v17 import Growth, offers, quality, identity, incremental_check
 from .geometry import regauge
-from .constraints import require_rigid
+from .constraints import require_rigid, require_native_rotation
 from .native_bridge import contour_arc, check_arcs
 from .support import overlaps
 from .repair_search import Node
@@ -43,7 +43,8 @@ class NativeFrontier:
         self.seed_order=[]; self.seed_cursor=0; self.seed_primary=True
         self.batches=deque(); self.fast=None; self.dfs=None; self.sessions=deque()
         self.revision=0; self.answer=None; self.deepest=1; self.best=[]
-        self.decoded={}; self.memo=OrderedDict(); self.final_memo=OrderedDict()
+        self.decoded={}; self.decode_failures={}; self.replay_failure_reasons=Counter()
+        self.memo=OrderedDict(); self.final_memo=OrderedDict()
         self.counts=Counter(); self.rejections=Counter(); self.active_seconds=0.
 
     def add(self, proposals):
@@ -58,7 +59,10 @@ class NativeFrontier:
             pairs[tuple(p['pieces'])].append(p)
             for pid in p['pieces']:
                 self.indexed[pid].append(p)
-        from .seam_poses_v15 import retain
+        if self.context.problem.capture_metadata['rotation_family']=='continuous_rigid':
+            from .seam_poses_rigid import retain
+        else:
+            from .seam_poses_v15 import retain
         for values in pairs.values():
             for p in retain(values):
                 for pid in p['pieces']:
@@ -106,19 +110,22 @@ class NativeFrontier:
         self.counts['merge_checks']+=1
         p=offer['proposal']; a,b=p['pieces']; key=p['proposal_id']; state=growth.node.state
         if key not in self.decoded:
+            self.counts['native_decode_cache_misses']+=1
             try:
-                h=np.asarray(p['transform_b_to_a']); require_rigid(h)
-                if not np.allclose(h[:2,:2],np.rint(h[:2,:2]),atol=1e-7,rtol=0.):
-                    raise ValueError('Undeclared graph rotation')
+                h=np.asarray(p['transform_b_to_a']); require_native_rotation(h,self.context.problem.capture_metadata)
                 arcs=tuple(contour_arc(self.context.problem,r) for r in p['arcs'])
                 if [arc.piece for arc in arcs]!=[a,b]:
                     raise ValueError('Proposal arc pair differs')
                 self.counts['native_proposal_replay_checks']+=1
                 metrics=check_arcs(self.context.problem,arcs,{a:np.eye(3),b:h},self.context.config)
                 self.decoded[key]=(arcs,metrics)
-            except ValueError:
+            except ValueError as exc:
                 self.decoded[key]=None
+                self.decode_failures[key]=getattr(exc,'reason','native_contact_replay')
+        else:
+            self.counts['native_decode_cache_hits']+=1
         if self.decoded[key] is None:
+            self.replay_failure_reasons[self.decode_failures[key]]+=1
             self.rejections['native_proposal_replay']+=1; return None
         arcs,metrics=self.decoded[key]
         used=[arc for row in growth.node.contacts for arc in row['arcs']]
@@ -152,6 +159,8 @@ class NativeFrontier:
             self.deepest=depth; self.best=[growth]
         elif depth==self.deepest and len(self.best)<3:
             self.best.append(growth)
+        observer=getattr(self.context,'observe_growth',None)
+        if observer is not None and depth<len(state.poses):observer(growth)
         if depth!=len(state.poses):
             return False
         self.counts['complete_shape_candidates']+=1
@@ -163,6 +172,14 @@ class NativeFrontier:
             self.answer=self.on_complete(growth.node,shape)
         else:
             self.counts['duplicate_final_histories_avoided']+=1
+        return True
+
+    def inject(self,growth):
+        """Resume an independently checked partial repair without restarting DFS."""
+        if not self.remember(self.memo,('repaired_partial',identity(growth))):return False
+        if not self.consider(growth):self.sessions.append([Frame(growth,False)])
+        if self.dfs is None:self.dfs=self._backtracking()
+        self.counts['repaired_partial_roots']+=1
         return True
 
     def _beam(self,roots,primary_index):
@@ -276,6 +293,8 @@ class NativeFrontier:
 
     def audit(self):
         return {**dict(self.counts),'rejections':dict(self.rejections),'growth_lane':self.lane,
+            'native_replay_failure_reasons':dict(self.replay_failure_reasons),
+            'distinct_rejected_native_proposals':len(self.decode_failures),
             'completed_depth':self.deepest,'required_piece_depth':len(self.basis.poses),
             'elapsed_seconds':self.active_seconds,'bank_revision':self.revision,
             'beam_batches_pending':len(self.batches)+int(self.fast is not None),

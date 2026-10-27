@@ -27,6 +27,9 @@ def make_page_context(problem, config, support):
     from .config import REPAIR_POLICY, REPAIR_V15_POLICIES, REPAIR_V16_POLICY, REPAIR_V17_POLICY, REPAIR_V18_POLICY
     if config.native_repair_policy == REPAIR_V18_POLICY:
         if config.native_cut_repair:
+            if (problem.capture_metadata or {}).get('rotation_family')=='continuous_rigid':
+                from .native_capture_repair import RepairContext
+                return RepairContext(problem,config,support)
             from .native_repair_v21 import RepairContext
             return RepairContext(problem,config,support)
         from .native_repair_v18 import RepairContext

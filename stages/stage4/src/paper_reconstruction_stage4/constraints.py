@@ -29,6 +29,24 @@ def require_rigid(h):
         raise ValueError('Constraint profile forbids scale, reflection, shear or perspective')
 
 
+class CaptureRotationError(ValueError):
+    def __init__(self, reason, message):
+        super().__init__(message)
+        self.reason = reason
+
+
+def require_native_rotation(h, capture_binding):
+    """Apply the authenticated rotation family consistently at every replay."""
+    if not rigid_check(h)['valid']:
+        raise CaptureRotationError('nonrigid_transform', 'Native pose forbids scale, reflection, shear or perspective')
+    family = (capture_binding or {}).get('rotation_family')
+    if family not in {'quarter_turn', 'continuous_rigid'}:
+        raise CaptureRotationError('undeclared_rotation_family', 'Native pose requires authenticated rigid capture metadata')
+    rotation = np.asarray(h, float)[:2, :2] / np.asarray(h, float)[2, 2]
+    if family == 'quarter_turn' and not np.allclose(rotation, np.rint(rotation), atol=1e-7, rtol=0.):
+        raise CaptureRotationError('undeclared_rotation', 'Quarter-turn pose seed contains an undeclared rotation')
+
+
 def bind_profile(problem, config, profile_path, capture_path):
     if config.page_policy == 'disabled.v1':
         if profile_path or capture_path:

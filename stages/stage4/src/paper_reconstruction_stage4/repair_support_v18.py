@@ -50,7 +50,7 @@ def pool(context, source, node, deadline):
         for b in ids[i+1:]:
             if time.perf_counter() >= deadline:
                 return None, None, used
-            if source.groups[a] == source.groups[b]:
+            if source.groups[a] == source.groups[b] or node.state.groups[a] != node.state.groups[b]:
                 continue
             pair = (a, b); choices = []
             base = original.get(pair)
@@ -60,7 +60,9 @@ def pool(context, source, node, deadline):
                     choices.append(base)
                 except ValueError:
                     pass
-            h = relative(node.state.poses, a, b); proposed = h.copy(); proposed[:2, :2] = np.rint(h[:2, :2])
+            h = relative(node.state.poses, a, b); proposed = h.copy()
+            if context.problem.capture_metadata['rotation_family']=='quarter_turn':
+                proposed[:2, :2] = np.rint(h[:2, :2])
             options = pair_options(context.problem, a, b, node.state.poses, context.config, used)
             if base is not None:
                 other_contacts = [*used, *[arc for row in node.contacts if tuple(row['pieces']) != pair for arc in row['arcs']]]

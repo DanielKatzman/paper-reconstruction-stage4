@@ -96,7 +96,7 @@ def frontier_priority(pairs,frontiers,ids):
 
 
 def generate(problem,config,deadline,maximum_checks=None,samples=256,peaks=4,frontiers=(),
-             _rotation_provider=None,_fit_provider=None,_retain_provider=None):
+             _rotation_provider=None,_fit_provider=None,_retain_provider=None,_pairs=None):
     family=(problem.capture_metadata or {}).get('rotation_family')
     if family=='continuous_rigid' and _rotation_provider is None:
         from .seam_poses_rigid import generate as rigid_generate
@@ -106,6 +106,7 @@ def generate(problem,config,deadline,maximum_checks=None,samples=256,peaks=4,fro
     prepare=_rotation_provider or prepare_modes;fit=_fit_provider or fit_task;retainer=_retain_provider or retain
     if maximum_checks is not None and (type(maximum_checks) is not int or maximum_checks<0):raise ValueError('Invalid native batch size')
     started=time.perf_counter();data={};ids=sorted(problem.pieces);pairs=list(combinations(ids,2))
+    if _pairs is not None:pairs=[pair for pair in pairs if pair in set(_pairs)]
     priority=frontier_priority(pairs,frontiers,ids)
     for pid in ids:
         piece=problem.pieces[pid];xy=np.asarray(piece.contour['points_xy'],float)

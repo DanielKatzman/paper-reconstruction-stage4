@@ -3,7 +3,7 @@ from collections import Counter
 import numpy as np
 from .native_graph_v17 import quality
 from .native_bridge import contour_arc, check_arcs
-from .constraints import require_rigid
+from .constraints import require_rigid, require_native_rotation
 from .geometry import regauge
 from .repair_search import Node
 from .search.execution import clone
@@ -17,7 +17,7 @@ def smaller_side(row):
     return min(sides,key=lambda x:(len(x),x))
 
 
-def cut_options(node,moving,proposals,tolerance):
+def cut_options(node,moving,proposals,tolerance,rotation_family='quarter_turn'):
     """A local ordering tier precedes wider modes; no fitted mode is removed.
 
     Distinct physical neighbors may corroborate the same group motion. This
@@ -30,9 +30,7 @@ def cut_options(node,moving,proposals,tolerance):
             continue
         h=np.asarray(p['transform_b_to_a'],float)
         try:
-            require_rigid(h)
-            if not np.allclose(h[:2,:2],np.rint(h[:2,:2]),atol=1e-7,rtol=0.):
-                continue
+            require_native_rotation(h,{'rotation_family':rotation_family})
             inside,outside=(a,b) if a in moving else (b,a)
             desired=state.poses[b]@np.linalg.inv(h) if inside==a else state.poses[a]@h
             delta=desired@np.linalg.inv(state.poses[inside])
@@ -57,7 +55,7 @@ def cut_options(node,moving,proposals,tolerance):
         -quality(r['proposal']),r['displacement_px'],r['proposal']['proposal_id']))
 
 
-def moved_node(context,source,node,moving,option):
+def moved_node(context,source,node,moving,option,scope=None):
     """Retain each side's internal tree and replace their single bridge.
 
     General group moves preserve relative poses inside both components. A
@@ -66,14 +64,15 @@ def moved_node(context,source,node,moving,option):
     """
     if source.selected or any(len(g)!=1 for g in source.components()):
         raise ValueError('Cut repair requires an independent singleton source')
-    moving=set(moving); stable=set(node.state.poses)-moving
+    scope=set(node.state.poses) if scope is None else set(scope)
+    moving=set(moving); stable=scope-moving
     crossing=[r for r in node.contacts if (r['pieces'][0] in moving)!=(r['pieces'][1] in moving)]
     if not moving or not stable or len(crossing)!=1 or crossing[0]['role']!='merge':
         raise ValueError('Cut does not split a single independent tree bridge')
     p=option['proposal']; a,b=p['pieces']; h=np.asarray(p['transform_b_to_a'],float)
-    require_rigid(h)
-    if not np.allclose(h[:2,:2],np.rint(h[:2,:2]),atol=1e-7,rtol=0.):
-        raise ValueError('Undeclared cut repair rotation')
+    require_native_rotation(h,context.problem.capture_metadata)
+    if a not in scope or b not in scope or not moving<=scope:
+        raise ValueError('Repair proposal escapes the placed component')
     arcs=tuple(contour_arc(context.problem,r) for r in p['arcs'])
     if [arc.piece for arc in arcs]!=[a,b] or (a in moving)==(b in moving):
         raise ValueError('Repair proposal must cross its declared cut')
@@ -81,8 +80,8 @@ def moved_node(context,source,node,moving,option):
     state=clone(node.state)
     for pid in moving:
         state.poses[pid]=option['delta']@state.poses[pid]
-    state.poses=regauge(state.poses,set(state.poses))
-    groups=sorted([sorted(moving),sorted(stable)],key=lambda g:g[0])
+    state.poses=regauge(state.poses,scope)
+    groups=sorted([sorted(moving),sorted(stable),*[g for g in state.components() if not set(g)&scope]],key=lambda g:g[0])
     contact={'pieces':[a,b],'arcs':arcs,'metrics':metrics,'proposal_id':p['proposal_id'],
         'proposed_transform_b_to_a':p['transform_b_to_a'],'source_groups':groups,
         'merged_groups':[next(g for g in groups if a in g),next(g for g in groups if b in g)],
@@ -99,7 +98,8 @@ class CutJob:
 
     def update(self,context):
         if self.revision!=context.proposal_revision:
-            self.pending=[r for r in cut_options(self.node,self.moving,context.generated,context.config.cycle_tolerance_px)
+            self.pending=[r for r in cut_options(self.node,self.moving,context.generated,context.config.cycle_tolerance_px,
+                context.problem.capture_metadata['rotation_family'])
                 if r['proposal']['proposal_id'] not in self.tried]
             self.revision=context.proposal_revision
 

@@ -16,6 +16,28 @@ The default development route requires an existing Stage 1 folder with `segmenta
 
 For a capture folder, use `--captures`, `--mode shared-scale-capture` and an explicit `--capture-profile`. Stage 1 runs with its calibrated model and selected review mode. The profile declares common native scale, no per-piece resizing and no perspective. Version 2.0.2 uses V21 with `shared_scale_complete_rectangle_predicted_v1.json`; generator inputs keep the exact-mask profile. Physical scale 1.0 is independent of mask error or placement precision. Unknown rotation under a proper-rigid capture declaration selects observed-angle native fitting, not an assumed quarter-turn acquisition.
 
+Version 2.0.3 fixes the remaining lower-level rotation restrictions and capture scheduling. From the repository root, the full CPU capture command is:
+
+```powershell
+python -B tools/pipeline.py run `
+  --captures path/to/captures --mode shared-scale-capture `
+  --capture-profile profiles/shared_scale_predicted_capture_v1.json `
+  --puzzle-id my_page --output outputs/my_page_cpu --device cpu
+```
+
+To rerun Stage 4 alone against an existing bound capture bundle, use the Stage 4 interpreter installed by setup:
+
+```powershell
+local/envs/stage4/Scripts/python.exe -B -m paper_reconstruction_stage4 solve `
+  --bundle outputs/existing_job/stage3 `
+  --config stages/stage4/configs/joint_v21_cut_repair_development.json `
+  --constraint-profile stages/stage4/configs/shared_scale_complete_rectangle_predicted_v1.json `
+  --capture-profile outputs/existing_job/stage1/capture_profile.json `
+  --output outputs/my_page_stage4_retry
+```
+
+Use the original capture profile bound into that bundle, and a new output folder. If the workstation uses `local/runtimes.json` to reuse an existing interpreter, use its Stage 4 interpreter and set imports to this repository's `stages/stage4/src` and `contracts/sdk/src`; do not accidentally import an older Desktop checkout. Running the full pipeline through `tools/pipeline.py` selects those source paths automatically. Inspect `result.json`, the adjacent assessment package and the preview; a complete or supported status alone does not certify content placement.
+
 Raw model outputs remain under `stage1_native`; `stage1` is the audited downstream copy. A bounded mask adapter reconciles diagonal fringe pixels with Stage 2's four-connectivity requirement, without resizing or altering the raw output. It rejects meaningful fragment removal instead of silently changing the piece. The receipt is `stage1/mask_boundary_adapter.json` and its subprocess log is `stage1_boundary.log`.
 
 Generated result JSON includes status, selected layouts and complete diagnostics; a subprocess exit code of zero only means it published normally. A partial or unsupported layout is not a successful reconstruction. The benchmark review requires supported status, connectivity, no false selected neighbors, complete inventory and common-gauge measurements. Its explicit offline regression policy allows up to 48 native pixels maximum saved-probe displacement, relative orientation error at most 0.001 degrees and scale error at most 0.00001. This protects against a wrong/scaled/far-displaced piece hiding behind correct neighbor IDs; it does not change serving gates or certify unseen-page reliability. Four-pixel exactness remains a diagnostic. Preview review is still required.

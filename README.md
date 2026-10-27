@@ -1,10 +1,10 @@
 # Paper Reconstruction - Stage 4 v2.0
 
-[Shared-scale release v2.0.2](https://github.com/DanielKatzman/paper-reconstruction-stage4/releases/tag/v2.0.2) · [Stage 3 handoff](docs/STAGE3_HANDOFF.md) · [Architecture and integration](docs/ARCHITECTURE.md) · [Baseline results](docs/BASELINE.md)
+[Capture recovery release v2.0.3](https://github.com/DanielKatzman/paper-reconstruction-stage4/releases/tag/v2.0.3) · [Stage 3 handoff](docs/STAGE3_HANDOFF.md) · [Architecture and integration](docs/ARCHITECTURE.md) · [Baseline results](docs/BASELINE.md)
 
 **CPU is the default.** Setup installs the CPU-only Torch build and the pipeline uses `--device cpu`. CUDA is optional and must be selected explicitly. Version 2.0.0 also has CPU execution paths, but its setup/runner defaults were CUDA; v2.0.1 corrects those defaults without changing the frozen models or assembly implementation.
 
-**1:1 means common relative physical scale.** It does not mean exact masks or pixel-perfect placement. Same-DPI scans and fixed-distance flat captures use this scale model. Version 2.0.2 applies V21 to both exact and predicted masks, with separate provenance, and enables native proposals at observed rigid rotation angles. It never fits per-piece scale or perspective.
+**1:1 means common relative physical scale.** It does not mean exact masks or pixel-perfect placement. Same-DPI scans and fixed-distance flat captures use this scale model. V21 uses separate exact/predicted mask provenance. Version 2.0.3 corrects lower-level rotation checks missed in v2.0.2, preserves continuous-angle support cycles, and adds verified partial recovery with targeted archive-angle fitting. It never fits per-piece scale or perspective.
 
 Four inlined stages reconstruct a complete torn page: segmentation → boundary observations → ranked pair poses → global assembly. This source baseline includes the qualified Stage 3 unit-scale runtime and Stage 4 V21 revision 4, with no dependency on a sibling source checkout.
 
@@ -30,13 +30,13 @@ This cohort was used during development. It assumes every piece of one rectangul
 | `provenance` | Component source inventories, asset hashes and original baseline commitments |
 | `tools` | Portable setup, asset verification, pipeline and regression commands |
 
-The umbrella release is **2.0.2**, compatible with the v2.0.0 model/data baseline. Its source fingerprints identify the profile/native-rotation extension; the original model files remain unchanged. Existing Stage 2 copyright terms are retained; this export does not grant a new open-source license.
+The umbrella release is **2.0.3**, compatible with the v2.0.0 model/data baseline. Its source fingerprints identify the capture recovery implementation; the original model files remain unchanged. Existing Stage 2 copyright terms are retained; this export does not grant a new open-source license.
 
 ## Clone and install
 
 ```powershell
 git lfs install
-git clone --branch v2.0.2 https://github.com/DanielKatzman/paper-reconstruction-stage4.git
+git clone --branch v2.0.3 https://github.com/DanielKatzman/paper-reconstruction-stage4.git
 cd paper-reconstruction-stage4
 git lfs pull
 python -B tools/verify_compatibility.py
@@ -59,7 +59,7 @@ python -B -m unittest discover -s tests -v
 python -B tools/pipeline.py benchmark --output outputs/v2_full_regression
 ```
 
-Source-only tests do not require model/benchmark downloads: install `contracts/sdk` and `stages/stage4`, then run the two test commands. The portable Stage 4 suite passes 343 tests with 16 documented archive-dependent skips; sixteen additional tests cover orchestration, CPU defaults and mask boundaries. [Packaging validation](provenance/PACKAGING_VALIDATION.json) preserves the original relocation checks. [CPU validation](provenance/CPU_VALIDATION_2026-10-27.json) records the earlier CPU-only execution and real six-piece accuracy limitation.
+Source-only tests do not require model/benchmark downloads: install `contracts/sdk` and `stages/stage4`, then run the two test commands. The portable Stage 4 suite passes 352 tests with 16 documented archive-dependent skips; sixteen additional tests cover orchestration, CPU defaults and mask boundaries. [Packaging validation](provenance/PACKAGING_VALIDATION.json) preserves the original relocation checks. [CPU validation](provenance/CPU_VALIDATION_2026-10-27.json) records the earlier CPU-only execution and real six-piece accuracy limitation. The [capture recovery review](docs/V203_CAPTURE_RECOVERY_REVIEW.md) describes the current fixes and their separate validation.
 
 ## Stage 4 interface
 
@@ -111,7 +111,7 @@ python -B tools/pipeline.py run `
 
 Fixed-distance phone photos of flat pieces are closer to the assumed acquisition, but flatness and distance alone do not prove shared pixel scale or remove perspective/lens effects. Keep the camera parallel, preserve native pixel scale and avoid independently resizing images. Real-photo segmentation/assembly must be assessed on those actual inputs; the fourteen-case exact-mask result does not qualify that route. See [CPU and capture scope](docs/CPU_AND_CAPTURE_SCOPE.md).
 
-The first actual six-PDF CPU run completed all stages in approximately **9m11s**, but used the older Stage 4 route and misplaced a fragment. The corrected continuous-native V21 rerun used that immutable CPU-produced evidence and exhausted its ten-minute Stage 4 deadline without a verified full page. It returns an unresolved result, currently with singleton pieces despite reaching depth five during search. CPU execution is verified; reliable photo reconstruction is not. The [original CPU review](docs/REAL_CAPTURE_CPU_REVIEW_2026-10-27.md) and [v2.0.2 shared-scale review](docs/V202_SHARED_SCALE_PROFILE_REVIEW.md) record these separate outcomes and remaining work.
+The first actual six-PDF CPU run completed all stages in approximately **9m11s**, but used an older Stage 4 route and misplaced a fragment. Version 2.0.2's V21 run fell back to singleton pieces. With the v2.0.3 fixes, cold Stage 4 now publishes all six in one supported candidate in approximately **10m9s**, reusing the immutable CPU-produced upstream evidence. **The small corner remains visibly misaligned**, so this is progress, not a correct full real-photo reconstruction claim. Read the [capture recovery review](docs/V203_CAPTURE_RECOVERY_REVIEW.md) for actual measurements and the remaining accuracy work. The [original CPU review](docs/REAL_CAPTURE_CPU_REVIEW_2026-10-27.md) preserves the separate full-pipeline execution test.
 
 ## New checkout
 

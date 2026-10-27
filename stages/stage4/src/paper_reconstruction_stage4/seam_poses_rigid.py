@@ -18,6 +18,7 @@ MEASUREMENT='native-contour-rigid-angle-votes.v1'
 def angle_modes(problem):
     rows=defaultdict(list)
     for edge in sorted(problem.edges,key=lambda e:(-e.weight,e.id)):
+        if 'native_bridge' in edge.raw:continue
         h=np.asarray(edge.transform,float);require_rigid(h)
         a,b=edge.a,edge.b
         if a>b:a,b=b,a;h=np.linalg.inv(h)
@@ -77,14 +78,15 @@ def retain(rows):
     return kept
 
 
-def generate(problem,config,deadline,maximum_checks=None,samples=256,peaks=4,frontiers=()):
+def generate(problem,config,deadline,maximum_checks=None,samples=256,peaks=4,frontiers=(),angle_seeds=None):
     from .seam_poses_v18 import generate as scheduled
-    angles=angle_modes(problem)
+    angles=angle_modes(problem) if angle_seeds is None else angle_seeds
     proposals,audit=scheduled(problem,config,deadline,maximum_checks,samples,peaks,frontiers,
         _rotation_provider=lambda data,a,b,p,cache:prepare(data,a,b,p,cache,angles),
-        _fit_provider=fit,_retain_provider=retain)
+        _fit_provider=fit,_retain_provider=retain,_pairs=None if angle_seeds is None else angles)
     audit.update(policy=POLICY,measurement_policy=MEASUREMENT,
-        rotation_mode='observed-working-evidence-angles-plus-quarter-basins',relative_piece_scale=1.,
+        rotation_mode=('observed-working-evidence-angles-plus-quarter-basins' if angle_seeds is None else
+            'targeted-authenticated-archive-angles'),relative_piece_scale=1.,
         rotation_seed_bin_degrees=.25,pose_translation_inherited=False,reference_coordinates_used=False,
         angle_coverage_is_exhaustive=False,angle_seeds=[{'pieces':list(pair),'seeds':seeds} for pair,seeds in angles.items()])
     return proposals,audit

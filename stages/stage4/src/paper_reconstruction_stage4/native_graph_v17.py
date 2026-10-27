@@ -10,7 +10,7 @@ import time
 import numpy as np
 from .geometry import regauge, relative
 from paper_reconstruction_contracts import map_points
-from .constraints import require_rigid
+from .constraints import require_rigid, require_native_rotation
 from .native_bridge import contour_arc, check_arcs
 from .support import overlaps
 from .outputs import digest
@@ -133,9 +133,7 @@ def search(context, basis, proposals, deadline, maximum_checks, beam=24, physica
         key = proposal['proposal_id']
         if key not in decoded:
             try:
-                h = np.asarray(proposal['transform_b_to_a'], float); require_rigid(h)
-                if not np.allclose(h[:2, :2], np.rint(h[:2, :2]), atol=1e-7, rtol=0.):
-                    raise ValueError('Undeclared graph rotation')
+                h = np.asarray(proposal['transform_b_to_a'], float); require_native_rotation(h, context.problem.capture_metadata)
                 arcs = tuple(contour_arc(context.problem, row) for row in proposal['arcs'])
                 if [arc.piece for arc in arcs] != [a, b]:
                     raise ValueError('Proposal arc pair differs')

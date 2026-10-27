@@ -4,9 +4,13 @@ Stage 4 now reconstructs all fourteen development pages through 30 pieces: two e
 
 The source is now inlined at `stages/stage1` through `stages/stage4`; no sibling source checkout is required. The shared contract is at `contracts/sdk`. Four frozen release models are tracked with Git LFS; benchmark datasets are optional ignored assets with exact receipts. Read `README.md`, `docs/BASELINE.md` and `docs/TELEMETRY.md` before changing inference.
 
-## Current capture integration: v2.0.2
+## Current capture integration: v2.0.3
 
 The original construction measurements below belong to v2.0.0. Version 2.0.1 made CPU the installation/execution default and added the audited Stage 1 boundary adapter. Version 2.0.2 corrects the real-capture route to use V21 with explicit predicted-mask provenance, rather than the older general continuation configuration. Stage 3 source and the four model files remain unchanged.
+
+Version 2.0.2 still contained lower-level quarter-turn checks in native graph growth/cut repair and rounded support-cycle rotations. Telemetry replay found 1,612 valid continuous-angle proposals blocked in the real six-piece case. Version 2.0.3 applies the declared rotation family consistently, gives ordinary routes an initial turn, retains independently verified partial support and revisits earlier attachments of stalled partial groups. It also fits targeted angles from the existing archive with freshly measured translations. These are Stage 4 corrections; the failed v2.0.2 run is not evidence of a Stage 3-only coverage failure. See `docs/V203_CAPTURE_RECOVERY_REVIEW.md` for current validation and limits.
+
+The corrected six-piece run now publishes a supported six-piece candidate, but the small corner is still visibly misaligned. It tests 97 additional existing archive angles, retaining 775 derived proposals, and still does not reach the 0.98 geometry improvement target. The corner has a locally valid ~595-pixel contact with p95 9.02 pixels and shape spread 0.0619. A strong local subarc can therefore support a wrong whole-fragment pose. Stage 4 still needs better global outline/orientation handling; Stage 3 should expose useful rotation/translation alternatives and uncertainty rather than treating a short good subarc as a certain full-piece placement. No real-page reference coordinates or full-bank impossibility proof were used. Preserve this page as a separate real-capture test, not another exact-mask success.
 
 The user's “1:1” requirement means common relative physical/native pixel scale, with arbitrary rigid rotation and translation. It does not mean exact masks or pixel-perfect placement. Same-DPI scans or fixed-distance parallel flat phone captures must preserve that common scale. Complete-page shape, format and DPI remain unknown. The exact-mask quarter-turn benchmark is one development acquisition, not the definition of the supported transform model.
 

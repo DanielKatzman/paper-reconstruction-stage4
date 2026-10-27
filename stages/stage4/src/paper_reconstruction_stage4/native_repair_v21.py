@@ -114,6 +114,12 @@ class RepairContext(PreviousRepairContext):
             'wider_modes_permanently_discarded':False,
             'records':[r for job in self.cut_jobs.values() for r in job.records]}
 
+    def extra_tasks(self):return ()
+
+    def extra_task_ready(self,name):return False
+
+    def extra_task_step(self,name):return None,False
+
     def run_geometry(self,deadline,fast_only=False):
         started=time.perf_counter(); self.repair_deadline=deadline
         self._update_frontiers(); candidate=None; reason=None
@@ -126,12 +132,15 @@ class RepairContext(PreviousRepairContext):
             candidate,_=self._cut_turn()
             self.task_seconds['cut']+=time.perf_counter()-cut_started
         names=list(self.frontiers)
-        tasks=[(name,kind) for kind in ('beam','dfs') for name in names]+[('cut',None),('support',None)]
+        extra=set(self.extra_tasks())
+        tasks=[(name,kind) for kind in ('beam','dfs') for name in names]+[('cut',None),('support',None)]+[(name,None) for name in sorted(extra)]
         weights={(name,kind):(8. if (name,kind)==('nonstraight_first','beam') else 1.) for name,kind in tasks}
         while candidate is None and time.perf_counter()<deadline:
             available=[]
             for name,kind in tasks:
-                if name=='cut':
+                if name in extra:
+                    ready=self.extra_task_ready(name)
+                elif name=='cut':
                     ready=any(j.revision!=self.proposal_revision or j.pending for j in self.cut_jobs.values())
                 elif name=='support':
                     ready=any(not j['exhausted'] for j in self.support_jobs.values())
@@ -147,7 +156,9 @@ class RepairContext(PreviousRepairContext):
             task_key=name if kind is None else name+'/'+kind
             turn_started=time.perf_counter()
             worked=False
-            if name=='cut':
+            if name in extra:
+                candidate,worked=self.extra_task_step(name)
+            elif name=='cut':
                 candidate,worked=self._cut_turn()
             elif name=='support':
                 candidate,worked=self._support_turn()
@@ -175,7 +186,7 @@ class RepairContext(PreviousRepairContext):
             if all(f.fast_done and f.dfs_done for f in self.frontiers.values()):
                 has_cut=any(job.pending for job in self.cut_jobs.values())
                 has_support=any(not job['exhausted'] for job in self.support_jobs.values())
-                if not has_cut and not has_support:
+                if not has_cut and not has_support and not any(self.extra_task_ready(name) for name in extra):
                     reason='configured_native_graph_exhausted'; break
         if self.verified_incumbent is not None:
             candidate=self.verified_incumbent

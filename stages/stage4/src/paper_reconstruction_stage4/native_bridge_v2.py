@@ -1,7 +1,7 @@
 """Multi-component seam provenance and independent conditioning/cycle checks."""
 import numpy as np
 from .outputs import digest
-from .constraints import require_rigid
+from .constraints import require_rigid, require_native_rotation
 from .geometry import relative
 from .native_bridge import arc_value,record_arcs,check_arcs
 from .seam_poses import spread
@@ -39,10 +39,8 @@ def validate_record(value):
     if value['role'] not in {'merge','cycle'}:raise ValueError('Unknown native bridge graph role')
     if set(value['capture_binding'])!={'rotation_family','capture_profile_sha256'} or value['capture_binding']['rotation_family'] not in {'quarter_turn','continuous_rigid'}:
         raise ValueError('Native seam rotation seeds lack declared acquisition metadata')
-    require_rigid(value['transform_b_to_a']);require_rigid(value['proposed_transform_b_to_a'])
-    q=np.asarray(value['proposed_transform_b_to_a'])[:2,:2]
-    if value['capture_binding']['rotation_family']=='quarter_turn' and not np.allclose(q,np.rint(q),atol=1e-7,rtol=0.):
-        raise ValueError('Quarter-turn pose seed contains an undeclared rotation')
+    require_rigid(value['transform_b_to_a'])
+    require_native_rotation(value['proposed_transform_b_to_a'],value['capture_binding'])
 
 
 def verify_layout(problem,layout,config):

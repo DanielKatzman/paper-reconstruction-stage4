@@ -1,6 +1,6 @@
 # Stage modules and the future orchestrator
 
-This repository preserves the Stage 4 construction baseline from **v2.0.0**, adds CPU-default orchestration in **v2.0.1**, and routes shared-scale predicted-mask captures through V21 in **v2.0.2**. Its inlined Stage 1/2/3 snapshots make the baseline reproducible. The owner also maintains each stage separately; those repositories can publish compatible releases without requiring a separate network service for every stage.
+This repository preserves the Stage 4 construction baseline from **v2.0.0**, adds CPU-default orchestration in **v2.0.1**, routes shared-scale predicted-mask captures through V21 in **v2.0.2**, and corrects continuous-rotation graph/recovery behavior in **v2.0.3**. Its inlined Stage 1/2/3 snapshots make the baseline reproducible. The owner also maintains each stage separately; those repositories can publish compatible releases without requiring a separate network service for every stage.
 
 The intended final deployment is a **modular monolith**: one application/container exposing an API or GUI, with an internal pipeline coordinator and replaceable stage modules. The current repository implements the CLI coordinator and file contracts. It does not yet contain that API, GUI or Docker deployment.
 

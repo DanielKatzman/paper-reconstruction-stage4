@@ -1,3 +1,12 @@
+# 2.0.3 - Continuous-rotation graph and capture recovery fixes
+
+- Apply authenticated rotation-family validation consistently to native growth, bridge replay and cut repair; preserve unit scale and quarter-turn controls.
+- Preserve continuous rotations when measuring final support cycles and retain distinct rigid-angle modes in native ordering.
+- Give ordinary cold search routes a turn before persistent capture recovery, preserving verified incumbents and native frontiers.
+- Independently verify partial native support before retaining partial output; repair earlier attachments in stalled partial components without moving unplaced pieces.
+- Recover targeted angle alternatives from the existing authenticated archive, refitting translation from native contours; retain explicit coverage and rejection telemetry.
+- Keep CPU defaults, Stage 3 source, four frozen model weights and serving acceptance thresholds unchanged.
+
 # 2.0.2 - Independent scale/mask declarations and rigid native proposals
 
 - Treat relative scale 1:1 independently from exact versus predicted segmentation masks.

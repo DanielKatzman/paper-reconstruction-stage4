@@ -16,6 +16,8 @@ The 14/14 construction result comes from exact generator masks and declared comm
 
 The user's intended input is same-DPI scans or fixed-distance photographs with flat pieces. “1:1” means common relative physical/native pixel scale, not generator masks or perfect alignment. V21 accepts both mask provenances under the same rigid/common-scale model. Keep camera orientation/settings consistent and avoid independent image resizing. Native rotations may be continuous; 1:1 scale does not imply 90-degree turns.
 
+Version 2.0.3 fixes the remaining continuous-angle restrictions inside graph expansion, cut repair and support-cycle pooling. The capture path lets ordinary routes run before persistent native recovery, retains only independently verified partial results, and can revisit earlier attachments/use targeted archived angles. Same-scale acquisition does not itself guarantee that a complete construction will be found. The capture review records actual outcomes separately from execution and synthetic controls.
+
 Do not mark real images as `generator_exact_bypass` to get past the development-only page guards. Use the truthful capture route, inspect masks/acceptance flags and assess the resulting construction. If perspective or scale differences are significant, add measured normalization or qualify an appropriate transform model before assuming rigid matching applies.
 
 The next real-input acceptance check is an end-to-end CPU run on the actual photographed piece set, including segmentation review, observable seam/support checks, geometry assessment and visual construction review. A small synthetic CPU smoke test establishes execution, not that real photographs or all thirty-piece pages are solved reliably.

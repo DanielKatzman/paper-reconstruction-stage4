@@ -10,7 +10,7 @@ import time
 import numpy as np
 from .native_graph_v17 import Growth, offers, quality, identity, pose_identity, incremental_check
 from .geometry import regauge
-from .constraints import require_rigid
+from .constraints import require_rigid, require_native_rotation
 from .native_bridge import contour_arc, check_arcs
 from .support import overlaps
 from .repair_search import Node
@@ -44,7 +44,10 @@ def search(context, basis, proposals, deadline, on_complete, physical=None, fast
     # A small front-of-queue view prevents weak alternative modes from
     # fabricating corroboration for one another. Every other fitted mode stays
     # in the full index and in the parallel expanded backtracking sessions.
-    from .seam_poses_v15 import retain
+    if context.problem.capture_metadata['rotation_family']=='continuous_rigid':
+        from .seam_poses_rigid import retain
+    else:
+        from .seam_poses_v15 import retain
     per_pair = defaultdict(list)
     for proposal in ordered:
         per_pair[tuple(proposal['pieces'])].append(proposal)
@@ -68,9 +71,7 @@ def search(context, basis, proposals, deadline, on_complete, physical=None, fast
         key = proposal['proposal_id']
         if key not in decoded:
             try:
-                h = np.asarray(proposal['transform_b_to_a'], float); require_rigid(h)
-                if not np.allclose(h[:2, :2], np.rint(h[:2, :2]), atol=1e-7, rtol=0.):
-                    raise ValueError('Undeclared graph rotation')
+                h = np.asarray(proposal['transform_b_to_a'], float); require_native_rotation(h, context.problem.capture_metadata)
                 arcs = tuple(contour_arc(context.problem, row) for row in proposal['arcs'])
                 if [arc.piece for arc in arcs] != [a, b]:
                     raise ValueError('Proposal arc pair differs')

@@ -1,0 +1,284 @@
+{
+  "benchmark": {
+    "all_construction_regressions_pass": true,
+    "all_predictions_sealed_before_reference_evaluation": true,
+    "cases": [
+      {
+        "case_id": "puzzle_000330_c783e29dd569",
+        "construction_regression_pass": true,
+        "elapsed_seconds": 8.10999999998603,
+        "false_selected_neighbor_pairs": 0,
+        "maximum_orientation_error_degrees": 0.0,
+        "maximum_probe_error_reference_px": 5.099019513592813,
+        "maximum_relative_scale_error": 0.0,
+        "p95_probe_error_reference_px": 5.099019513592792,
+        "pieces": 4,
+        "result_sha256": "7a6e25952d5382217f0c8fe3814de0b8d0cdb5ed6f6f4e2200e4a5b6dc0d7041",
+        "supported_connected_zero_false_neighbors": true
+      },
+      {
+        "case_id": "puzzle_000450_dbaf91d313a9",
+        "construction_regression_pass": true,
+        "elapsed_seconds": 8.280999999959022,
+        "false_selected_neighbor_pairs": 0,
+        "maximum_orientation_error_degrees": 0.0,
+        "maximum_probe_error_reference_px": 9.219544457293035,
+        "maximum_relative_scale_error": 0.0,
+        "p95_probe_error_reference_px": 9.219544457292931,
+        "pieces": 4,
+        "result_sha256": "04e944a31a92c37235bebdaa46cc5ce4a3ae4607dbda724c3a9b3e128e864a9f",
+        "supported_connected_zero_false_neighbors": true
+      },
+      {
+        "case_id": "puzzle_000678_004586b006b3",
+        "construction_regression_pass": true,
+        "elapsed_seconds": 23.39100000000326,
+        "false_selected_neighbor_pairs": 0,
+        "maximum_orientation_error_degrees": 0.0,
+        "maximum_probe_error_reference_px": 4.123105625617771,
+        "maximum_relative_scale_error": 0.0,
+        "p95_probe_error_reference_px": 4.123105625617661,
+        "pieces": 8,
+        "result_sha256": "8013147e42cdc86eaa40497ebd2643815984f8a3fd36d6e8701e321a8187b7f1",
+        "supported_connected_zero_false_neighbors": true
+      },
+      {
+        "case_id": "puzzle_000917_5da663844c03",
+        "construction_regression_pass": true,
+        "elapsed_seconds": 23.375,
+        "false_selected_neighbor_pairs": 0,
+        "maximum_orientation_error_degrees": 0.0,
+        "maximum_probe_error_reference_px": 27.313000567495372,
+        "maximum_relative_scale_error": 0.0,
+        "p95_probe_error_reference_px": 27.313000567495354,
+        "pieces": 8,
+        "result_sha256": "cac91694819807cb824dfbe05ab030bec346799201f54a1d11ea878ce7d30d3a",
+        "supported_connected_zero_false_neighbors": true
+      },
+      {
+        "case_id": "puzzle_000341_ed2561390853",
+        "construction_regression_pass": true,
+        "elapsed_seconds": 63.54700000002049,
+        "false_selected_neighbor_pairs": 0,
+        "maximum_orientation_error_degrees": 0.0,
+        "maximum_probe_error_reference_px": 21.95449840010008,
+        "maximum_relative_scale_error": 0.0,
+        "p95_probe_error_reference_px": 21.954498400099972,
+        "pieces": 12,
+        "result_sha256": "9f6cb01acb5641df6f9be1a4d0dbd3c4678e0db496b7e57ad84f8849b937580d",
+        "supported_connected_zero_false_neighbors": true
+      },
+      {
+        "case_id": "puzzle_000362_2c257c3cdfe6",
+        "construction_regression_pass": true,
+        "elapsed_seconds": 33.14100000000326,
+        "false_selected_neighbor_pairs": 0,
+        "maximum_orientation_error_degrees": 0.0,
+        "maximum_probe_error_reference_px": 5.385164807134565,
+        "maximum_relative_scale_error": 0.0,
+        "p95_probe_error_reference_px": 5.38516480713431,
+        "pieces": 12,
+        "result_sha256": "7b9c7eb97c33787b6baf58646230e05fa6fe4e9233558e21c25a2f0bcfb775f2",
+        "supported_connected_zero_false_neighbors": true
+      },
+      {
+        "case_id": "puzzle_000681_29c5f6c02ba4",
+        "construction_regression_pass": true,
+        "elapsed_seconds": 49.79699999996228,
+        "false_selected_neighbor_pairs": 0,
+        "maximum_orientation_error_degrees": 0.0,
+        "maximum_probe_error_reference_px": 3.162277660168667,
+        "maximum_relative_scale_error": 0.0,
+        "p95_probe_error_reference_px": 3.162277660168595,
+        "pieces": 16,
+        "result_sha256": "75d3b72916645bf6b3b918e1a2140d56e3d6a12f5d2920cef78ff8a2423d9ef2",
+        "supported_connected_zero_false_neighbors": true
+      },
+      {
+        "case_id": "puzzle_000801_4effadfdf42a",
+        "construction_regression_pass": true,
+        "elapsed_seconds": 255.78100000001723,
+        "false_selected_neighbor_pairs": 0,
+        "maximum_orientation_error_degrees": 1.6284439969093206e-12,
+        "maximum_probe_error_reference_px": 17.26267650163209,
+        "maximum_relative_scale_error": 0.0,
+        "p95_probe_error_reference_px": 17.26267650163207,
+        "pieces": 16,
+        "result_sha256": "22e7cc8201b052bdcae490a7e90409db8f0f384630d8d6a7439a35d469e327e1",
+        "supported_connected_zero_false_neighbors": true
+      },
+      {
+        "case_id": "puzzle_000600_139279105ea8",
+        "construction_regression_pass": true,
+        "elapsed_seconds": 302.875,
+        "false_selected_neighbor_pairs": 0,
+        "maximum_orientation_error_degrees": 0.0,
+        "maximum_probe_error_reference_px": 30.0,
+        "maximum_relative_scale_error": 0.0,
+        "p95_probe_error_reference_px": 29.999999999999908,
+        "pieces": 20,
+        "result_sha256": "ff68910f341a04ad19f4db4893fc5d57388c18f170a502285dbec6659da514f9",
+        "supported_connected_zero_false_neighbors": true
+      },
+      {
+        "case_id": "puzzle_000654_8b3ab997e3c3",
+        "construction_regression_pass": true,
+        "elapsed_seconds": 62.35899999999674,
+        "false_selected_neighbor_pairs": 0,
+        "maximum_orientation_error_degrees": 0.0,
+        "maximum_probe_error_reference_px": 9.055385138137527,
+        "maximum_relative_scale_error": 0.0,
+        "p95_probe_error_reference_px": 9.055385138137407,
+        "pieces": 20,
+        "result_sha256": "b554ccc5d1c4bcdfda55cb18e01b02a54cebb5c7611ea9e381b8ba1f2d8cef2c",
+        "supported_connected_zero_false_neighbors": true
+      },
+      {
+        "case_id": "puzzle_000187_aa7faf896549",
+        "construction_regression_pass": true,
+        "elapsed_seconds": 84.57799999997951,
+        "false_selected_neighbor_pairs": 0,
+        "maximum_orientation_error_degrees": 0.0,
+        "maximum_probe_error_reference_px": 15.999999999999886,
+        "maximum_relative_scale_error": 0.0,
+        "p95_probe_error_reference_px": 15.033296378372908,
+        "pieces": 24,
+        "result_sha256": "0e727482e945adbad58816dd718a1d3ff57a173ab2dd55afa890ea3b451a5d7d",
+        "supported_connected_zero_false_neighbors": true
+      },
+      {
+        "case_id": "puzzle_000976_13e78443450c",
+        "construction_regression_pass": true,
+        "elapsed_seconds": 159.14100000000326,
+        "false_selected_neighbor_pairs": 0,
+        "maximum_orientation_error_degrees": 0.0,
+        "maximum_probe_error_reference_px": 20.0997512422416,
+        "maximum_relative_scale_error": 0.0,
+        "p95_probe_error_reference_px": 18.35755975068582,
+        "pieces": 24,
+        "result_sha256": "8824734085e8ee54d9683d70ecf4fe46141d97468438fefb82428648d0e0790c",
+        "supported_connected_zero_false_neighbors": true
+      },
+      {
+        "case_id": "puzzle_000062_df198f2a133c",
+        "construction_regression_pass": true,
+        "elapsed_seconds": 120.17200000002049,
+        "false_selected_neighbor_pairs": 0,
+        "maximum_orientation_error_degrees": 0.0,
+        "maximum_probe_error_reference_px": 25.05992817228315,
+        "maximum_relative_scale_error": 0.0,
+        "p95_probe_error_reference_px": 22.82542442102644,
+        "pieces": 30,
+        "result_sha256": "e7075261bf13ef64cf369b48eaff270d045f9727152b914a3e5f1603cbc48066",
+        "supported_connected_zero_false_neighbors": true
+      },
+      {
+        "case_id": "puzzle_000847_0c6407e2d3af",
+        "construction_regression_pass": true,
+        "elapsed_seconds": 101.81199999997625,
+        "false_selected_neighbor_pairs": 0,
+        "maximum_orientation_error_degrees": 0.0,
+        "maximum_probe_error_reference_px": 12.369316876853423,
+        "maximum_relative_scale_error": 0.0,
+        "p95_probe_error_reference_px": 11.66190378969099,
+        "pieces": 30,
+        "result_sha256": "e83dd11c03cbb6cade49524c423591c73679574a504dc337fc742bf3fd5b3966",
+        "supported_connected_zero_false_neighbors": true
+      }
+    ],
+    "cold_cases": 14,
+    "development_cohort_not_holdout": true,
+    "predictions_unchanged_by_evaluation": true
+  },
+  "cpu_remains_default": true,
+  "models_and_stage3_source_unchanged": true,
+  "portable_runner_tests_passed": 16,
+  "real_capture": {
+    "archive_fit_counts": {
+      "all_configured_work_completed": true,
+      "native_checks": 808,
+      "pair_rotations": 97,
+      "retained_poses": 775
+    },
+    "archive_rotation_recovery": {
+      "additional_angle_modes": 97,
+      "angular_bin_degrees": 0.25,
+      "archive_rows_scanned": 1151,
+      "archive_validation_exhausted": true,
+      "budget_abstained": false,
+      "elapsed_seconds": 2.4982903999625705,
+      "input_manifest_sha256": "e432082aa50dafd9d19128279d6b44c9b595972326110fee85c6723e955eace2",
+      "policy": "targeted-existing-archive-rotation-recovery.v1",
+      "reference_coordinates_used": false,
+      "translation_inherited": false,
+      "upstream_archive_modified": false
+    },
+    "component_sizes": [
+      6
+    ],
+    "elapsed_seconds": 609.4220000000205,
+    "evaluation_truth_opened": false,
+    "existing_geometry_stop_target_met": false,
+    "fresh_upstream_inference_performed": false,
+    "geometry": {
+      "calibrated_probability": false,
+      "complete_page_score_available": true,
+      "content_order_verified_by_geometry": false,
+      "format_or_aspect_ratio_prior_used": false,
+      "reason_codes": [],
+      "schema_version": "stage4.page-geometry.v1",
+      "score": 0.9407950468333933,
+      "score_formula": "clip(1 - 0.65*unfilled - 0.20*overlap - 0.15*holes, 0, 1)",
+      "status": "page_like"
+    },
+    "input_manifest_sha256": "e432082aa50dafd9d19128279d6b44c9b595972326110fee85c6723e955eace2",
+    "observed_assessment_reasons": [],
+    "observed_assessment_status": "supported",
+    "old_layout_seed_used": false,
+    "ordinary_routes": [
+      {
+        "executed": true,
+        "name": "v4_constructions"
+      },
+      {
+        "executed": true,
+        "name": "v6_component"
+      },
+      {
+        "executed": true,
+        "name": "v8_component"
+      }
+    ],
+    "partial_recovery": {
+      "partial_hypotheses_observed": 265,
+      "partial_support_turns": 101,
+      "pending_support_jobs": 0,
+      "raw_growth_published_as_verified": false,
+      "repair_counts": {
+        "alternatives_examined": 4192,
+        "component_area_bound": 2498,
+        "interior_collision": 436,
+        "physically_valid_repaired_partials": 1258
+      },
+      "repaired_partial_roots": 89,
+      "retained_verified_partials": 16,
+      "verified_partial_candidates": 41
+    },
+    "pieces": 6,
+    "raw_images_masks_poses_uploaded": false,
+    "result_sha256": "412a61e8fde8ac11166d2c1872a76411244fb876196d51a4de76acfcf56f9c57",
+    "status": "complete_candidate",
+    "upstream_reused_from_cpu_only_execution": true,
+    "verified_completions": 1,
+    "visual_result": "Mostly coherent page, but small corner fragment remains visibly misaligned; not a correct full real-photo reconstruction claim"
+  },
+  "real_photo_reliability_or_thirty_piece_full_cpu_latency_qualified": false,
+  "release": "2.0.3",
+  "source_sdk_fingerprint": "dfe40c4b5a75cf40673fcfd090449079c2955dae159e5fbb2c05e7e81b146131",
+  "stage4_tests": {
+    "discovered": 368,
+    "explicit_skips": 16,
+    "passed": 352
+  },
+  "timing_scope": "Concurrent correctness runs on one workstation; not isolated speed comparisons or a fresh full-pipeline CPU latency qualification"
+}

@@ -1,5 +1,7 @@
 # Shared-scale capture integration review
 
+Historical v2.0.2 review. Subsequent telemetry investigation found a nested quarter-turn check still blocking continuous-angle graph growth, plus starvation of ordinary search routes. The v2.0.3 corrections and validation are recorded in `V203_CAPTURE_RECOVERY_REVIEW.md`; generation being active in this old run did not establish that its angles reached graph expansion.
+
 The user's acquisition contract is a common physical/native pixel scale: same-DPI scans, or fixed-distance flat phone captures with consistent camera geometry. Rotation and translation remain unknown. “1:1” does not require exact segmentation or pixel-perfect fragment placement. Every fragment of one complete rectangular page is present; page dimensions, format and DPI are unknown.
 
 ## Corrected routing and provenance
