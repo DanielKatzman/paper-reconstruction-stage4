@@ -1,0 +1,23 @@
+{
+  "change": "Canonicalize expected Windows temp path in runner test; compare semantic resolved paths, not 8.3 alias spelling.",
+  "date": "2026-10-28",
+  "fourteen_case_and_real_capture_runs_reused_for_identical_production_fingerprint": true,
+  "historical_skips": 16,
+  "initial_v204_ci": {
+    "cpu_rankers_linux": "success",
+    "cpu_rankers_windows": "success",
+    "runner_tests": "one temp-path alias assertion failed; corrected by this patch",
+    "solver_suite": "success",
+    "url": "https://github.com/DanielKatzman/paper-reconstruction-stage4/actions/runs/40638971086"
+  },
+  "local_runner_tests_passed": 19,
+  "production_solver_changed_from_v204": false,
+  "raw_real_capture_assets_uploaded": false,
+  "regression_evidence": "V204_ALIGNMENT_AND_REGRESSION_VALIDATION_2026-10-28.json",
+  "regression_evidence_sha256": "d3850b0fd07d690a2ba40fab010fccfd352fd1aa393feb11b4f430e6ea14e4fd",
+  "release": "2.0.5",
+  "source_sdk_fingerprint": "6000dccca2004995b02a6b76f21791e5a85b1daabfd235cb755be4761fb69c37",
+  "stage4_tests_passed": 362,
+  "upstream_source_models_sdk_unchanged": true,
+  "v204_tag_preserved": "e0be8c821e642e6da69e3ca195a3cde222d2bf48"
+}

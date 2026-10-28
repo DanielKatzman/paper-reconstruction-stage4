@@ -2,6 +2,8 @@
 
 This v2.0.4 change is in Stage 4. The saved Stage 2/3 bundle remains compatible and immutable. No upstream stage or model needs regeneration for a Stage 4-only test. The qualified cold six-piece run and fourteen-case regression are recorded in [the validation review](V204_CAPTURE_ALIGNMENT_REVIEW.md).
 
+The published release is v2.0.5, which corrects only a Windows path-alias assertion in a runner test. The qualified solver fingerprint, commands, upstream evidence and reconstruction results are unchanged.
+
 ## Recovery
 
 A supported complete candidate can still contain a misplaced or rotated piece. Under the authenticated continuous-rigid shared-scale complete-page profile, Stage 4 now:

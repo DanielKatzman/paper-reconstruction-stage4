@@ -1,8 +1,8 @@
 # Paper Reconstruction - Stage 4 v2.0
 
-**Version 2.0.4** adds observed-border rotation recovery and repair of supported but misaligned capture assemblies. A cold CPU test reconstructs the six photographed pieces in 8m7s with approximately 3-9 native-pixel per-piece contour displacement measured after prediction sealing. All fourteen development controls through 30 pieces pass. See the [validation review](docs/V204_CAPTURE_ALIGNMENT_REVIEW.md) and [capture runner](docs/CAPTURE_QUALITY_RECOVERY.md); existing Stage 2/3 banks remain compatible.
+**Version 2.0.5** includes observed-border rotation recovery and repair of supported but misaligned capture assemblies. A cold CPU test reconstructs the six photographed pieces in 8m7s with approximately 3-9 native-pixel per-piece contour displacement measured after prediction sealing. All fourteen development controls through 30 pieces pass. See the [validation review](docs/V204_CAPTURE_ALIGNMENT_REVIEW.md) and [capture runner](docs/CAPTURE_QUALITY_RECOVERY.md); existing Stage 2/3 banks remain compatible. This release also corrects a Windows temp-path alias assertion in a runner test, preserving the qualified solver source and all previous tags.
 
-[Capture alignment release v2.0.4](https://github.com/DanielKatzman/paper-reconstruction-stage4/releases/tag/v2.0.4) · [Stage 3 handoff](docs/STAGE3_HANDOFF.md) · [Architecture and integration](docs/ARCHITECTURE.md) · [Baseline results](docs/BASELINE.md)
+[Capture alignment release v2.0.5](https://github.com/DanielKatzman/paper-reconstruction-stage4/releases/tag/v2.0.5) · [Stage 3 handoff](docs/STAGE3_HANDOFF.md) · [Architecture and integration](docs/ARCHITECTURE.md) · [Baseline results](docs/BASELINE.md)
 
 **CPU is the default.** Setup installs the CPU-only Torch build and the pipeline uses `--device cpu`. CUDA is optional and must be selected explicitly. Version 2.0.0 also has CPU execution paths, but its setup/runner defaults were CUDA; v2.0.1 corrects those defaults without changing the frozen models or assembly implementation.
 
@@ -32,13 +32,13 @@ This cohort was used during development. It assumes every piece of one rectangul
 | `provenance` | Component source inventories, asset hashes and original baseline commitments |
 | `tools` | Portable setup, asset verification, pipeline and regression commands |
 
-The umbrella release is **2.0.4**, compatible with the v2.0.0 model/data baseline. Its source fingerprints identify the capture alignment implementation; Stage 1-3 and the original model files remain unchanged. Existing Stage 2 copyright terms are retained; this export does not grant a new open-source license.
+The umbrella release is **2.0.5**, compatible with the v2.0.0 model/data baseline. Its source fingerprints identify the capture alignment implementation; Stage 1-3 and the original model files remain unchanged. Existing Stage 2 copyright terms are retained; this export does not grant a new open-source license.
 
 ## Clone and install
 
 ```powershell
 git lfs install
-git clone --branch v2.0.4 https://github.com/DanielKatzman/paper-reconstruction-stage4.git
+git clone --branch v2.0.5 https://github.com/DanielKatzman/paper-reconstruction-stage4.git
 cd paper-reconstruction-stage4
 git lfs pull
 python -B tools/verify_compatibility.py

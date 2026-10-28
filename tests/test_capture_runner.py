@@ -29,7 +29,9 @@ class CaptureRunnerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             root=Path(folder)
             with patch.object(runner,'ROOT',root):
-                self.assertEqual(runner.resolve(Path('outputs/fresh')),root/'outputs/fresh')
+                actual=runner.resolve(Path('outputs/fresh'))
+                self.assertEqual(actual,(root/'outputs/fresh').resolve())
+                self.assertTrue(actual.is_relative_to(root.resolve()))
 
 
 if __name__=='__main__':unittest.main()

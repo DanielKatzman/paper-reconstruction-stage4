@@ -6,6 +6,8 @@ The source is now inlined at `stages/stage1` through `stages/stage4`; no sibling
 
 ## Current capture integration: v2.0.4
 
+Use the v2.0.5 release for this baseline. It preserves the v2.0.4 solver and qualifications and corrects a Windows runner-test path-alias assertion; no model, upstream stage or production solver changes are involved.
+
 The cold six-piece real-capture test now constructs one supported page in 486.8 seconds on CPU, with all eight selected joins independently verified. Post-seal registration measures approximately 3-9 native pixels of contour p95 displacement per piece. No previous assembly or reference poses enter the solve. The fourteen development controls through 30 pieces also pass, with zero false selected neighbor pairs and a largest saved-probe displacement of 30 pixels. See `docs/V204_CAPTURE_ALIGNMENT_REVIEW.md` and `provenance/V204_ALIGNMENT_AND_REGRESSION_VALIDATION_2026-10-28.json`.
 
 Stage 4 supplies missing rotations from observed border spans and refits native seams, repairs supported complete candidates across tree cuts, and performs fixed-scale rigid refinement with independent support replay. Stage 1-3 source, the SDK and model weights remain unchanged. Existing upstream bundles are compatible; regeneration is unnecessary for Stage 4-only tests. The new Stage 4 source/SDK fingerprint is `6000dccca2004995b02a6b76f21791e5a85b1daabfd235cb755be4761fb69c37`.
