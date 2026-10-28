@@ -17,7 +17,7 @@ def smaller_side(row):
     return min(sides,key=lambda x:(len(x),x))
 
 
-def cut_options(node,moving,proposals,tolerance,rotation_family='quarter_turn'):
+def cut_options(node,moving,proposals,tolerance,rotation_family='quarter_turn',corroboration=True):
     """A local ordering tier precedes wider modes; no fitted mode is removed.
 
     Distinct physical neighbors may corroborate the same group motion. This
@@ -41,11 +41,12 @@ def cut_options(node,moving,proposals,tolerance,rotation_family='quarter_turn'):
         if not rotation_changed and shifted<=1e-6:
             continue
         rows.append({'proposal':p,'delta':delta,'outside':outside,'displacement_px':shifted,
-            'rotation_changed':rotation_changed,'local_ordering_tier':not rotation_changed and shifted<=4.*tolerance})
+            'rotation_changed':rotation_changed,'local_ordering_tier':not rotation_changed and shifted<=4.*tolerance,
+            'distinct_neighbor_witnesses':0})
     # Compare motions by their action on one common group anchor. Transform
     # translations alone depend on the current component's arbitrary gauge.
     anchor=min(moving)
-    if rows:
+    if rows and corroboration:
         anchors=np.stack([(r['delta']@state.poses[anchor])[:2,2] for r in rows])
         rotations=np.stack([r['delta'][:2,:2].ravel() for r in rows])
         for i,row in enumerate(rows):

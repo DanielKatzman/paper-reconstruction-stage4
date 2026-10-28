@@ -17,6 +17,8 @@ class RepairContext(PreviousRepairContext):
         self.partial_jobs=OrderedDict();self.partial_support=OrderedDict();self.partial_repairs=OrderedDict()
         self.partial_seen=set();self.partial_candidates=OrderedDict();self.capture_counts=Counter()
         self.partial_repair_counts=Counter()
+        self.capture_quality_processed=set()
+        self.capture_started=time.perf_counter();self.capture_checkpoint_logged=set()
         self.repair_audit.update(capture_recovery_policy='cold-routes-then-persistent-capture-repair.v1',
             native_first=False,ordinary_routes_yield_before_native=True,
             partial_selection_policy='verified-component-progress.v1',reference_geometry_used=False)
@@ -26,6 +28,69 @@ class RepairContext(PreviousRepairContext):
         # execute before persistent native DFS can consume the shared deadline.
         self.repair_audit['native_search_deferred_for_cold_routes']=True
         return None
+
+    def _quality_checkpoint(self):
+        state=self.verified_incumbent
+        if state is not None and fingerprint(state) not in self.capture_checkpoint_logged:
+            self.capture_checkpoint_logged.add(fingerprint(state))
+            self.repair_audit.setdefault('first_supported_checkpoint_seconds',time.perf_counter()-self.capture_started)
+            self.progress('Supported complete capture candidate: checking outline and placed-seam improvements')
+        return state if state is not None and fingerprint(state) not in self.capture_quality_processed else None
+
+    def progress(self,message):
+        callback=getattr(self.problem,'progress',None)
+        if callback is not None:callback(message)
+
+    def _complete(self,node,shape):
+        answer=super()._complete(node,shape)
+        # Yield a supported but imperfect complete page to quality recovery,
+        # before backtracking spends the remaining deadline on the same bank.
+        return answer if answer is not None else self._quality_checkpoint()
+
+    def _support_turn(self):
+        answer,worked=super()._support_turn()
+        return (answer if answer is not None else self._quality_checkpoint()),worked
+
+    def _cut_turn(self):
+        answer,worked=super()._cut_turn()
+        return (answer if answer is not None else self._quality_checkpoint()),worked
+
+    def polish_supported(self,state,deadline):
+        from .capture_quality_repair import polish
+        key=fingerprint(state)
+        if key in self.capture_quality_processed:return state
+        self.capture_quality_processed.add(key)
+        candidate=polish(self,state,deadline)
+        self.capture_quality_processed.add(fingerprint(candidate))
+        return candidate
+
+    def quality_finished(self,state,shape):
+        from .capture_quality_repair import quality_met
+        from .native_repair_v17 import satisfactory
+        audits=self.repair_audit.get('supported_capture_quality_repair',[])
+        locally_finished=bool(audits and audits[-1]['local_neighborhood_exhausted'])
+        return quality_met(shape) or locally_finished and satisfactory(state,self.verified_verdict)
+
+    def run_geometry(self,deadline,fast_only=False):
+        from .capture_quality_repair import quality_met
+        from .component_closure import shape_measurement
+        while time.perf_counter()<deadline:
+            answer=super().run_geometry(deadline,fast_only)
+            if answer is None:return None
+            key=fingerprint(answer)
+            if key in self.capture_quality_processed:return answer
+            answer=self.polish_supported(answer,deadline)
+            shape=shape_measurement(self,answer,768)
+            if self.verified_incumbent is not None:
+                answer=self.verified_incumbent;shape=self.verified_verdict['geometry']
+            self.repair_audit['verified_incumbent']={'candidate_id':fingerprint(answer),'geometry':shape,
+                'geometry_quality_target_met':quality_met(shape),
+                'preserved_after_deadline':time.perf_counter()>=deadline}
+            if self.quality_finished(answer,shape) or time.perf_counter()>=deadline:
+                return answer
+            # Resume persistent growth with the newly measured modes. Recovery
+            # never loads an old result or treats a failed local move as proof.
+        return self.verified_incumbent
 
     def observe_growth(self,growth):
         depth=max(map(len,growth.node.state.components()));n=len(growth.node.state.poses)
@@ -137,22 +202,29 @@ class RepairContext(PreviousRepairContext):
         from .feasibility import Feasibility
         from .component_closure import shape_measurement
         physical=Feasibility(self.problem,self.config)
+        protected=[]
         for state in states:
             if len(state.components())!=1 or not shape_measurement(self,state,768)['shape_gate_pass']:continue
             check=physical.state(state,final=True)
             if not check['valid']:continue
             try:verify_result_support(self.problem,{'layouts':[serialize_layout(self.problem,state,0,check,{'attempted':False})]},self.config)
             except ValueError:continue
-            self.geometry_finished=True;self.repair_audit['route_stop_reason']='protected_verified_construction'
-            return states
+            from .capture_quality_repair import quality_met
+            shape=shape_measurement(self,state,768)
+            if quality_met(shape):
+                self.geometry_finished=True;self.repair_audit['route_stop_reason']='protected_verified_construction'
+                return states
+            protected.append((shape['score'],state,shape))
         from .seam_poses_v18 import generate
         if time.perf_counter()<deadline:
+            self.progress('Capture recovery: fitting native contours at working-bank rotations')
             # Prepare the finite working/targeted archive modes before a
             # marginal incumbent can hold persistent search to the deadline.
             rows,audit=generate(self.problem,self.config,deadline,maximum_checks=None,peaks=8)
             self._merge_generation(rows,audit,'native_generation')
             self.expanded_generation_done=bool(audit.get('all_configured_work_completed',True))
         if time.perf_counter()<deadline:
+            self.progress('Capture recovery: checking authenticated archive rotation coverage')
             from .archive_rotations import modes
             pairs=self.archive_pairs(states)
             if pairs:
@@ -161,6 +233,16 @@ class RepairContext(PreviousRepairContext):
                     from .seam_poses_rigid import generate as fit_angles
                     rows,audit=fit_angles(self.problem,self.config,deadline,maximum_checks=None,peaks=8,angle_seeds=angles)
                     self._merge_generation(rows,audit,'targeted_archive_generation')
+        if protected and time.perf_counter()<deadline:
+            _,state,shape=max(protected,key=lambda row:row[0])
+            self.verified_incumbent=state
+            self.verified_verdict={'geometry':shape,'disposition':'verified_completion'}
+            candidate=self.polish_supported(state,deadline)
+            from .capture_quality_repair import quality_met
+            if self.quality_finished(candidate,shape_measurement(self,candidate,768)):
+                self.geometry_finished=True
+                self.repair_audit['route_stop_reason']='verified_capture_quality_repair'
+                return [candidate,*states,*self.partial_candidates.values()]
         candidate=self.run_geometry(deadline)
         self.repair_audit['capture_partial_recovery']={**dict(self.capture_counts),
             'repair_counts':dict(self.partial_repair_counts),'pending_support_jobs':len(self.partial_jobs),

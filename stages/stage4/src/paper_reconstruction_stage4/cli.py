@@ -47,6 +47,7 @@ def main(argv=None):
             command.add_argument('--result', type=Path, required=True)
             command.add_argument('--output', type=Path, required=True)
         if name == "solve":
+            command.add_argument('--progress', action='store_true', help='Emit observed search phase progress to the run log')
             command.add_argument("--output", type=Path, required=True)
             command.add_argument("--initial-result", type=Path, help="Verified same-bundle serving primary, used only by joint solver")
             command.add_argument("--resume", action="store_true", help="Verify a completed run, or replay matching unpublished work")
@@ -71,6 +72,8 @@ def main(argv=None):
         problem = load_problem(args.bundle, config)
         from .constraints import bind_profile
         bind_profile(problem, config, args.constraint_profile, args.capture_profile)
+        if args.command == 'solve' and args.progress:
+            problem.progress=lambda message:print(message,flush=True)
         if args.command == 'assess':
             from .assessment import write_package
             receipt = write_package(problem, config, args.result, args.output)

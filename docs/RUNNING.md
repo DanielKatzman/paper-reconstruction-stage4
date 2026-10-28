@@ -1,5 +1,7 @@
 # Runtime and asset setup
 
+For the Stage 4-only real six-piece development benchmark using saved upstream evidence, see [capture quality recovery](CAPTURE_QUALITY_RECOVERY.md). Stage 3 regeneration is not required.
+
 Use separate interpreters: Stage 1/2 use Python 3.14; Stage 3/4 use Python 3.12. Version 2.0.1 installs CPU-only Torch 2.7.1 for Stage 3 by default. The historical 2.0.0 preparation used Torch 2.7.1+cu118; its device is recorded in the original receipts. Stage 1/2 use CPU ONNX Runtime; Stage 4 uses CPU NumPy/SciPy/Pillow and the SDK. Existing component constraints are retained. `local/runtimes.json` maps stages to interpreters and is ignored by Git. Each subprocess imports inlined source through an explicit `PYTHONPATH`.
 
 `tools/setup.ps1` creates environments under ignored `local/envs` and installs editable components. Its default `-Device cpu` selects `https://download.pytorch.org/whl/cpu` and verifies `torch.version.cuda` is absent and all frozen ranker tensors are on CPU. `-Device cuda` selects the original CUDA 11.8 index; the pipeline still needs an explicit `--device cuda`. Installation needs package-index access. Other systems can install the same packages and supply an interpreter mapping; broad OS and real-capture qualification remain separate from the recorded baseline.

@@ -1,6 +1,6 @@
 # Validated construction baseline
 
-The original V21r4 run passes all fourteen development pages (228 pieces). The source fingerprint is `10270c9ef986d15529e05fd2bdc7b8d39675ba598d59b1876be815445084761e`; the exact inlined source preserves that fingerprint. The Stage 3 candidate is `6b0ac07074ff3ecf340aa7c30deae6760d8a8cd4807e3dd9b71348d72e86e66a`.
+The original V21r4 run passes all fourteen development pages (228 pieces). Its source fingerprint, preserved by tag v2.0.0, is `10270c9ef986d15529e05fd2bdc7b8d39675ba598d59b1876be815445084761e`. Later releases have their own source fingerprints and validation receipts; [v2.0.4](V204_CAPTURE_ALIGNMENT_REVIEW.md) passes the same fourteen controls and adds the cold six-piece real-capture result. The unchanged Stage 3 candidate is `6b0ac07074ff3ecf340aa7c30deae6760d8a8cd4807e3dd9b71348d72e86e66a`.
 
 The original request is `5a657b03d83db9a47eddb4954b0fc972ebd1f70ab0408a776a726a7e8587632f`; the prediction barrier is `78f23b8cd2b36f6be95a6df64e8b8985eef7f2f068e70a3f36d98e6b40fca68d`. These authenticate the original run, not a newly relocated execution. Component byte inventories and optional asset hashes are supplied separately.
 

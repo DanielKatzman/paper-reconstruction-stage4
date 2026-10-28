@@ -1,5 +1,6 @@
 {
   "acquisition_profiles": {
+    "capture_quality_repair_policy": "observed-border-angles-and-supported-incumbent-repair.v1",
     "capture_recovery_policy": "cold-routes-then-persistent-capture-repair.v1",
     "continuous_rigid_native_policy": "native-contour-observed-rigid-angles.v1",
     "exact_generator_masks": "stages/stage4/configs/shared_scale_complete_rectangle_v1.json",
@@ -16,7 +17,7 @@
     "relative_piece_scale": 1.0
   },
   "compatible_model_data_baseline": "2.0.0",
-  "component_inventory_sha256": "85a8db005f6d8d848c99262ccfb9e0bcb27eba1943ac3acaac00c4512584fb2b",
+  "component_inventory_sha256": "394ffdd050ddd29a3367553053de79c24e5cb22cc46c3958036880def2a3465f",
   "contracts": {
     "sdk_path": "contracts/sdk",
     "sdk_software_version": "0.1.0",
@@ -28,11 +29,11 @@
     "gpu_required": false,
     "torch_cpu_wheel_version": "2.7.1"
   },
-  "release_version": "2.0.3",
+  "release_version": "2.0.4",
   "schema_version": "paper-reconstruction.release-compatibility.v1",
   "stages": {
     "stage1": {
-      "compatible_pipeline_release": "2.0.3",
+      "compatible_pipeline_release": "2.0.4",
       "models": [
         {
           "path": "stages/stage1/models/segformer_b1_detail_768_v3.onnx",
@@ -46,7 +47,7 @@
       "source_inventory": "provenance/components.json#stage1"
     },
     "stage2": {
-      "compatible_pipeline_release": "2.0.3",
+      "compatible_pipeline_release": "2.0.4",
       "models": [
         {
           "path": "stages/stage2/models/stage2_boundary_v1.0.0.onnx",
@@ -61,7 +62,7 @@
     },
     "stage3": {
       "candidate_implementation_sha256": "6b0ac07074ff3ecf340aa7c30deae6760d8a8cd4807e3dd9b71348d72e86e66a",
-      "compatible_pipeline_release": "2.0.3",
+      "compatible_pipeline_release": "2.0.4",
       "models": [
         {
           "path": "stages/stage3/models/pair_mlp_small.pt",
@@ -80,13 +81,13 @@
       "source_inventory": "provenance/components.json#stage3"
     },
     "stage4": {
-      "compatible_pipeline_release": "2.0.3",
+      "compatible_pipeline_release": "2.0.4",
       "models": [],
       "package_metadata": "stages/stage4/pyproject.toml",
       "python_major_minor": "3.12",
       "software_version": "0.1.0",
       "source_inventory": "provenance/components.json#stage4",
-      "source_sdk_fingerprint": "dfe40c4b5a75cf40673fcfd090449079c2955dae159e5fbb2c05e7e81b146131"
+      "source_sdk_fingerprint": "6000dccca2004995b02a6b76f21791e5a85b1daabfd235cb755be4761fb69c37"
     }
   }
 }

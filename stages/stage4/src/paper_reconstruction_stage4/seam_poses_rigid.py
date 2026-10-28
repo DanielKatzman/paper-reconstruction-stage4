@@ -47,6 +47,7 @@ def prepare(data,a,b,peaks,cache,angles):
         for t,v in translation_modes(sa,rsb,na,rsnb,2,curved_only=True):
             if not any(np.linalg.norm(t-old[0])<6. for old in [*general,*curved]):curved.append((t,v))
         rotations.append({'quarter':index,'angle':angle,'source_geometry_id':seed['source_geometry_id'],
+            'observed_border_seed':seed.get('observed_border_seed'),
             'r':r,'rb':rb,'rn':rn,'general':general,'curved':curved})
     return rotations
 
@@ -64,6 +65,9 @@ def fit(problem,config,physical,data,a,b,value):
             'native_length_px':length,'shape_spread_ratio':condition,'conditioned':condition>=.05,
             'native_metrics':metrics,'score':float(length*(.1+min(condition,.35))/(1.+metrics['bidirectional_contact_p95_native_px']/4.)),
             'vote_strength':votes}
+        if rotation.get('observed_border_seed') is not None:
+            row['rotation_seed_source']='observed-long-straight-contour-spans.v1'
+            row['observed_border_seed']=rotation['observed_border_seed']
         row['proposal_id']=digest(row);rows.append(row)
     return rows
 
@@ -78,7 +82,8 @@ def retain(rows):
     return kept
 
 
-def generate(problem,config,deadline,maximum_checks=None,samples=256,peaks=4,frontiers=(),angle_seeds=None):
+def generate(problem,config,deadline,maximum_checks=None,samples=256,peaks=4,frontiers=(),angle_seeds=None,
+             angle_source='targeted-authenticated-archive-angles'):
     from .seam_poses_v18 import generate as scheduled
     angles=angle_modes(problem) if angle_seeds is None else angle_seeds
     proposals,audit=scheduled(problem,config,deadline,maximum_checks,samples,peaks,frontiers,
@@ -86,7 +91,7 @@ def generate(problem,config,deadline,maximum_checks=None,samples=256,peaks=4,fro
         _fit_provider=fit,_retain_provider=retain,_pairs=None if angle_seeds is None else angles)
     audit.update(policy=POLICY,measurement_policy=MEASUREMENT,
         rotation_mode=('observed-working-evidence-angles-plus-quarter-basins' if angle_seeds is None else
-            'targeted-authenticated-archive-angles'),relative_piece_scale=1.,
+            angle_source),relative_piece_scale=1.,
         rotation_seed_bin_degrees=.25,pose_translation_inherited=False,reference_coordinates_used=False,
         angle_coverage_is_exhaustive=False,angle_seeds=[{'pieces':list(pair),'seeds':seeds} for pair,seeds in angles.items()])
     return proposals,audit

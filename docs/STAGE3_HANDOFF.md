@@ -4,7 +4,17 @@ Stage 4 now reconstructs all fourteen development pages through 30 pieces: two e
 
 The source is now inlined at `stages/stage1` through `stages/stage4`; no sibling source checkout is required. The shared contract is at `contracts/sdk`. Four frozen release models are tracked with Git LFS; benchmark datasets are optional ignored assets with exact receipts. Read `README.md`, `docs/BASELINE.md` and `docs/TELEMETRY.md` before changing inference.
 
-## Current capture integration: v2.0.3
+## Current capture integration: v2.0.4
+
+The cold six-piece real-capture test now constructs one supported page in 486.8 seconds on CPU, with all eight selected joins independently verified. Post-seal registration measures approximately 3-9 native pixels of contour p95 displacement per piece. No previous assembly or reference poses enter the solve. The fourteen development controls through 30 pieces also pass, with zero false selected neighbor pairs and a largest saved-probe displacement of 30 pixels. See `docs/V204_CAPTURE_ALIGNMENT_REVIEW.md` and `provenance/V204_ALIGNMENT_AND_REGRESSION_VALIDATION_2026-10-28.json`.
+
+Stage 4 supplies missing rotations from observed border spans and refits native seams, repairs supported complete candidates across tree cuts, and performs fixed-scale rigid refinement with independent support replay. Stage 1-3 source, the SDK and model weights remain unchanged. Existing upstream bundles are compatible; regeneration is unnecessary for Stage 4-only tests. The new Stage 4 source/SDK fingerprint is `6000dccca2004995b02a6b76f21791e5a85b1daabfd235cb755be4761fb69c37`.
+
+Post-seal full-bank review found that the corner's only Stage 2 candidate covers the entire perimeter, including exterior borders. Its needed rotation is absent from all 1,151 Stage 3 archive geometries and 2,100 original occurrence transforms; the closest bank angle is about 11.7 degrees away. Stage 4's observed-border fallback measures 147 new native proposals across 12 angle basins. The other five pieces have useful connecting modes in the existing bank. This is a concrete coverage gap, not an inference from failed search or ordinary graph connectivity.
+
+Priority upstream work: retrieve coherent subarcs from full-perimeter candidates; expose exterior-border ambiguity; preserve distinct angle and translation basins; report rotation-seed provenance and pruning reasons. These can reduce the approximately 168.5-second Stage 4 quality pass and the much larger upstream cost in existing 30-piece preparation measurements. Retain native support, collision and shared-scale checks. Qualify changes with cold downstream runs and separate post-seal reference evaluation.
+
+## Historical capture integration: v2.0.1-v2.0.3
 
 The original construction measurements below belong to v2.0.0. Version 2.0.1 made CPU the installation/execution default and added the audited Stage 1 boundary adapter. Version 2.0.2 corrects the real-capture route to use V21 with explicit predicted-mask provenance, rather than the older general continuation configuration. Stage 3 source and the four model files remain unchanged.
 
@@ -88,3 +98,13 @@ Retain the 600 repair success and all ordinary acceptance checks. Do not solve s
 5. Report Stage 2, Stage 3 native, pooling, Stage 4 fitting/search/verification and total wall time separately. Target the largest measured Stage 3 costs first. Preserve regression pages while adding disjoint unseen content-rich 20–30-piece holdouts for reliability; qualify real capture masks afterward.
 
 For future failures use `tools/diagnose_bank.py` after sealing predictions. A positive compatible construction witness proves available evidence; a failed bounded probe cannot prove absence. Keep diagnostic reference use visibly separated from blind success throughout reports and feedback.
+
+## Stage 4 capture quality recovery release
+
+The v2.0.4 release integrates observed-border rotation hypotheses, supported-incumbent tree-cut repair and fixed-scale rigid refinement. This is Stage 4 consumer-side recovery: existing Stage 2/3 bundles remain valid and need no regeneration for the cold capture test. The six-piece capture and fourteen-case regression passed independent review. See [implementation and cold commands](CAPTURE_QUALITY_RECOVERY.md).
+
+The motivating six-piece case exposed a full-perimeter Stage 2 candidate and a missing corner rotation in the entire Stage 3 pose archive. Stage 4 translation refitting at inherited angles could not fix that gap. Long observed border spans can supply new rotation basins, but native curved contact, independent support, collision and page checks remain mandatory. No per-piece scale, reflection, shear or perspective fitting is introduced.
+
+Stage 3 can reduce downstream recovery cost by retrieving coherent subarcs from full-perimeter candidates, preserving angle and translation diversity, and identifying whether a useful mode is absent, pruned from the working pool, or poorly translated. Emit candidate spans, exterior-border ambiguity, rotation-seed provenance and pruning reasons. Coordinate with Stage 2 on perimeter-vs-seam candidate extraction. Stage 4 should still support fallback recovery when upstream evidence misses a pose.
+
+The integration's earlier saved-assembly check was diagnostic. The CPU-only cold runner accepts neither a previous reconstruction nor reference geometry, and subsequently passed the real six-piece test. Keep sealing results before separate reference measurement and preserve the fourteen development controls when changing upstream inference.
