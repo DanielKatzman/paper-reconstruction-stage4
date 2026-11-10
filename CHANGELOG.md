@@ -1,3 +1,12 @@
+# 2.0.6 - Conservative CPU reconstruction baseline
+
+- Retain v2.0.5 search scheduling/acceptance and select equivalent vectorized mode retention plus changed-pair caching; exclude experimental development search routes.
+- Preserve common scale 1.0, native/support/physical/page checks and all Stage 1-3/SDK/model identities.
+- Forward CPU threads to segmentation, save explicit pipeline allowances/configuration, distinguish unresolved output and record native process diagnostics.
+- Qualification: 14/14 synthetic controls through 30 pieces, scanned eight, real six and fresh CPU Stage 2/3/4 smoke pass. 365 solver and 26 runner tests pass; 16 historical skips.
+- Scanned-eight first supported checkpoint 965.2s; total worker 1218.5s. Reference checks occur only after sealing. Private real-capture assets stay local.
+- See `docs/RELEASE_V2_0_6.md` and `provenance/V206_CONSERVATIVE_CPU_VALIDATION_2026-11-10.json` for measurements and limits.
+
 # 2.0.3 - Continuous-rotation graph and capture recovery fixes
 
 - Apply authenticated rotation-family validation consistently to native growth, bridge replay and cut repair; preserve unit scale and quarter-turn controls.

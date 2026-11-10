@@ -40,6 +40,7 @@ class NativeFrontier:
             raise ValueError('Native graph requires authenticated rigid capture metadata')
         self.context,self.basis,self.physical,self.on_complete,self.lane=context,basis,physical,on_complete,lane
         self.proposals={}; self.indexed=defaultdict(list); self.primary=defaultdict(list)
+        self.retained_by_pair={}
         self.seed_order=[]; self.seed_cursor=0; self.seed_primary=True
         self.batches=deque(); self.fast=None; self.dfs=None; self.sessions=deque()
         self.revision=0; self.answer=None; self.deepest=1; self.best=[]
@@ -52,6 +53,7 @@ class NativeFrontier:
         if not fresh:
             return False
         self.proposals.update((p['proposal_id'],p) for p in fresh); self.revision+=1
+        changed={tuple(p['pieces']) for p in fresh}
         ordered=sorted(self.proposals.values(),key=lambda p:(not p['conditioned'],-quality(p),p['proposal_id']))
         self.indexed=defaultdict(list); self.primary=defaultdict(list)
         pairs=defaultdict(list)
@@ -63,8 +65,17 @@ class NativeFrontier:
             from .seam_poses_rigid import retain
         else:
             from .seam_poses_v15 import retain
-        for values in pairs.values():
-            for p in retain(values):
+        for pair,values in pairs.items():
+            if self.context.problem.capture_metadata['rotation_family']=='continuous_rigid':
+                # Producer proposals are immutable. Recompute the complete greedy
+                # retention for changed pairs, preserving replacement and order.
+                if pair in changed or pair not in self.retained_by_pair:
+                    self.retained_by_pair[pair]=retain(values)
+                    self.counts['primary_mode_pair_recomputations']+=1
+                else:self.counts['primary_mode_pair_cache_hits']+=1
+                retained=self.retained_by_pair[pair]
+            else:retained=retain(values)
+            for p in retained:
                 for pid in p['pieces']:
                     self.primary[pid].append(p)
         seeds=[]; rest=[]; seen=set()

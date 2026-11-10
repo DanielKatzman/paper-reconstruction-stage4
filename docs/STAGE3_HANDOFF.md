@@ -4,7 +4,45 @@ Stage 4 now reconstructs all fourteen development pages through 30 pieces: two e
 
 The source is now inlined at `stages/stage1` through `stages/stage4`; no sibling source checkout is required. The shared contract is at `contracts/sdk`. Four frozen release models are tracked with Git LFS; benchmark datasets are optional ignored assets with exact receipts. Read `README.md`, `docs/BASELINE.md` and `docs/TELEMETRY.md` before changing inference.
 
-## Current capture integration: v2.0.4
+## Current stable capture integration: v2.0.6
+
+Use v2.0.6 as the conservative CPU baseline. It preserves the successful v2.0.5
+search and selects equivalent mode-retention optimizations and portable tooling.
+All fourteen synthetic development controls, real six, clean scanned eight and
+a fresh CPU Stage 2/3/4 smoke pass. The scanned eight reaches its first supported
+checkpoint at 965.2s, with complete
+worker time 1218.5s under a 1200s allowance. These are
+development controls; thirty real pieces remain unqualified.
+
+The clean scanner case exposed a regression in experimental Stage 4 scheduling:
+published v2.0.5 constructed the same frozen input that dev21 left as incorrect
+4+4 groups. A roughly correct five-piece development prefix received no recorded
+extension attempts. Those experimental scheduling/adjustment routes are excluded
+from this stable release; their local work is preserved for later investigation.
+This is evidence to fix downstream service before demanding a new upstream bank.
+
+The scanner input contains 2111 archived geometries, 3886 occurrences and 672
+working edges. Independent post-seal evaluation found a complete, natively
+verified construction from existing archived transforms. It also found a
+construction from saved development proposals. Both were reference-guided
+diagnostics, never serving seeds. Some useful modes are substantially better in
+the full archive than in the working pool. Stage 3 improvements should focus on
+early ranking, diverse credible rotation/translation modes, uncertainty and
+parent provenance, plus CPU scoring cost. Preserve the complete immutable archive.
+
+The next cohort will contain two independently scanned puzzles per piece count.
+Preserve scanner DPI/common relative scale, accepted masks and source captures;
+keep intact-page scans/reference poses strictly evaluation-only. Cache Stage 3
+per case for Stage 4-only iteration. Report missing poses, poor working-pool
+ranking, unserved partials and final native/page rejection separately. A failed
+bounded search or a connected candidate graph alone cannot prove solvability
+or impossibility. Keep approximate correct construction as the target.
+
+Stage 1-3, the SDK and all four frozen Git LFS models are unchanged. Source/SDK
+fingerprint: `f22e081ffc83f84b1bf78dd7c563f246df5693a05558fbc3f0203d36b5b56d25`.
+See `docs/RELEASE_V2_0_6.md` and the V206 validation receipt for exact evidence.
+
+## Previous capture integration: v2.0.4 / v2.0.5
 
 Use the v2.0.5 release for this baseline. It preserves the v2.0.4 solver and qualifications and corrects a Windows runner-test path-alias assertion; no model, upstream stage or production solver changes are involved.
 

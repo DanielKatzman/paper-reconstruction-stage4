@@ -40,6 +40,7 @@ def environment(stage):
              ROOT/'stages'/stage/'scripts']
     env['PYTHONPATH'] = os.pathsep.join(str(p) for p in paths)
     env['PYTHONDONTWRITEBYTECODE'] = '1'; env['PYTHONUNBUFFERED'] = '1'
+    env['PYTHONFAULTHANDLER'] = '1'
     return env
 
 
@@ -64,7 +65,11 @@ def execute(stage, argv, output, label):
         except BaseException:
             p.terminate(); p.wait(); raise
     row = {'stage': stage, 'command': command, 'elapsed_seconds': time.monotonic()-start,
-           'returncode': code, 'log_sha256': sha(log)}
+           'process_id': p.pid, 'returncode': code, 'log_sha256': sha(log)}
+    if os.name == 'nt':
+        row['returncode_hex'] = f'0x{code & 0xffffffff:08X}'
+        row['native_failure'] = {0xC0000005:'access_violation',0xC0000374:'heap_corruption',
+            0xC00000FD:'stack_overflow'}.get(code & 0xffffffff)
     save(output/(label+'.receipt.json'), row)
     if code: raise RuntimeError(f'{label} failed ({code}); see {log}')
     print(f'{label}: finished in {row["elapsed_seconds"]:.1f}s', flush=True)

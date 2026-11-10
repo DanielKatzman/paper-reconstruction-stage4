@@ -73,11 +73,14 @@ def fit(problem,config,physical,data,a,b,value):
 
 
 def retain(rows):
-    kept=[]
-    for row in sorted(rows,key=lambda r:(not r['conditioned'],-r['score'],r['proposal_id'])):
+    ordered=sorted(rows,key=lambda r:(not r['conditioned'],-r['score'],r['proposal_id']))
+    kept=[];rotations=np.empty((len(ordered),2,2));translations=np.empty((len(ordered),2))
+    for row in ordered:
         h=np.asarray(row['transform_b_to_a'])
-        if any(np.max(np.abs(h[:2,:2]-np.asarray(old['transform_b_to_a'])[:2,:2]))<1e-6
-               and np.linalg.norm(h[:2,2]-np.asarray(old['transform_b_to_a'])[:2,2])<4. for old in kept):continue
+        count=len(kept)
+        if count and np.any((np.max(np.abs(rotations[:count]-h[:2,:2]),axis=(1,2))<1e-6)&
+                (np.linalg.norm(translations[:count]-h[:2,2],axis=1)<4.)):continue
+        rotations[count]=h[:2,:2];translations[count]=h[:2,2]
         kept.append(row)
     return kept
 

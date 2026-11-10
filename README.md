@@ -1,8 +1,8 @@
 # Paper Reconstruction - Stage 4 v2.0
 
-**Version 2.0.5** includes observed-border rotation recovery and repair of supported but misaligned capture assemblies. A cold CPU test reconstructs the six photographed pieces in 8m7s with approximately 3-9 native-pixel per-piece contour displacement measured after prediction sealing. All fourteen development controls through 30 pieces pass. See the [validation review](docs/V204_CAPTURE_ALIGNMENT_REVIEW.md) and [capture runner](docs/CAPTURE_QUALITY_RECOVERY.md); existing Stage 2/3 banks remain compatible. This release also corrects a Windows temp-path alias assertion in a runner test, preserving the qualified solver source and all previous tags.
+**Version 2.0.6** keeps the working v2.0.5 search and adds equivalent pose-filtering optimizations, CPU-thread forwarding and clearer pipeline/crash diagnostics. The release passes all fourteen synthetic development controls through 30 pieces, the real-six control, and the clean scanned-eight case. The scanned-eight first supported checkpoint takes 965.2 seconds on four CPU threads; complete worker time including alignment/finalization is 1218.5 seconds under a 1200-second allowance. Experimental development search scheduling is excluded. See the [release validation](docs/RELEASE_V2_0_6.md); existing Stage 2/3 banks and all frozen models remain compatible.
 
-[Capture alignment release v2.0.5](https://github.com/DanielKatzman/paper-reconstruction-stage4/releases/tag/v2.0.5) · [Stage 3 handoff](docs/STAGE3_HANDOFF.md) · [Architecture and integration](docs/ARCHITECTURE.md) · [Baseline results](docs/BASELINE.md)
+[Conservative CPU release v2.0.6](https://github.com/DanielKatzman/paper-reconstruction-stage4/releases/tag/v2.0.6) · [Stage 3 handoff](docs/STAGE3_HANDOFF.md) · [Architecture and integration](docs/ARCHITECTURE.md) · [Baseline results](docs/BASELINE.md)
 
 **CPU is the default.** Setup installs the CPU-only Torch build and the pipeline uses `--device cpu`. CUDA is optional and must be selected explicitly. Version 2.0.0 also has CPU execution paths, but its setup/runner defaults were CUDA; v2.0.1 corrects those defaults without changing the frozen models or assembly implementation.
 
@@ -10,9 +10,9 @@
 
 Four inlined stages reconstruct a complete torn page: segmentation → boundary observations → ranked pair poses → global assembly. This source baseline includes the qualified Stage 3 unit-scale runtime and Stage 4 V21 revision 4, with no dependency on a sibling source checkout.
 
-**Stage 4 owns global assembly.** The upstream stage snapshots in this repository preserve the exact pipeline used to prepare and test it. Each stage can also evolve in its own repository under a compatible release. The next orchestration repository will compose those modules into one containerized application with an API or GUI. The current release provides a working CLI pipeline; the HTTP API, GUI and container deployment are planned work.
+**Stage 4 owns global assembly.** The upstream stage snapshots in this repository preserve the exact pipeline used to prepare and test it. Each stage can also evolve in its own repository under a compatible release. The [orchestrator repository](https://github.com/DanielKatzman/orchestrator) owns application and container integration. This release provides the working four-stage CLI pipeline.
 
-**The development regression baseline passes 14/14 puzzles: two each at 4, 8, 12, 16, 20, 24 and 30 pieces (228 pieces).** All selected layouts are supported, connected and have zero false selected neighbor pairs. Both 30-piece Stage 4 runs finish in about two minutes. The largest measured probe displacement is 30 native pixels; correct construction is the goal.
+**The development regression baseline passes 14/14 puzzles: two each at 4, 8, 12, 16, 20, 24 and 30 pieces (228 pieces).** All selected layouts are supported, connected and have zero false selected neighbor pairs. Per-case CPU timings for this release are recorded in `provenance/V206_CONSERVATIVE_CPU_VALIDATION_2026-11-10.json`. The largest measured probe displacement is 30 native pixels; correct construction is the goal.
 
 This cohort was used during development. It assumes every piece of one rectangular page, a common native pixel scale, exact generator masks and quarter-turn captures. Page size, aspect ratio and DPI are unknown. Stage 1 inference was bypassed; Stage 2/3 evidence was prepared previously and reused for the final cold Stage 4 validation. This is not a held-out or real-camera 30-piece qualification. See [results and limitations](docs/BASELINE.md).
 
@@ -32,13 +32,13 @@ This cohort was used during development. It assumes every piece of one rectangul
 | `provenance` | Component source inventories, asset hashes and original baseline commitments |
 | `tools` | Portable setup, asset verification, pipeline and regression commands |
 
-The umbrella release is **2.0.5**, compatible with the v2.0.0 model/data baseline. Its source fingerprints identify the capture alignment implementation; Stage 1-3 and the original model files remain unchanged. Existing Stage 2 copyright terms are retained; this export does not grant a new open-source license.
+The umbrella release is **2.0.6**, compatible with the v2.0.0 model/data baseline. Its source fingerprints identify the capture alignment implementation; Stage 1-3 and the original model files remain unchanged. Existing Stage 2 copyright terms are retained; this export does not grant a new open-source license.
 
 ## Clone and install
 
 ```powershell
 git lfs install
-git clone --branch v2.0.5 https://github.com/DanielKatzman/paper-reconstruction-stage4.git
+git clone --branch v2.0.6 https://github.com/DanielKatzman/paper-reconstruction-stage4.git
 cd paper-reconstruction-stage4
 git lfs pull
 python -B tools/verify_compatibility.py
@@ -61,7 +61,7 @@ python -B -m unittest discover -s tests -v
 python -B tools/pipeline.py benchmark --output outputs/v2_full_regression
 ```
 
-Source-only tests do not require model/benchmark downloads: install `contracts/sdk` and `stages/stage4`, then run the two test commands. The portable Stage 4 suite passes 352 tests with 16 documented archive-dependent skips; sixteen additional tests cover orchestration, CPU defaults and mask boundaries. [Packaging validation](provenance/PACKAGING_VALIDATION.json) preserves the original relocation checks. [CPU validation](provenance/CPU_VALIDATION_2026-10-27.json) records the earlier CPU-only execution and real six-piece accuracy limitation. The [capture recovery review](docs/V203_CAPTURE_RECOVERY_REVIEW.md) describes the current fixes and their separate validation.
+Source-only tests do not require model/benchmark downloads: install `contracts/sdk` and `stages/stage4`, then run the two test commands. The portable Stage 4 suite passes 365 tests with 16 documented archive-dependent skips; 26 additional tests cover orchestration, CPU defaults and mask boundaries. [Packaging validation](provenance/PACKAGING_VALIDATION.json) preserves the original relocation checks. [CPU validation](provenance/CPU_VALIDATION_2026-10-27.json) records the earlier CPU-only execution and real six-piece accuracy limitation. The [capture recovery review](docs/V203_CAPTURE_RECOVERY_REVIEW.md) describes the current fixes and their separate validation.
 
 ## Stage 4 interface
 

@@ -1,3 +1,7 @@
+from .process_diagnostics import configure
+
+configure()
+
 import argparse
 import json
 from pathlib import Path

@@ -1,5 +1,6 @@
 """Portable four-stage pipeline and cold, sealed Stage 4 regression runner."""
 import argparse
+import math
 from pathlib import Path
 import shutil
 import sys
@@ -63,19 +64,28 @@ def evaluate_run(output):
 
 
 def run(args):
+    if args.cpu_threads<1:raise ValueError('CPU threads must be positive')
+    seconds=getattr(args,'stage4_seconds',None)
+    config=read(CONFIG)
+    if seconds is not None:
+        if not math.isfinite(seconds) or seconds<=config['joint_finalize_seconds']:
+            raise ValueError('Stage 4 seconds must be finite and exceed the finalization reserve')
+        config['joint_wall_seconds']=seconds
     source=(args.stage1 or args.captures).resolve()
     if not source.is_dir():raise ValueError('Input folder does not exist: '+str(source))
     if args.captures and (args.mode!='shared-scale-capture' or not args.capture_profile):
         raise ValueError('Raw captures need --mode shared-scale-capture and a truthful --capture-profile')
     output=fresh(args.output,[source,ROOT/'stages',ROOT/'contracts',ROOT/'tools',ROOT/'baseline',ROOT/'provenance'])
     save(output/'request.json',{'mode':args.mode,'source':str(source),'source_files':inventory(source),
-        'device':args.device,'cpu_threads':args.cpu_threads,'references_opened':False})
+        'device':args.device,'cpu_threads':args.cpu_threads,'references_opened':False,
+        'stage4_wall_seconds':config['joint_wall_seconds']})
+    save(output/'solver_config.json',config)
     if args.stage1:
         stage1=source
     else:
         raw_stage1=output/'stage1_native'
         stage1=output/'stage1'
-        execute('stage1',[ROOT/'stages/stage1/scripts/segment_folder.py',source,raw_stage1,'--review',args.review],output,'stage1')
+        execute('stage1',[ROOT/'stages/stage1/scripts/segment_folder.py',source,raw_stage1,'--review',args.review,'--cpu-threads',args.cpu_threads],output,'stage1')
         if not args.capture_profile: raise ValueError('Shared-scale Stage 3 requires an explicit truthful capture profile')
         shutil.copy2(args.capture_profile,raw_stage1/'capture_profile.json')
         execute('stage1',[ROOT/'tools/prepare_stage1_for_stage2.py','--input',raw_stage1,'--output',stage1],output,'stage1_boundary')
@@ -92,9 +102,26 @@ def run(args):
         '--device',args.device,'--puzzle-id',args.puzzle_id],output,'stage3_native')
     execute('stage3',[ROOT/'tools/stage3_worker.py','pool','--input',output/'stage3_native','--output',output/'stage3'],output,'stage3_pool')
     profile=PROFILE if args.mode=='development-page' else CAPTURE_PROFILE
-    solve(output/'stage3',capture,output/'stage4',CONFIG,profile)
+    solve(output/'stage3',capture,output/'stage4',output/'solver_config.json',profile)
     save(output/'predictions_sealed.json',{'predictions':inventory(output/'stage4'),'references_opened':False})
-    print('Pipeline complete: '+str(output/'stage4/preview.png'),flush=True)
+    report_pipeline_result(output)
+
+
+def report_pipeline_result(output):
+    """Distinguish finished execution from a complete reconstruction."""
+    output=Path(output)
+    result=read(output/'stage4/result.json')
+    layout=result['layouts'][0]
+    sizes=sorted(map(len,layout['components']),reverse=True)
+    complete=(result['status']=='complete_candidate' and len(sizes)==1
+              and bool(layout['all_pieces_connected']))
+    summary={'stage_execution':'finished','assembly_status':result['status'],
+        'component_sizes':sizes,'complete_assembly_candidate':complete,
+        'reference_accuracy_checked':False,'predictions_sealed':(output/'predictions_sealed.json').is_file()}
+    save(output/'pipeline_result.json',summary)
+    label='complete assembly candidate' if complete else 'unresolved assembly; component sizes '+str(sizes)
+    print('Pipeline finished: '+label+'. Preview: '+str(output/'stage4/preview.png'),flush=True)
+    return summary
 
 
 def main():
@@ -106,6 +133,7 @@ def main():
     r.add_argument('--mode',choices=['development-page','shared-scale-capture'],default='development-page')
     r.add_argument('--device',choices=['cuda','cpu'],default='cpu'); r.add_argument('--cpu-threads',type=int,default=4)
     r.add_argument('--review',choices=['none','flagged','all'],default='flagged'); r.add_argument('--puzzle-id',default='page')
+    r.add_argument('--stage4-seconds',type=float,help='Optional development wall-time allowance; the published stopping policy is retained')
     a=p.parse_args()
     if a.command=='benchmark': benchmark(a)
     elif a.command=='evaluate': evaluate_run(a.run)

@@ -39,10 +39,13 @@ class CpuDefaults(unittest.TestCase):
             (source/'capture_profile.json').write_text(json.dumps({'stage1_masks':'segformer_v3_predicted'}))
             args=SimpleNamespace(stage1=source,captures=None,output=root/'run',mode='shared-scale-capture',
                 device='cpu',cpu_threads=4,puzzle_id='routing-test')
-            with patch.object(pipeline,'execute'),patch.object(pipeline,'solve') as solve:
+            with patch.object(pipeline,'execute'),patch.object(pipeline,'solve') as solve, \
+                    patch.object(pipeline,'report_pipeline_result'):
                 pipeline.run(args)
-            self.assertEqual(solve.call_args.args[3],pipeline.CONFIG)
+            self.assertEqual(solve.call_args.args[3],args.output/'solver_config.json')
+            self.assertEqual(pipeline.read(solve.call_args.args[3]),pipeline.read(pipeline.CONFIG))
             self.assertEqual(solve.call_args.args[4],pipeline.CAPTURE_PROFILE)
+            self.assertEqual(solve.call_args.kwargs,{})
 
 
 if __name__=='__main__':unittest.main()

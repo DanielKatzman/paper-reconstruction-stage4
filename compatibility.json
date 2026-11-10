@@ -17,7 +17,7 @@
     "relative_piece_scale": 1.0
   },
   "compatible_model_data_baseline": "2.0.0",
-  "component_inventory_sha256": "394ffdd050ddd29a3367553053de79c24e5cb22cc46c3958036880def2a3465f",
+  "component_inventory_sha256": "6f987b57503cac77a3e83ab2167ddb7cee8b18893d4699334776d08440743c20",
   "contracts": {
     "sdk_path": "contracts/sdk",
     "sdk_software_version": "0.1.0",
@@ -29,11 +29,11 @@
     "gpu_required": false,
     "torch_cpu_wheel_version": "2.7.1"
   },
-  "release_version": "2.0.5",
+  "release_version": "2.0.6",
   "schema_version": "paper-reconstruction.release-compatibility.v1",
   "stages": {
     "stage1": {
-      "compatible_pipeline_release": "2.0.5",
+      "compatible_pipeline_release": "2.0.6",
       "models": [
         {
           "path": "stages/stage1/models/segformer_b1_detail_768_v3.onnx",
@@ -47,7 +47,7 @@
       "source_inventory": "provenance/components.json#stage1"
     },
     "stage2": {
-      "compatible_pipeline_release": "2.0.5",
+      "compatible_pipeline_release": "2.0.6",
       "models": [
         {
           "path": "stages/stage2/models/stage2_boundary_v1.0.0.onnx",
@@ -62,7 +62,7 @@
     },
     "stage3": {
       "candidate_implementation_sha256": "6b0ac07074ff3ecf340aa7c30deae6760d8a8cd4807e3dd9b71348d72e86e66a",
-      "compatible_pipeline_release": "2.0.5",
+      "compatible_pipeline_release": "2.0.6",
       "models": [
         {
           "path": "stages/stage3/models/pair_mlp_small.pt",
@@ -81,13 +81,13 @@
       "source_inventory": "provenance/components.json#stage3"
     },
     "stage4": {
-      "compatible_pipeline_release": "2.0.5",
+      "compatible_pipeline_release": "2.0.6",
       "models": [],
       "package_metadata": "stages/stage4/pyproject.toml",
       "python_major_minor": "3.12",
       "software_version": "0.1.0",
       "source_inventory": "provenance/components.json#stage4",
-      "source_sdk_fingerprint": "6000dccca2004995b02a6b76f21791e5a85b1daabfd235cb755be4761fb69c37"
+      "source_sdk_fingerprint": "f22e081ffc83f84b1bf78dd7c563f246df5693a05558fbc3f0203d36b5b56d25"
     }
   }
 }
