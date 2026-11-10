@@ -66,7 +66,7 @@
     "docs/RELEASE_V2_0_3.md": "90eb214ae9e9f1fb27d761254a0369b49b6394b8b0b33ea9c88df0255d3e4d9f",
     "docs/RELEASE_V2_0_4.md": "75b243256d8e276a9fc73b568d4b1429d4a34a2fab6655e0346d5c8fbc653615",
     "docs/RELEASE_V2_0_5.md": "03cf58f6edd34b78f5f952954e31fc72402c5eaca415ae225735e8cda26332e4",
-    "docs/RELEASE_V2_0_6.md": "0597869feff42c2b0bb3f4205c9e62cec0adfd51cc319243b9aad3e92fd4c0e3",
+    "docs/RELEASE_V2_0_6.md": "4674f30706fc4269814575e8721f3e181157eb0e1d13b6be98aa89c307ca69bb",
     "docs/RUNNING.md": "bfd858ed0c68b77b8e361b6aedac04b85a7d4bdeb1a18fa9d0dd09989301540c",
     "docs/STAGE3_HANDOFF.md": "7f5b8a18cd8c41b2dcb4cae1fbfc78b99eae2b0851f1a501d0ddec99e44213c2",
     "docs/TELEMETRY.md": "7cf22f7aff701e927459c3727f71d6cebe671703761b32f0d4f84977dbb80c39",
@@ -784,7 +784,7 @@
     "stages/stage4/vendor/contracts-sdk/src/paper_reconstruction_contracts/schemas/working_pool.schema.json": "84ff3a03dcc37fe038757cf7e93a652fae5df408a7feb56096af69556f640e05",
     "stages/stage4/vendor/contracts-sdk/src/paper_reconstruction_contracts/validation.py": "98d81385536efc854b82f48236d2515baa1994d3953ad5a88d7def0f37a0a2a3",
     "tests/test_capture_runner.py": "7951048d79afc998b136d251bec079134ef0695a93ba61b3d983e831d6917efc",
-    "tests/test_cpu_defaults.py": "71f7692ebb714e8bfae625385ef708cef78530ddc360002aacf35e52195b6bdf",
+    "tests/test_cpu_defaults.py": "0ac6acf42fdcd8b9e3dd7bbd37dc9764041cedf33b10315728bdd61621b1d087",
     "tests/test_mask_boundary.py": "beafe808bbfa56c3c670374e62f75a5adf192db28e062b3bcf5e2e77453b0554",
     "tests/test_pipeline_cpu.py": "56391480f111231f9338479e89f3d1bb9a624d47ef472b42e1a646fd5bf49d9a",
     "tests/test_pipeline_result.py": "82644c0222f51bde8b9b2de120f88f9994d2236703eb7db4090cdf8e139d5663",
@@ -808,5 +808,5 @@
   },
   "git_lfs_model_bytes": 85616283,
   "release": "2.0.6",
-  "source_bytes": 13560190
+  "source_bytes": 13560475
 }

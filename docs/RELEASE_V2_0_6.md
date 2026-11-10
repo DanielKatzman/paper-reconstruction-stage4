@@ -40,6 +40,9 @@ replacement acceptance thresholds.
   2.96-8.53 native pixels.
 - **365 solver tests and 26 runner tests passed**, with 16 documented historical
   archive-dependent skips. CPU-only Torch 2.7.1 loads both frozen Stage 3 rankers.
+- The runner config-path assertion compares resolved paths, preserving Windows
+  short/long temporary-directory aliases. The production solver fingerprint
+  and qualified reconstruction outputs are unchanged by this test correction.
 - Fresh CPU pipeline smoke: Stage 1 generator handoff reused; new Stage 2,
   Stage 3 native inference/pooling and Stage 4 execution completed successfully.
 - On 8,566 saved real proposals across 28

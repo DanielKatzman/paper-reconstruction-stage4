@@ -42,7 +42,8 @@ class CpuDefaults(unittest.TestCase):
             with patch.object(pipeline,'execute'),patch.object(pipeline,'solve') as solve, \
                     patch.object(pipeline,'report_pipeline_result'):
                 pipeline.run(args)
-            self.assertEqual(solve.call_args.args[3],args.output/'solver_config.json')
+            self.assertEqual(solve.call_args.args[3].resolve(),
+                             (args.output/'solver_config.json').resolve())
             self.assertEqual(pipeline.read(solve.call_args.args[3]),pipeline.read(pipeline.CONFIG))
             self.assertEqual(solve.call_args.args[4],pipeline.CAPTURE_PROFILE)
             self.assertEqual(solve.call_args.kwargs,{})
